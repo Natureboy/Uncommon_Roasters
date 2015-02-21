@@ -4,5 +4,11 @@
     <string name="app_name">CoffeeWizard</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="brew_button">Brew</string>
+    <string name="website_button">Website</string>
+    <string name="dial_in_button">Dial In</string>
+    <string name="faq_button">FAQs</string>
+    <string name="title_activity_dial_in">Dial In</string>
+
 
 </resources>
