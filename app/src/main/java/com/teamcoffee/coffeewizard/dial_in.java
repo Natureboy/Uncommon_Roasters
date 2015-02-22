@@ -1,21 +1,31 @@
 package com.teamcoffee.coffeewizard;
 
+
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SeekBar;
+
 
 
 public class dial_in extends ActionBarActivity {
+
+    private SeekBar water;
+    private SeekBar density;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dial_in);
+
+        water = (SeekBar) findViewById(R.id.waterSeekBar);
+        density = (SeekBar) findViewById(R.id.densitySeekBar);
+
+
         Intent intent = getIntent();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,4 +48,5 @@ public class dial_in extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

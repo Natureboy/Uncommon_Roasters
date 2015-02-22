@@ -9,6 +9,16 @@
     <string name="dial_in_button">Dial In</string>
     <string name="faq_button">FAQs</string>
     <string name="title_activity_dial_in">Dial In</string>
+    <string name="coffee_weight">Coffee Weight</string>
+    <string name="coffee_weight_dialog">Coffee Weight (grams)</string>
+    <string name="coffee_density">Select Coffee Density</string>
+    <string name="water_volume">Water Volume</string>
+    <string name="dial_in_title">Choose Your Coffee!</string>
+
+
+
+
+
 
 
 </resources>
