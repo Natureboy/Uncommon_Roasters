@@ -85,4 +85,24 @@
         android:id="@+id/titleText"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/waterVolumeNumber"
+        android:layout_below="@+id/waterSeekBar"
+        android:layout_centerHorizontal="true"
+        android:hint="Current Water Volume" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brew_start_button"
+        android:id="@+id/brewButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:focusable="false"
+        android:onClick="brewButton"/>
+
 </RelativeLayout>

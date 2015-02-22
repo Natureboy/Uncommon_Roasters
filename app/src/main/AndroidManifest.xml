@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamcoffee.coffeewizard.MainActivity" />
         </activity>
+        <activity
+            android:name=".brewingActivity"
+            android:label="@string/title_activity_brewing"
+            android:parentActivityName=".dial_in" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamcoffee.coffeewizard.dial_in" />
+        </activity>
     </application>
 
 </manifest>

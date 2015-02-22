@@ -6,7 +6,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 
 
@@ -14,6 +16,8 @@ public class dial_in extends ActionBarActivity {
 
     private SeekBar water;
     private SeekBar density;
+    private TextView test, coffeeWeight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,47 @@ public class dial_in extends ActionBarActivity {
         water = (SeekBar) findViewById(R.id.waterSeekBar);
         density = (SeekBar) findViewById(R.id.densitySeekBar);
 
+        coffeeWeight = (TextView) findViewById(R.id.editText);
+        test = (TextView)findViewById(R.id.waterVolumeNumber);
+        test.setText(Integer.toString(water.getProgress()));
 
+        water.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChanged = 0;
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChanged = progress;
+                test.setText(Integer.toString(progressChanged));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+
+            }
+        });
+
+        density.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         Intent intent = getIntent();
     }
 
@@ -48,5 +92,23 @@ public class dial_in extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void brewButton(View view){
+        int waterLevel, densityLevel, weightLevel;
+        Recipe result;
+
+        waterLevel = water.getProgress();
+        densityLevel = density.getProgress();
+        weightLevel = Integer.parseInt(coffeeWeight.getText().toString());
+
+        result = new Recipe(densityLevel,weightLevel,waterLevel);
+        Intent i = new Intent(this, brewingActivity.class);
+        i.putExtra("Recipe", result);
+
+        startActivity(i);
+
+
+    }
+
 
 }
