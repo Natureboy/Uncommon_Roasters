@@ -108,8 +108,6 @@ public class dial_in extends ActionBarActivity {
         i.putExtra("Recipe", result);
 
         startActivity(i);
-
-
     }
 
 

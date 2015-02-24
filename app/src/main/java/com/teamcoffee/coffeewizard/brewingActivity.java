@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class brewingActivity extends ActionBarActivity {
 
-    private int density, waterLevel, weight;
-    private TextView coffeeDensity, coffeeWeight, coffeeWater;
+    int density, waterLevel, weight;
+    TextView coffeeDensity, coffeeWeight, coffeeWater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
