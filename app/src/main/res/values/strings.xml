@@ -11,11 +11,12 @@
     <string name="title_activity_dial_in">Dial In</string>
     <string name="coffee_weight">Coffee Weight</string>
     <string name="coffee_weight_dialog">Coffee Weight (grams)</string>
-    <string name="coffee_density">Select Coffee Density</string>
+    <string name="coffee_density">Coffee Density</string>
     <string name="water_volume">Water Volume</string>
     <string name="dial_in_title">Choose Your Coffee!</string>
     <string name="brew_start_button">BREW!</string>
     <string name="title_activity_brewing">brewingActivity</string>
+    <string name="coffee_density_value">Current Coffee Density</string>
 
 
 

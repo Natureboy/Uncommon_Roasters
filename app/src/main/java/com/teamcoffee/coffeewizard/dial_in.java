@@ -10,13 +10,11 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-
-
 public class dial_in extends ActionBarActivity {
 
     private SeekBar water;
     private SeekBar density;
-    private TextView test, coffeeWeight;
+    private TextView waterVolume, coffeeWeight, coffeeDensity;
 
 
     @Override
@@ -28,8 +26,10 @@ public class dial_in extends ActionBarActivity {
         density = (SeekBar) findViewById(R.id.densitySeekBar);
 
         coffeeWeight = (TextView) findViewById(R.id.editText);
-        test = (TextView)findViewById(R.id.waterVolumeNumber);
-        test.setText(Integer.toString(water.getProgress()));
+        waterVolume = (TextView)findViewById(R.id.waterVolumeNumber);
+        coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
+        waterVolume.setText(Integer.toString(water.getProgress()));
+        coffeeDensity.setText(Integer.toString(density.getProgress()));
 
         water.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChanged = 0;
@@ -37,7 +37,7 @@ public class dial_in extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
-                test.setText(Integer.toString(progressChanged));
+                waterVolume.setText(Integer.toString(progressChanged));
             }
 
             @Override
@@ -53,9 +53,11 @@ public class dial_in extends ActionBarActivity {
         });
 
         density.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChanged = 0;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                progressChanged = progress;
+                coffeeDensity.setText(Integer.toString(progressChanged));
             }
 
             @Override
