@@ -1,7 +1,10 @@
 package com.teamcoffee.coffeewizard;
 
 
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.teamcoffee.coffeewizard.DatabaseContract.DatabaseHelper;
 
 import java.sql.SQLException;
 
@@ -28,7 +32,6 @@ public class dial_in extends ActionBarActivity {
 
         water = (SeekBar) findViewById(R.id.waterSeekBar);
         density = (SeekBar) findViewById(R.id.densitySeekBar);
-
         coffeeWeight = (TextView) findViewById(R.id.coffeeWeightValue);
         waterVolume = (TextView)findViewById(R.id.waterVolumeNumber);
         coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
@@ -126,10 +129,11 @@ public class dial_in extends ActionBarActivity {
         result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
         Intent i = new Intent(this, brewingActivity.class);
         i.putExtra("Recipe", result);
-
-
         startActivity(i);
     }
+
+
+
 
 
 }

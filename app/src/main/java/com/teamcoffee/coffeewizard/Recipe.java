@@ -26,12 +26,9 @@ public class Recipe implements Serializable{
         this.brewer = brewer;
         this.brewTime = calculateBrewTime(density, weight, waterQuantity);
         this.name = "";
-
-
     }
 
     //Returns the brew time in seconds
-    //This is currently just a place holder formula.
     private int calculateBrewTime(int density, int weight, int waterQuantity){
         if(brewer.equals("V60")){
             if(weight == 200){
@@ -69,9 +66,7 @@ public class Recipe implements Serializable{
             }
 
         }
-
-
-
+        //This probably won't ever be right.
         return (density * 5) + (weight * 10) + (waterQuantity * 15);
     }
 

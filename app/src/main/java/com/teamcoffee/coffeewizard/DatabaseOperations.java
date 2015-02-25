@@ -19,7 +19,7 @@ public class DatabaseOperations extends SQLiteOpenHelper{
 
 
     public DatabaseOperations(Context context) {
-        super(context, DATABASE_NAME, null, database_version);
+        super(context, "PLACEHOLDER", null, database_version);
     }
 
     @Override
