@@ -17,6 +17,7 @@ public class dial_in extends ActionBarActivity {
     private SeekBar water;
     private SeekBar density;
     private TextView waterVolume, coffeeWeight, coffeeDensity;
+    private Spinner spinner;
 
 
     @Override
@@ -33,7 +34,7 @@ public class dial_in extends ActionBarActivity {
         waterVolume.setText(Integer.toString(water.getProgress()));
         coffeeDensity.setText("Medium Density");
 
-        Spinner spinner = (Spinner) findViewById(R.id.brewSpinner);
+        spinner = (Spinner) findViewById(R.id.brewSpinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.brewers, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -114,12 +115,14 @@ public class dial_in extends ActionBarActivity {
     public void brewButton(View view){
         int waterLevel, densityLevel, weightLevel;
         Recipe result;
+        String brewer;
 
         waterLevel = water.getProgress();
         densityLevel = density.getProgress();
         weightLevel = Integer.parseInt(coffeeWeight.getText().toString());
+        brewer = spinner.getSelectedItem().toString();
 
-        result = new Recipe(densityLevel,weightLevel,waterLevel);
+        result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
         Intent i = new Intent(this, brewingActivity.class);
         i.putExtra("Recipe", result);
 

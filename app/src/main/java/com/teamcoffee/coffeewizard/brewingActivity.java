@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 public class brewingActivity extends ActionBarActivity {
 
-    int density, waterLevel, weight;
-    TextView coffeeDensity, coffeeWeight, coffeeWater;
+    int density, waterLevel, weight, time;
+    TextView coffeeDensity, coffeeWeight, coffeeWater, coffeeTime, coffeeBrewer;
+    String brewer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,9 @@ public class brewingActivity extends ActionBarActivity {
         coffeeDensity = (TextView) findViewById(R.id.densityText);
         coffeeWeight = (TextView) findViewById(R.id.weightText);
         coffeeWater = (TextView) findViewById(R.id.waterText);
+        coffeeTime = (TextView) findViewById(R.id.coffeeTime);
+        coffeeBrewer = (TextView) findViewById(R.id.coffeeBrewer);
+
 
         Intent i = getIntent();
         Recipe recipe = (Recipe)i.getSerializableExtra("Recipe");
@@ -28,10 +32,15 @@ public class brewingActivity extends ActionBarActivity {
         density = recipe.density;
         waterLevel = recipe.waterQuantity;
         weight = recipe.weight;
+        brewer = recipe.brewer;
+        time = recipe.brewTime;
 
         coffeeDensity.setText(String.valueOf(density));
         coffeeWeight.setText(String.valueOf(weight));
         coffeeWater.setText(String.valueOf(waterLevel));
+        coffeeBrewer.setText(brewer);
+        coffeeTime.setText(String.valueOf(time));
+
 
     }
 
