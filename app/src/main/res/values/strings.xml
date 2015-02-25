@@ -17,6 +17,12 @@
     <string name="brew_start_button">BREW!</string>
     <string name="title_activity_brewing">brewingActivity</string>
     <string name="coffee_density_value">Current Coffee Density</string>
+    <string-array name="brewers">
+        <item>Select Coffee Machine</item>
+        <item>V60</item>
+        <item>Test1</item>
+        <item>Test2</item>
+    </string-array>
 
 
 

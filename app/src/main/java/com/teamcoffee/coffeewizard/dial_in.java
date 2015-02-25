@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class dial_in extends ActionBarActivity {
@@ -25,11 +27,16 @@ public class dial_in extends ActionBarActivity {
         water = (SeekBar) findViewById(R.id.waterSeekBar);
         density = (SeekBar) findViewById(R.id.densitySeekBar);
 
-        coffeeWeight = (TextView) findViewById(R.id.editText);
+        coffeeWeight = (TextView) findViewById(R.id.coffeeWeightValue);
         waterVolume = (TextView)findViewById(R.id.waterVolumeNumber);
         coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
         waterVolume.setText(Integer.toString(water.getProgress()));
-        coffeeDensity.setText(Integer.toString(density.getProgress()));
+        coffeeDensity.setText("Medium Density");
+
+        Spinner spinner = (Spinner) findViewById(R.id.brewSpinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.brewers, android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         water.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChanged = 0;
@@ -38,6 +45,7 @@ public class dial_in extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 waterVolume.setText(Integer.toString(progressChanged));
+
             }
 
             @Override
@@ -57,7 +65,15 @@ public class dial_in extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
-                coffeeDensity.setText(Integer.toString(progressChanged));
+                if(progressChanged == 0){
+                    coffeeDensity.setText("Low Density");
+                }
+                else if(progressChanged == 1){
+                    coffeeDensity.setText("Medium Density");
+                }
+                else if(progressChanged == 2){
+                    coffeeDensity.setText("High Density");
+                }
             }
 
             @Override

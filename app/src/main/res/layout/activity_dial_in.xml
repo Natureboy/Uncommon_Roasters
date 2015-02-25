@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/coffeeWeightValue"
         android:hint="@string/coffee_weight_dialog"
         android:textSize="15sp"
         android:textAlignment="center"
@@ -39,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/densitySeekBar"
-        android:max="10"
-        android:progress="5"
+        android:max="2"
+        android:progress="1"
         android:clickable="false"
         android:layout_alignRight="@+id/titleText"
         android:layout_alignLeft="@+id/titleText"
@@ -53,11 +53,13 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/coffee_density"
         android:id="@+id/selectDensityText"
-        android:layout_alignLeft="@+id/titleText"
-        android:layout_alignRight="@+id/titleText"
         android:gravity="center"
-        android:layout_below="@+id/editText"
-        android:layout_marginTop="50dp" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/titleText"
+        android:layout_alignStart="@+id/coffeeWeightValue"
+        android:layout_alignRight="@+id/titleText"
+        android:layout_below="@+id/coffeeWeightValue"
+        android:layout_marginTop="15dp" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -77,10 +79,10 @@
         android:id="@+id/waterVolumeText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentStart="false"
         android:gravity="center"
-        android:layout_below="@+id/titleText" />
+        android:layout_below="@+id/brewSpinner" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -126,5 +128,14 @@
         android:gravity="center"
         android:layout_alignLeft="@+id/titleText"
         android:layout_alignRight="@+id/titleText" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brewSpinner"
+        android:layout_below="@+id/titleText"
+        android:layout_alignLeft="@+id/titleText"
+        android:layout_alignRight="@+id/titleText"
+        android:gravity="right" />
 
 </RelativeLayout>
