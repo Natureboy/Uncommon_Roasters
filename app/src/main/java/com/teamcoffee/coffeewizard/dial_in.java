@@ -12,13 +12,14 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+
 public class dial_in extends ActionBarActivity {
 
     private SeekBar water;
     private SeekBar density;
     private TextView waterVolume, coffeeWeight, coffeeDensity;
     private Spinner spinner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +113,7 @@ public class dial_in extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void brewButton(View view){
+    public void brewButton(View view) throws SQLException {
         int waterLevel, densityLevel, weightLevel;
         Recipe result;
         String brewer;
@@ -125,6 +126,7 @@ public class dial_in extends ActionBarActivity {
         result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
         Intent i = new Intent(this, brewingActivity.class);
         i.putExtra("Recipe", result);
+
 
         startActivity(i);
     }
