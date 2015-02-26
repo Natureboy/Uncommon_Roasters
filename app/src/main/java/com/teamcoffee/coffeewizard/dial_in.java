@@ -127,7 +127,7 @@ public class dial_in extends ActionBarActivity {
         brewer = spinner.getSelectedItem().toString();
 
         result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
-        Intent i = new Intent(this, brewingActivity.class);
+        Intent i = new Intent(this, CountdownActivity.class);
         i.putExtra("Recipe", result);
         startActivity(i);
     }

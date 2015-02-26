@@ -2,6 +2,7 @@ package com.teamcoffee.coffeewizard;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -26,11 +27,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
-    int s = 88; // Timer duration in seconds; this is just a placeholder value
-    private final long startTime = s * 1000;
-    private final long overflowStart = 5 * 1000; // Default value of 5 seconds for overflow timer
+    int s; // Timer duration in seconds; this is just a placeholder value
+    private long startTime;
+    private long overflowStart; // Default value of 5 seconds for overflow timer
     //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
-    private final long interval = 1000;
+    private final long interval = 1000; //We increment by 1000 milliseconds each tick
 
 
 
@@ -42,9 +43,26 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         startButton.setOnClickListener(this);
         timerText = (TextView) this.findViewById(R.id.timer);
         instrText = (TextView) this.findViewById(R.id.instructions);
+
+        //Gets the brewTime from the intent, or if there is no brewtime in the intent
+        //(running just the CountdownActivity) goes to a default time of 15 seconds.
+        Intent i = getIntent();
+        if (i.getSerializableExtra("Recipe") == null){
+            s = 15;
+        }
+        else {
+            Recipe recipe = (Recipe) i.getSerializableExtra("Recipe");
+            s = recipe.brewTime;
+        }
+
+
+        startTime = s * 1000; //Converts seconds to milliseconds, which CountdownTimers use
+        overflowStart = 5 * 1000;
         cdTimer = new CoffeeCountDown(startTime, interval);
         overflowTimer = new CoffeeOverflow(overflowStart, interval);
         timerText.setText(timerText.getText() + millisToString(startTime));
+
+
     }
 
     // Method for handling behavior when button is tapped
