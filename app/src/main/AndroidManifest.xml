@@ -32,6 +32,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamcoffee.coffeewizard.dial_in" />
         </activity>
+        <activity
+            android:name=".CountdownActivity"
+            android:label="CountdownActivity" >
+            <!-- TODO Link with rest of app; may need to provide a parent activity here later -->
+            </activity>
     </application>
 
 </manifest>
