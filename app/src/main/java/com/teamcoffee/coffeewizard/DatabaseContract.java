@@ -1,44 +1,62 @@
 package com.teamcoffee.coffeewizard;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+
 import android.provider.BaseColumns;
 
 /**
- * Created by Brendan on 2/25/2015.
+ * Created by Brendan on 2/26/2015.
+ * Contains the information to build a CREATE query.
+ * TODO: Add search queries? Helper methods to run insert/search queries?
+ *
  */
-public final class DatabaseContract {
-    public DatabaseContract(){}
+public class DatabaseContract {
 
-    public static final String DATABASE_NAME = "coffeeWizard";
+    //Only change this when the schema is being changed, this will delete any user added data
     public static final int DATABASE_VERSION = 1;
 
-    public static abstract class BrewerTable implements BaseColumns{
-        public static final String TABLE_NAME = "tblBrewers";
-        public static final String BREWER_NAME = "brewer_name";
-        public static final String BREWER_QUANTITY = "brewer_quantity";
-        public static final String BREWER_TIME = "brewer_time";
+    public static final String DATABASE_NAME = "coffeeWizard.db";
+    private static final String TYPE_TEXT = " TEXT";
+    private static final String TYPE_INTEGER = " INTEGER";
+    private static final String COMMA = ",";
+
+    //This is done to prevent someone from instantiating the contract class.
+    private DatabaseContract(){}
+
+    public static abstract class TableOne implements BaseColumns{
+        public static final String TABLE_NAME  = "tblRecipes";
+        public static final String COLUMN1_NAME = "machine";
+        public static final String COLUMN2_NAME = "density";
+        public static final String COLUMN3_NAME = "quantity";
+
+        public static final String CREATE_QUERY = "CREATE TABLE " +
+                TABLE_NAME + " (" +
+                _ID + " INTEGER PRIMARY KEY," +
+                COLUMN1_NAME + TYPE_TEXT + COMMA +
+                COLUMN2_NAME + TYPE_TEXT + COMMA +
+                COLUMN3_NAME + TYPE_TEXT + " )";
+
+        public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
+    /*
+    This is how you connect to and use the database.
+    Going to work on helper methods to make this simplier.
 
-    public static String CREATE_BREWERS = "CREATE TABLE " + BrewerTable.TABLE_NAME + "(" + BrewerTable._ID
-            + " INTEGER PRIMARY KEY, " + BrewerTable.BREWER_NAME + " TEXT NOT NULL, " + BrewerTable.BREWER_QUANTITY + " INTEGER, " + BrewerTable.BREWER_TIME + " INTEGER );";
+    //Connects to the database
+    DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
+    SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-    public static class DatabaseHelper extends SQLiteOpenHelper{
+    //Sets the values that we want to use
+    ContentValues values = new ContentValues();
+    values.put(DatabaseContract.TableOne.COLUMN1_NAME, "v90");
+    values.put(DatabaseContract.TableOne.COLUMN2_NAME, "123");
+    values.put(DatabaseContract.TableOne.COLUMN3_NAME, "321");
 
-        public DatabaseHelper(Context context){
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
+    //Adds the values to the database
+    long newRowId;
+    newRowId = db.insert(DatabaseContract.Table1.TABLE_NAME, null, values);
+    */
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            db.execSQL(CREATE_BREWERS);
-        }
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        }
-    }
 
 }

@@ -1,10 +1,7 @@
 package com.teamcoffee.coffeewizard;
 
 
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,11 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.teamcoffee.coffeewizard.DatabaseContract.DatabaseHelper;
+
 
 import java.sql.SQLException;
 
-public class dial_in extends ActionBarActivity {
+public class DialActivity extends ActionBarActivity {
 
     private SeekBar water;
     private SeekBar density;
@@ -91,7 +88,7 @@ public class dial_in extends ActionBarActivity {
 
             }
         });
-        Intent intent = getIntent();
+
     }
 
     @Override

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".dial_in"
+            android:name=".DialActivity"
             android:label="@string/title_activity_dial_in"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -27,10 +27,10 @@
         <activity
             android:name=".brewingActivity"
             android:label="@string/title_activity_brewing"
-            android:parentActivityName=".dial_in" >
+            android:parentActivityName=".DialActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.teamcoffee.coffeewizard.dial_in" />
+                android:value="com.teamcoffee.coffeewizard.DialActivity" />
         </activity>
         <activity
             android:name=".CountdownActivity"

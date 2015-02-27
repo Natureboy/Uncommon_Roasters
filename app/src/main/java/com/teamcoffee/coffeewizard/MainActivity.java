@@ -21,7 +21,6 @@ public class MainActivity extends ActionBarActivity {
         View con = this.findViewById(android.R.id.content);
         String size= getSizeInfo(con);
         String den= getDenInfo();
-
     }
 
     @Override
@@ -54,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void openDial_in(View view){
-        Intent i = new Intent(this, dial_in.class);
+        Intent i = new Intent(this, DialActivity.class);
         startActivity(i);
     }
 
