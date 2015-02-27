@@ -34,6 +34,7 @@ public class DialActivity extends ActionBarActivity {
         coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
         waterVolume.setText(Integer.toString(water.getProgress()));
         coffeeDensity.setText("Medium Density");
+        waterVolume.setText("200");
 
         spinner = (Spinner) findViewById(R.id.brewSpinner);
 
@@ -47,6 +48,15 @@ public class DialActivity extends ActionBarActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 waterVolume.setText(Integer.toString(progressChanged));
+                if(progressChanged == 0){
+                    waterVolume.setText("200");
+                }
+                else if(progressChanged == 1){
+                    waterVolume.setText("300");
+                }
+                else if(progressChanged == 2){
+                    waterVolume.setText("400");
+                }
 
             }
 
@@ -118,7 +128,7 @@ public class DialActivity extends ActionBarActivity {
         Recipe result;
         String brewer;
 
-        waterLevel = water.getProgress();
+        waterLevel = Integer.parseInt(waterVolume.getText().toString());
         densityLevel = density.getProgress();
         weightLevel = Integer.parseInt(coffeeWeight.getText().toString());
         brewer = spinner.getSelectedItem().toString();

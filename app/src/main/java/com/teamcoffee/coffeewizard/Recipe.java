@@ -31,7 +31,7 @@ public class Recipe implements Serializable{
     //Returns the brew time in seconds
     private int calculateBrewTime(int density, int weight, int waterQuantity){
         if(brewer.equals("V60")){
-            if(weight == 200){
+            if(waterQuantity == 200){
                 if (density == 0){
                     return 110;
                 }
@@ -42,7 +42,7 @@ public class Recipe implements Serializable{
                     return 140;
                 }
             }
-            else if(weight == 300){
+            else if(waterQuantity == 300){
                 if(density == 0){
                     return 155;
                 }
@@ -53,7 +53,7 @@ public class Recipe implements Serializable{
                     return 190;
                 }
             }
-            else if(weight == 400){
+            else if(waterQuantity == 400){
                 if(density == 0){
                     return 180;
                 }
