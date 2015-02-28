@@ -14,9 +14,16 @@ package com.teamcoffee.coffeewizard;
 public class DatabaseBuilder {
 
     public static Recipe[] recipes = {
-        new Recipe("v60", 200, 12, "high", 140),
-        new Recipe("v60", 200, 12, "medium", 120),
-        new Recipe("v60", 200, 12, "low", 120)
+        new Recipe("V60", 200, 12, "high", 140),
+        new Recipe("V60", 200, 12, "medium", 120),
+        new Recipe("V60", 200, 12, "low", 120),
+        new Recipe("V60", 300, 19, "high", 190),
+        new Recipe("V60", 300, 19, "medium", 165),
+        new Recipe("V60", 300, 19, "low", 155),
+        new Recipe("V60", 400, 25, "high", 225),
+        new Recipe("V60", 400, 25, "medium", 190),
+        new Recipe("V60", 400, 25, "low", 180)
+
     };
 
 

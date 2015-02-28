@@ -20,6 +20,8 @@ public class DatabaseContract {
     private static final String TYPE_TEXT = " TEXT";
     private static final String TYPE_INTEGER = " INTEGER";
     private static final String COMMA = ", ";
+    private static final String EQUALS = "=";
+    private static final String AND = " AND ";
 
     //This is done to prevent someone from instantiating the contract class.
     private DatabaseContract(){}
@@ -51,6 +53,19 @@ public class DatabaseContract {
                 COLUMN5_NAME + TYPE_INTEGER + " )";
 
         public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        public static String createSelect(String machine, String coffeeVolume, String coffeeWeight, String coffeeDensity){
+
+            String SELECT_QUERY = "SELECT " +
+                    COLUMN5_NAME + " FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + machine + AND +
+                    COLUMN2_NAME + EQUALS + coffeeVolume + AND +
+                    COLUMN3_NAME + EQUALS + coffeeWeight + AND +
+                    COLUMN4_NAME + EQUALS + coffeeDensity;
+            return SELECT_QUERY;
+
+        }
+
         public static String[] INSERT_QUERIES = new String[n];
 
         public static void makeInserts(){

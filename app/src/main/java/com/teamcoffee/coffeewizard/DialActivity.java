@@ -2,12 +2,14 @@ package com.teamcoffee.coffeewizard;
 
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -44,32 +46,41 @@ public class DialActivity extends ActionBarActivity {
 
         water.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChanged = 0;
-
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChanged = progress;
                 waterVolume.setText(Integer.toString(progressChanged));
-                if(progressChanged == 0){
-                    waterVolume.setText("200");
+                if(spinner.getSelectedItem().toString().equals("V60")){
+                    if(progressChanged == 0){
+                        waterVolume.setText("200");
+                        coffeeWeight.setText("12");
+                    }
+                    else if(progressChanged == 1){
+                        waterVolume.setText("300");
+                        coffeeWeight.setText("19");
+                    }
+                    else if(progressChanged == 2){
+                        waterVolume.setText("400");
+                        coffeeWeight.setText("25");
+                    }
+
                 }
-                else if(progressChanged == 1){
-                    waterVolume.setText("300");
-                }
-                else if(progressChanged == 2){
-                    waterVolume.setText("400");
+                else {
+                    if (progressChanged == 0) {
+                        waterVolume.setText("200");
+                    } else if (progressChanged == 1) {
+                        waterVolume.setText("300");
+                    } else if (progressChanged == 2) {
+                        waterVolume.setText("400");
+                    }
                 }
 
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
-
             }
         });
 
@@ -100,6 +111,26 @@ public class DialActivity extends ActionBarActivity {
             }
         });
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(spinner.getSelectedItem().toString().equals("V60")){
+                    coffeeWeight.setEnabled(false);
+                }
+                else{
+                    coffeeWeight.setEnabled(true);
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     @Override
@@ -125,19 +156,51 @@ public class DialActivity extends ActionBarActivity {
     }
 
     public void brewButton(View view) throws SQLException {
-        int waterLevel, densityLevel, weightLevel;
+        String waterLevel;
+        String weightLevel;
         Recipe result;
-        String brewer;
+        int time;
+        String brewer, densityLevel, select_query;
 
-        waterLevel = Integer.parseInt(waterVolume.getText().toString());
-        densityLevel = density.getProgress();
-        weightLevel = Integer.parseInt(coffeeWeight.getText().toString());
+
+        waterLevel = (waterVolume.getText().toString());
+        densityLevel = coffeeDensity.getText().toString();
+        weightLevel = (coffeeWeight.getText().toString());
         brewer = spinner.getSelectedItem().toString();
 
-        //result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
+        if(densityLevel.equals("Low Density")){
+            densityLevel = "low";
+        }
+        else if(densityLevel.equals("Medium Density")){
+            densityLevel = "medium";
+        }
+        else if(densityLevel.equals("High Density")){
+            densityLevel = "high";
+        }
+
+
+        select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, weightLevel, densityLevel);
+
+        DatabaseHelper dbHelper = new DatabaseHelper(DialActivity.this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor c = db.rawQuery(select_query, null);
+        if(c.moveToFirst()){
+            time = c.getInt(c.getColumnIndex("brewTime"));
+        }
+        else{
+            time = -1;
+        }
+
+
+        coffeeWeight.setText(Integer.toString(time));
+
+        c.close();
+        db.close();
+
         Intent i = new Intent(this, CountdownActivity.class);
-        //i.putExtra("Recipe", result);
-        startActivity(i);
+
+        //startActivity(i);
     }
 
 
