@@ -23,22 +23,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(DatabaseContract.TableOne.CREATE_QUERY);
         db.execSQL(DatabaseContract.TableTwo.CREATE_QUERY);
 
+        DatabaseContract.TableOne.makeInserts();
 
-        ContentValues values = new ContentValues();
-        values.put(DatabaseContract.TableOne.COLUMN1_NAME, "v90");
-        values.put(DatabaseContract.TableOne.COLUMN2_NAME, 200);
-        values.put(DatabaseContract.TableOne.COLUMN3_NAME, 15);
-        values.put(DatabaseContract.TableOne.COLUMN4_NAME, "medium");
-        values.put(DatabaseContract.TableOne.COLUMN5_NAME, 200);
+        int len = DatabaseContract.TableOne.INSERT_QUERIES.length;
 
-        long newRowId;
-        newRowId = db.insert(DatabaseContract.TableOne.TABLE_NAME, null, values);
+        for (int i = 0; i < len; i++){
+            db.execSQL(DatabaseContract.TableOne.INSERT_QUERIES[i]);
+        }
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DatabaseContract.TableOne.DELETE_QUERY);
-        db.execSQL(DatabaseContract.TableOne.DELETE_QUERY);
+        db.execSQL(DatabaseContract.TableTwo.DELETE_QUERY);
         onCreate(db);
 
     }

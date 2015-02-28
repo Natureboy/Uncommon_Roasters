@@ -29,8 +29,8 @@ public class brewingActivity extends ActionBarActivity {
         Intent i = getIntent();
         Recipe recipe = (Recipe)i.getSerializableExtra("Recipe");
 
-        density = recipe.density;
-        waterLevel = recipe.waterQuantity;
+        //density = recipe.density;
+        //waterLevel = recipe.waterQuantity;
         weight = recipe.weight;
         brewer = recipe.brewer;
         time = recipe.brewTime;

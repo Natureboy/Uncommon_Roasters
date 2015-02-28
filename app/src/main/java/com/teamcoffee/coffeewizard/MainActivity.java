@@ -3,6 +3,7 @@ package com.teamcoffee.coffeewizard;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,6 +22,11 @@ public class MainActivity extends ActionBarActivity {
         View con = this.findViewById(android.R.id.content);
         String size= getSizeInfo(con);
         String den= getDenInfo();
+
+        //Used to create a database in order to inspect it outside of the app.
+        DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
     }
 
     @Override

@@ -14,15 +14,12 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 9;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
     private static final String TYPE_INTEGER = " INTEGER";
-    private static final String COMMA = ",";
-
-
-
+    private static final String COMMA = ", ";
 
     //This is done to prevent someone from instantiating the contract class.
     private DatabaseContract(){}
@@ -37,6 +34,12 @@ public class DatabaseContract {
         public static Recipe[] recipes = DatabaseBuilder.recipes;
         static int n = recipes.length;
 
+        public static final String COLUMN_LIST = " (" +
+                COLUMN1_NAME + COMMA +
+                COLUMN2_NAME + COMMA +
+                COLUMN3_NAME + COMMA +
+                COLUMN4_NAME + COMMA +
+                COLUMN5_NAME + ")";
 
         public static final String CREATE_QUERY = "CREATE TABLE " +
                 TABLE_NAME + " (" +
@@ -44,27 +47,31 @@ public class DatabaseContract {
                 COLUMN1_NAME + TYPE_TEXT + COMMA +
                 COLUMN2_NAME + TYPE_INTEGER + COMMA +
                 COLUMN3_NAME + TYPE_INTEGER + COMMA +
-                COLUMN4_NAME + TYPE_INTEGER + COMMA +
+                COLUMN4_NAME + TYPE_TEXT + COMMA +
                 COLUMN5_NAME + TYPE_INTEGER + " )";
 
         public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
         public static String[] INSERT_QUERIES = new String[n];
 
-        private void makeInserts(){
+        public static void makeInserts(){
             for(int i =0; i < n; i++){
-                String machine = recipes[n].brewer;
-                int volume = recipes[n].volume;
-                int weight = recipes[n].weight;
-                String density = recipes[n].density;
-                int time = recipes[n].brewTime;
+                String machine = recipes[i].brewer;
+                int volume = recipes[i].volume;
+                int weight = recipes[i].weight;
+                String density = recipes[i].density;
+                int time = recipes[i].brewTime;
 
-
+                INSERT_QUERIES[i] = "INSERT INTO " +
+                        TABLE_NAME + COLUMN_LIST+
+                        " VALUES ('" +
+                        machine + "'" + COMMA +
+                        volume + COMMA +
+                        weight + COMMA + "'" +
+                        density + "'" + COMMA +
+                        time + ")";
 
             }
         }
-
-
-
     }
 
     public static abstract class TableTwo implements BaseColumns{
