@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recipe001">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">200</item>
+        <item name = "coffeeWeight">12</item>
+        <item name = "coffeeDensity">high</item>
+        <item name = "coffeeTime">140</item>
+    </string-array>
+    <string-array name="recipe002">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">200</item>
+        <item name = "coffeeWeight">12</item>
+        <item name = "coffeeDensity">medium</item>
+        <item name = "coffeeTime">120</item>
+    </string-array>
+    <string-array name="recipe003">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">200</item>
+        <item name = "coffeeWeight">12</item>
+        <item name = "coffeeDensity">low</item>
+        <item name = "coffeeTime">110</item>
+    </string-array>
+    <string-array name="recipe004">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">300</item>
+        <item name = "coffeeWeight">19</item>
+        <item name = "coffeeDensity">high</item>
+        <item name = "coffeeTime">190</item>
+    </string-array>
+    <string-array name="recipe005">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">300</item>
+        <item name = "coffeeWeight">19</item>
+        <item name = "coffeeDensity">medium</item>
+        <item name = "coffeeTime">165</item>
+    </string-array>
+    <string-array name="recipe006">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">300</item>
+        <item name = "coffeeWeight">19</item>
+        <item name = "coffeeDensity">low</item>
+        <item name = "coffeeTime">155</item>
+    </string-array>
+    <string-array name="recipe007">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">400</item>
+        <item name = "coffeeWeight">25</item>
+        <item name = "coffeeDensity">high</item>
+        <item name = "coffeeTime">225</item>
+    </string-array>
+    <string-array name="recipe008">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">400</item>
+        <item name = "coffeeWeight">25</item>
+        <item name = "coffeeDensity">medium</item>
+        <item name = "coffeeTime">190</item>
+    </string-array>
+    <string-array name="recipe009">
+        <item name = "machine">v60</item>
+        <item name = "coffeeVolume">400</item>
+        <item name = "coffeeWeight">25</item>
+        <item name = "coffeeDensity">low</item>
+        <item name = "coffeeTime">180</item>
+    </string-array>
+
+    <array name = "v60">
+        <item>@array/recipe001</item>
+        <item>@array/recipe002</item>
+        <item>@array/recipe003</item>
+        <item>@array/recipe004</item>
+        <item>@array/recipe005</item>
+        <item>@array/recipe006</item>
+        <item>@array/recipe007</item>
+        <item>@array/recipe008</item>
+        <item>@array/recipe009</item>
+    </array>
+
+    <array name = "allRecipies">
+        <item>@array/v60</item>
+    </array>
+
+
+</resources>

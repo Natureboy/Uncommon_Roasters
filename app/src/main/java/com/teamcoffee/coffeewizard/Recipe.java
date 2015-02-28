@@ -11,20 +11,20 @@ import java.io.Serializable;
  */
 public class Recipe implements Serializable{
 
-    public int density;
+    public String density;
     public int weight;
-    public int waterQuantity;
+    public int volume;
     public int brewTime;
     public String brewer;
     public String name;
 
 
-    public Recipe(int density, int weight, int waterQuantity, String brewer) {
+    public Recipe(String brewer, int volume, int weight, String density, int time) {
         this.density = density;
         this.weight = weight;
-        this.waterQuantity = waterQuantity;
+        this.volume = volume;
         this.brewer = brewer;
-        this.brewTime = calculateBrewTime(density, weight, waterQuantity);
+        this.brewTime = time;
         this.name = "";
     }
 

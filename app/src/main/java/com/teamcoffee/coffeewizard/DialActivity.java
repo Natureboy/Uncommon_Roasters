@@ -2,6 +2,7 @@ package com.teamcoffee.coffeewizard;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -133,9 +134,9 @@ public class DialActivity extends ActionBarActivity {
         weightLevel = Integer.parseInt(coffeeWeight.getText().toString());
         brewer = spinner.getSelectedItem().toString();
 
-        result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
+        //result = new Recipe(densityLevel,weightLevel,waterLevel, brewer);
         Intent i = new Intent(this, CountdownActivity.class);
-        i.putExtra("Recipe", result);
+        //i.putExtra("Recipe", result);
         startActivity(i);
     }
 
