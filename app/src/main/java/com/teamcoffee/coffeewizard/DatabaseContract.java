@@ -14,13 +14,13 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 9;
+    public static final int DATABASE_VERSION = 10;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
     private static final String TYPE_INTEGER = " INTEGER";
     private static final String COMMA = ", ";
-    private static final String EQUALS = "=";
+    private static final String EQUALS = " = ";
     private static final String AND = " AND ";
 
     //This is done to prevent someone from instantiating the contract class.
@@ -58,10 +58,10 @@ public class DatabaseContract {
             String SELECT_QUERY = "SELECT " +
                     COLUMN5_NAME + " FROM " +
                     TABLE_NAME + " WHERE " +
-                    COLUMN1_NAME + EQUALS + machine + AND +
-                    COLUMN2_NAME + EQUALS + coffeeVolume + AND +
-                    COLUMN3_NAME + EQUALS + coffeeWeight + AND +
-                    COLUMN4_NAME + EQUALS + coffeeDensity;
+                    COLUMN1_NAME + EQUALS + "'" + machine  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + coffeeVolume + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + coffeeWeight + "'"+ AND +
+                    COLUMN4_NAME + EQUALS + "'" + coffeeDensity+ "'";
             return SELECT_QUERY;
 
         }

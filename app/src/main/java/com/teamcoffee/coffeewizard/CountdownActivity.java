@@ -47,12 +47,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         //Gets the brewTime from the intent, or if there is no brewtime in the intent
         //(running just the CountdownActivity) goes to a default time of 15 seconds.
         Intent i = getIntent();
-        if (i.getSerializableExtra("Recipe") == null){
+        if (i.getStringExtra("time") == null){
             s = 15;
         }
         else {
-            Recipe recipe = (Recipe) i.getSerializableExtra("Recipe");
-            s = recipe.brewTime;
+            s = Integer.parseInt(i.getStringExtra("time"));
         }
 
 

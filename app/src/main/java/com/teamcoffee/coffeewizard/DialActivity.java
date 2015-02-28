@@ -200,7 +200,9 @@ public class DialActivity extends ActionBarActivity {
 
         Intent i = new Intent(this, CountdownActivity.class);
 
-        //startActivity(i);
+        i.putExtra("time", Integer.toString(time));
+
+        startActivity(i);
     }
 
 
