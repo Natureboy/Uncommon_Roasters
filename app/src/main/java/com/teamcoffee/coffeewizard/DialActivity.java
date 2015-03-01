@@ -63,7 +63,12 @@ public class DialActivity extends ActionBarActivity {
                         waterVolume.setText("400");
                         coffeeWeight.setText("25");
                     }
-
+                }
+                else if(spinner.getSelectedItem().toString().equals("Press Pot")){
+                    int waterAmount = water.getProgress();
+                    double coffeeAmount = waterAmount * 0.075;
+                    waterVolume.setText(Integer.toString(waterAmount));
+                    coffeeWeight.setText(String.format("%.2f", coffeeAmount));
                 }
                 else {
                     if (progressChanged == 0) {
@@ -117,6 +122,17 @@ public class DialActivity extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(spinner.getSelectedItem().toString().equals("V60")){
                     coffeeWeight.setEnabled(false);
+                    water.setMax(2);
+                    water.setProgress(0);
+                    waterVolume.setText("200");
+                    coffeeWeight.setText("12");
+                }
+                else if(spinner.getSelectedItem().toString().equals("Press Pot")){
+                    coffeeWeight.setEnabled(false);
+                    water.setMax(400);
+                    water.setProgress(200);
+                    waterVolume.setText(Integer.toString(water.getProgress()));
+                    coffeeWeight.setText(String.format("%.2f", (water.getProgress()*.075)));
                 }
                 else{
                     coffeeWeight.setEnabled(true);

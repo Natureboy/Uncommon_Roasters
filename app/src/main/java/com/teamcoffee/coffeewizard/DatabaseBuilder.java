@@ -13,6 +13,8 @@ package com.teamcoffee.coffeewizard;
  */
 public class DatabaseBuilder {
 
+    //Brewer, Volume, Coffee Weight, density, time
+
     public static Recipe[] recipes = {
         new Recipe("V60", 200, 12, "high", 140),
         new Recipe("V60", 200, 12, "medium", 120),
@@ -23,7 +25,6 @@ public class DatabaseBuilder {
         new Recipe("V60", 400, 25, "high", 225),
         new Recipe("V60", 400, 25, "medium", 190),
         new Recipe("V60", 400, 25, "low", 180)
-
     };
 
 
