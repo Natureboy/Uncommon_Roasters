@@ -24,5 +24,8 @@
         <item>Press Pot</item>
         <item>Test2</item>
     </string-array>
+    <string name="title_activity_brews">BrewsActivity</string>
+    <string name="recent_brews">Recent Brews</string>
+    <string name="favorite_brews">Favorite Brews</string>
 
 </resources>

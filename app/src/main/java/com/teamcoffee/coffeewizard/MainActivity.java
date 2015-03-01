@@ -24,8 +24,10 @@ public class MainActivity extends ActionBarActivity {
         String den= getDenInfo();
 
         //Used to create a database in order to inspect it outside of the app.
+        //TODO: Remove when the app is ready to deploy
         DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.close();
 
     }
 
@@ -60,6 +62,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void openDial_in(View view){
         Intent i = new Intent(this, DialActivity.class);
+        startActivity(i);
+    }
+
+    public void openBrews(View view){
+        Intent i = new Intent(this, BrewsActivity.class);
         startActivity(i);
     }
 

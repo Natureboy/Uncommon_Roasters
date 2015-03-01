@@ -25,18 +25,19 @@
                 android:value="com.teamcoffee.coffeewizard.MainActivity" />
         </activity>
         <activity
-            android:name=".brewingActivity"
-            android:label="@string/title_activity_brewing"
-            android:parentActivityName=".DialActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.teamcoffee.coffeewizard.DialActivity" />
-        </activity>
-        <activity
             android:name=".CountdownActivity"
             android:label="CountdownActivity" >
+
             <!-- TODO Link with rest of app; may need to provide a parent activity here later -->
-            </activity>
+        </activity>
+        <activity
+            android:name=".BrewsActivity"
+            android:label="@string/title_activity_brews"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamcoffee.coffeewizard.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -15,7 +15,8 @@
             android:text="@string/brew_button"
             android:layout_alignTop="@+id/button2"
             android:layout_toRightOf="@+id/button2"
-            android:layout_toEndOf="@+id/button2" />
+            android:layout_toEndOf="@+id/button2"
+            android:onClick="openBrews"/>
 
         <Button
             android:id="@+id/button2"
