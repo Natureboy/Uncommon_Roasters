@@ -1,4 +1,75 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A2A2A"
+    android:gravity="center"
+    android:stretchColumns="2"
+    >
+    <TableRow
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/beans"
+            android:text="@string/brew_button"
+            android:textColor="#D2CCB2"
+            android:onClick="openBrews"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dial_in_button"
+            android:textColor="#D2CCB2"
+            android:drawableTop="@drawable/dial"
+            android:onClick="openDial_in"
+            style="?android:attr/borderlessButtonStyle"/>
+
+    </TableRow>
+    <TableRow
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/faq_button"
+            android:textColor="#D2CCB2"
+            android:drawableTop="@drawable/faq"
+            style="?android:attr/borderlessButtonStyle"
+
+            />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/website_button"
+            android:textColor="#D2CCB2"
+            android:drawableTop="@drawable/web"
+            style="?android:attr/borderlessButtonStyle"
+            android:onClick="openWeb"/>
+    </TableRow>
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="280dp"
+            android:layout_height="99dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/logo"
+            />
+</TableLayout>
+
+
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -53,3 +124,4 @@
 
 
 </RelativeLayout>
+-->
