@@ -3,6 +3,19 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <!-- ActionBar title text -->
+
+        <!-- ActionBar tabs text styles -->
+
     </style>
+    <style name="MyActionBarTitleText"
+        parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#D2CCB2</item>
+    </style>
+    <style name="MyActionBarTabText"
+        parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#D2CCB2</item>
+    </style>
+
 
 </resources>

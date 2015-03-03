@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1">
+    android:stretchColumns="1"
+    android:background="#2A2A2A">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,21 +15,33 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#D2CCB2"
             android:text="@string/recent_brews"
+            android:textColor="#2A2A2A"
+            android:outlineProvider="background"
             android:id="@+id/recentBrewButton"
-            android:gravity="center" />
+            android:gravity="center"
+            android:padding="4dp"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#D2CCB2"
             android:text="@string/favorite_brews"
+            android:textColor="#2A2A2A"
+            android:outlineProvider="background"
             android:id="@+id/favoriteBrewButton"
-            android:gravity="center" />
+            android:gravity="center"
+            android:padding="4dp"
+            />
     </LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#2A2A2A"
+        android:background="#D2CCB2"
         android:id="@+id/brewsList"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
