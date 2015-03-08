@@ -1,6 +1,8 @@
 package com.teamcoffee.coffeewizard;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Brendan on 2/22/2015.
@@ -19,6 +21,7 @@ public class Recipe implements Serializable{
     public String name;
 
 
+
     public Recipe(String brewer, int volume, int weight, String density, int time) {
         this.density = density;
         this.weight = weight;
@@ -27,6 +30,10 @@ public class Recipe implements Serializable{
         this.brewTime = time;
         this.name = "";
     }
+
+
+
+
 
     //Returns the brew time in seconds
     private int calculateBrewTime(int density, int weight, int waterQuantity){

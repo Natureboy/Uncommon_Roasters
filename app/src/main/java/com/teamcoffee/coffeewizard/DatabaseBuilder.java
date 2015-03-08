@@ -1,6 +1,8 @@
 package com.teamcoffee.coffeewizard;
 
 
+import android.util.Pair;
+
 /**
  * Created by Brendan on 2/27/2015.
  * This class is currently used to add recipes to the database.
@@ -26,6 +28,43 @@ public class DatabaseBuilder {
         new Recipe("V60", 400, 25, "medium", 190),
         new Recipe("V60", 400, 25, "low", 180)
     };
+
+    public static TimerEvents[] events = {
+            new TimerEvents("V60", 300, "high", "Bloom 30g", 0),
+            new TimerEvents("V60", 300, "high", "Pour to 150g", 30),
+            new TimerEvents("V60", 300, "high", "Pour to 230g", 80),
+            new TimerEvents("V60", 300, "high", "Pour to 300g", 120),
+            new TimerEvents("V60", 300, "high", "Draining", 135),
+            new TimerEvents("V60", 300, "medium", "Bloom 30g", 0),
+            new TimerEvents("V60", 300, "medium", "Pour to 150g", 30),
+            new TimerEvents("V60", 300, "medium", "Pour to 230g", 75),
+            new TimerEvents("V60", 300, "medium", "Pour to 300g", 115),
+            new TimerEvents("V60", 300, "medium", "Draining", 130),
+            new TimerEvents("V60", 300, "low", "Bloom 30g", 0),
+            new TimerEvents("V60", 300, "low", "Pour to 150g", 30),
+            new TimerEvents("V60", 300, "low", "Pour to 230g", 75),
+            new TimerEvents("V60", 300, "low", "Pour to 300g", 105),
+            new TimerEvents("V60", 300, "low", "Draining", 120),
+
+            new TimerEvents("V60", 200, "high", "Bloom 20g", 0),
+            new TimerEvents("V60", 200, "high", "Pour to 100g", 20),
+            new TimerEvents("V60", 200, "high", "Pour to 150g", 55),
+            new TimerEvents("V60", 200, "high", "Pour to 200g", 85),
+            new TimerEvents("V60", 200, "high", "Draining", 100),
+            new TimerEvents("V60", 200, "medium", "Bloom 20g", 0),
+            new TimerEvents("V60", 200, "medium", "Pour to 100g", 20),
+            new TimerEvents("V60", 200, "medium", "Pour to 150g", 50),
+            new TimerEvents("V60", 200, "medium", "Pour to 200g", 76),
+            new TimerEvents("V60", 200, "medium", "Draining", 86),
+            new TimerEvents("V60", 200, "low", "Bloom 20g", 0),
+            new TimerEvents("V60", 200, "low", "Pour to 100g", 20),
+            new TimerEvents("V60", 200, "low", "Pour to 150g", 50),
+            new TimerEvents("V60", 200, "low", "Pour to 200g", 70),
+            new TimerEvents("V60", 200, "low", "Draining", 84),
+
+    };
+
+
 
 
 

@@ -24,12 +24,17 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(DatabaseContract.TableTwo.CREATE_QUERY);
 
         DatabaseContract.TableOne.makeInserts();
+        DatabaseContract.TableTwo.makeInserts();
 
         int len = DatabaseContract.TableOne.INSERT_QUERIES.length;
-
         for (int i = 0; i < len; i++){
             db.execSQL(DatabaseContract.TableOne.INSERT_QUERIES[i]);
         }
+        len = DatabaseContract.TableTwo.INSERT_QUERIES.length;
+        for (int i = 0; i < len; i++){
+            db.execSQL(DatabaseContract.TableTwo.INSERT_QUERIES[i]);
+        }
+
 
     }
 

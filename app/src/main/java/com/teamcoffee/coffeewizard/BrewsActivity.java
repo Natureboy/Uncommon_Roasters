@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -16,22 +17,19 @@ import android.view.MenuItem;
 
 public class BrewsActivity extends ActionBarActivity {
 
+    private ListView brewsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brews);
+        brewsList = (ListView) findViewById(R.id.brewsList);
 
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String select_query = "SELECT * FROM tblRecipes";
-
         Cursor c = db.rawQuery(select_query, null);
-
-
-
-
-
     }
 
 

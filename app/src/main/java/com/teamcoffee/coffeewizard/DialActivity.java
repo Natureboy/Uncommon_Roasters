@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DialActivity extends ActionBarActivity {
 
@@ -126,9 +128,7 @@ public class DialActivity extends ActionBarActivity {
                 else if(spinner.getSelectedItem().toString().equals("Press Pot")){
                     setScreenElements(false, "15", 400, 200, "200");
                 }
-                else{
-                    coffeeWeight.setEnabled(true);
-                }
+
 
 
             }
@@ -176,7 +176,7 @@ public class DialActivity extends ActionBarActivity {
         String weightLevel;
         Recipe result;
         int time;
-        String brewer, densityLevel, select_query;
+        String brewer, densityLevel, time_select_query, event_select_query;
 
 
         waterLevel = (waterVolume.getText().toString());
@@ -184,23 +184,26 @@ public class DialActivity extends ActionBarActivity {
         weightLevel = (coffeeWeight.getText().toString());
         brewer = spinner.getSelectedItem().toString();
 
-        if(densityLevel.equals("Low Density")){
-            densityLevel = "low";
-        }
-        else if(densityLevel.equals("Medium Density")){
-            densityLevel = "medium";
-        }
-        else if(densityLevel.equals("High Density")){
-            densityLevel = "high";
+        switch (densityLevel) {
+            case "Low Density":
+                densityLevel = "low";
+                break;
+            case "Medium Density":
+                densityLevel = "medium";
+                break;
+            case "High Density":
+                densityLevel = "high";
+                break;
         }
 
 
-        select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, weightLevel, densityLevel);
+        time_select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, weightLevel, densityLevel);
+        event_select_query = DatabaseContract.TableTwo.createSelect(brewer, waterLevel, densityLevel);
 
         DatabaseHelper dbHelper = new DatabaseHelper(DialActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor c = db.rawQuery(select_query, null);
+        Cursor c = db.rawQuery(time_select_query, null);
         if(c.moveToFirst()){
             time = c.getInt(c.getColumnIndex("brewTime"));
         }
@@ -208,15 +211,28 @@ public class DialActivity extends ActionBarActivity {
             time = -1;
         }
 
+        c = db.rawQuery(event_select_query, null);
 
-        coffeeWeight.setText(Integer.toString(time));
+        int startTimeIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN5_NAME);
+        int eventIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN4_NAME);
+
+        HashMap<Integer, String> timerEvents = new HashMap<Integer, String>();
+
+        while(c.moveToNext()){
+
+            int startTime = c.getInt(startTimeIndex);
+            String event = c.getString(eventIndex);
+
+            timerEvents.put(startTime, event);
+
+        }
 
         c.close();
         db.close();
 
         Intent i = new Intent(this, CountdownActivity.class);
-
         i.putExtra("time", Integer.toString(time));
+        i.putExtra("events", timerEvents);
 
         startActivity(i);
     }

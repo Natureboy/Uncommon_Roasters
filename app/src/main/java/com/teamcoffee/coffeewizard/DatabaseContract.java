@@ -14,7 +14,7 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 10;
+    public static final int DATABASE_VERSION = 11;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
@@ -92,20 +92,66 @@ public class DatabaseContract {
     public static abstract class TableTwo implements BaseColumns{
         public static final String TABLE_NAME  = "tblTimerEvents";
         public static final String COLUMN1_NAME = "brewer";
-        public static final String COLUMN2_NAME = "event";
-        public static final String COLUMN3_NAME = "duration";
-        public static final String COLUMN4_NAME = "density";
-        public static final String COLUMN5_NAME = "size";
+        public static final String COLUMN2_NAME = "volume";
+        public static final String COLUMN3_NAME = "density";
+        public static final String COLUMN4_NAME = "event";
+        public static final String COLUMN5_NAME = "startTime";
+        public static TimerEvents[] events = DatabaseBuilder.events;
+        static int n = events.length;
 
         public static final String CREATE_QUERY = "CREATE TABLE " +
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN1_NAME + TYPE_TEXT + COMMA +
-                COLUMN2_NAME + TYPE_TEXT + COMMA +
+                COLUMN2_NAME + TYPE_INTEGER + COMMA +
                 COLUMN3_NAME + TYPE_TEXT + COMMA +
                 COLUMN4_NAME + TYPE_TEXT + COMMA +
-                COLUMN5_NAME + TYPE_TEXT + " )";
+                COLUMN5_NAME + TYPE_INTEGER + " )";
         public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+        public static final String COLUMN_LIST = " (" +
+                COLUMN1_NAME + COMMA +
+                COLUMN2_NAME + COMMA +
+                COLUMN3_NAME + COMMA +
+                COLUMN4_NAME + COMMA +
+                COLUMN5_NAME + ")";
+
+        public static String[] INSERT_QUERIES = new String[n];
+
+        public static void makeInserts(){
+            for(int i =0; i < n; i++){
+                String machine = events[i].brewer;
+                int volume = events[i].volume;
+                String density = events[i].density;
+                String event = events[i].event;
+                int time = events[i].startTime;
+
+                INSERT_QUERIES[i] = "INSERT INTO " +
+                        TABLE_NAME + COLUMN_LIST+
+                        " VALUES ('" +
+                        machine + "'" + COMMA +
+                        volume + COMMA + "'" +
+                        density + "'" + COMMA + "'" +
+                        event + "'" + COMMA +
+                        time + ")";
+
+            }
+        }
+
+        public static String createSelect(String machine, String coffeeVolume, String coffeeDensity){
+
+            String SELECT_QUERY = "SELECT " +
+                    "*" + " FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + "'" + machine  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + coffeeVolume + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + coffeeDensity+ "'";
+            return SELECT_QUERY;
+
+        }
+
+
+
     }
 
     /*
