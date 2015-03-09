@@ -24,10 +24,12 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     // overflowTimer: Timer handling the grace period before coffee is considered overbrewed.
     private CountDownTimer overflowTimer;
     private boolean hasStarted = false;
+    private boolean isBlinking = true;
+    private boolean blinkOn = false;
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
-    int s; // Timer duration in seconds; this is just a placeholder value
+    int s; // Timer duration in seconds
     private long startTime;
     private long overflowStart; // Default value of 5 seconds for overflow timer
     //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
@@ -93,6 +95,9 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             instrText.setText("");
             startButton.setText("Done");
             overflowTimer.start();
+            // Make sure the "Done!" message doesn't accidentally get dimmed by the blink
+            isBlinking = false;
+            timerText.setAlpha(1);
         }
 
         @Override
@@ -102,6 +107,15 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
                 timerText.setTextColor(0xFF00CC00);
                 instrText.setText("Brewing Nearly Finished");
                 instrText.setTextColor(0xFF00CC00);
+            }
+
+            if (isBlinking) {
+                if (blinkOn) {
+                    timerText.setAlpha(0.25f);
+                } else {
+                    timerText.setAlpha(1);
+                }
+                blinkOn = !blinkOn;
             }
         }
     }
