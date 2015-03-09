@@ -24,8 +24,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     // overflowTimer: Timer handling the grace period before coffee is considered overbrewed.
     private CountDownTimer overflowTimer;
     private boolean hasStarted = false;
-    private boolean isBlinking = true;
-    private boolean blinkOn = false;
+    private boolean isBlinking = false;
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
@@ -110,12 +109,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             }
 
             if (isBlinking) {
-                if (blinkOn) {
-                    timerText.setAlpha(0.25f);
-                } else {
-                    timerText.setAlpha(1);
-                }
-                blinkOn = !blinkOn;
+                timerText.setAlpha(1/(timerText.getAlpha()/0.25f));
             }
         }
     }
