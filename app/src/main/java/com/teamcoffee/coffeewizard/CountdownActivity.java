@@ -68,7 +68,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (!hasStarted) {
-            timerText.setTextColor(Color.BLACK);
+            timerText.setTextColor(0xFFD2CCB2);
             cdTimer.start();
             hasStarted = true;
             startButton.setText("Cancel");
@@ -89,7 +89,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         @Override
         public void onFinish() {
             timerText.setText("Done!");
-            timerText.setTextColor(Color.BLACK);
+            timerText.setTextColor(0xFFD2CCB2);
             instrText.setText("");
             startButton.setText("Done");
             overflowTimer.start();
