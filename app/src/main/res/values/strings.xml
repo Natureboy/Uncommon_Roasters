@@ -27,5 +27,7 @@
     <string name="title_activity_brews">BrewsActivity</string>
     <string name="recent_brews">Recent Brews</string>
     <string name="favorite_brews">Favorite Brews</string>
-
+    <string name="brewer">Brewer</string>
+    <string name="density">Density</string>
+    <string name="volume">Volume</string>
 </resources>

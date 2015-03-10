@@ -14,7 +14,7 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 11;
+    public static final int DATABASE_VERSION = 12;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
@@ -33,6 +33,7 @@ public class DatabaseContract {
         public static final String COLUMN3_NAME = "coffeeWeight";
         public static final String COLUMN4_NAME = "coffeeDensity";
         public static final String COLUMN5_NAME = "brewTime";
+        public static final String COLUMN6_NAME = "favorite";
         public static Recipe[] recipes = DatabaseBuilder.recipes;
         static int n = recipes.length;
 
@@ -41,7 +42,8 @@ public class DatabaseContract {
                 COLUMN2_NAME + COMMA +
                 COLUMN3_NAME + COMMA +
                 COLUMN4_NAME + COMMA +
-                COLUMN5_NAME + ")";
+                COLUMN5_NAME + COMMA +
+                COLUMN6_NAME + ")";
 
         public static final String CREATE_QUERY = "CREATE TABLE " +
                 TABLE_NAME + " (" +
@@ -50,7 +52,8 @@ public class DatabaseContract {
                 COLUMN2_NAME + TYPE_INTEGER + COMMA +
                 COLUMN3_NAME + TYPE_INTEGER + COMMA +
                 COLUMN4_NAME + TYPE_TEXT + COMMA +
-                COLUMN5_NAME + TYPE_INTEGER + " )";
+                COLUMN5_NAME + TYPE_INTEGER + COMMA +
+                COLUMN6_NAME + TYPE_INTEGER + " )";
 
         public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
         public static String createSelect(String machine, String coffeeVolume, String coffeeWeight, String coffeeDensity){
@@ -83,7 +86,7 @@ public class DatabaseContract {
                         volume + COMMA +
                         weight + COMMA + "'" +
                         density + "'" + COMMA +
-                        time + ")";
+                        time + COMMA + '0' + ")";
 
             }
         }

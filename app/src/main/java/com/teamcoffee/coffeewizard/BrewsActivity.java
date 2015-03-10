@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -30,17 +31,15 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String select_query = "SELECT * FROM tblRecipes";
+        String select_query = "SELECT * FROM tblRecipes WHERE favorite = '1'";
         favorites = db.rawQuery(select_query, null);
 
         select_query = "SELECT * FROM tblRecipes WHERE coffeeDensity = 'high'";
         recent = db.rawQuery(select_query, null);
 
-
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
 
         brewsList.setAdapter(recipesAdapter);
-
     }
 
 

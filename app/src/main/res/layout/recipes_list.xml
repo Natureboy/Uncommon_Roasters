@@ -7,13 +7,18 @@
         android:id="@+id/brewer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Study cursors"
+        android:text="brewer"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:id="@+id/density"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="3"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="density"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="volume"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 </LinearLayout>

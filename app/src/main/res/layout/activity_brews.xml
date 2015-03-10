@@ -47,6 +47,39 @@
         android:id="@+id/brewsList"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/brewer"
+        android:id="@+id/brewerText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:background="#D2CCB2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/density"
+        android:id="@+id/densityText"
+        android:layout_toEndOf="@+id/brewerText"
+        android:layout_toRightOf="@+id/brewerText"
+        android:layout_below="@+id/linearLayout"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#D2CCB2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/volume"
+        android:id="@+id/volumeText"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toRightOf="@+id/densityText"
+        android:layout_toEndOf="@+id/densityText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#D2CCB2" />
 
 </RelativeLayout>

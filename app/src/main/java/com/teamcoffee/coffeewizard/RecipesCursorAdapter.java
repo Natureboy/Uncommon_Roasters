@@ -28,12 +28,15 @@ public class RecipesCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         TextView textBrewer = (TextView) view.findViewById(R.id.brewer);
         TextView textDensity = (TextView) view.findViewById(R.id.density);
+        TextView textVolume = (TextView) view.findViewById(R.id.volume);
 
-        String brewer = cursor.getString(cursor.getColumnIndexOrThrow("machine"));
-        String density = cursor.getString(cursor.getColumnIndexOrThrow("coffeeDensity"));
+        String brewer = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN1_NAME));
+        String density = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN4_NAME));
+        String volume = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN2_NAME));
 
         textBrewer.setText(brewer);
         textDensity.setText(density);
+        textVolume.setText(volume);
 
     }
 }
