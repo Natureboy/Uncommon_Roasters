@@ -22,6 +22,7 @@
             android:id="@+id/recentBrewButton"
             android:gravity="center"
             android:padding="4dp"
+            android:onClick="recentButton"
             />
 
         <Button
@@ -34,6 +35,7 @@
             android:id="@+id/favoriteBrewButton"
             android:gravity="center"
             android:padding="4dp"
+            android:onClick="favoriteButton"
             />
     </LinearLayout>
 

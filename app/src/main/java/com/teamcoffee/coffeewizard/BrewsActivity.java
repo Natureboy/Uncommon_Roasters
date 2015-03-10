@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 /*
@@ -18,6 +19,7 @@ import android.widget.ListView;
 public class BrewsActivity extends ActionBarActivity {
 
     private ListView brewsList;
+    private Cursor favorites, recent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,16 @@ public class BrewsActivity extends ActionBarActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String select_query = "SELECT * FROM tblRecipes";
-        Cursor c = db.rawQuery(select_query, null);
+        favorites = db.rawQuery(select_query, null);
+
+        select_query = "SELECT * FROM tblRecipes WHERE coffeeDensity = 'high'";
+        recent = db.rawQuery(select_query, null);
+
+
+        RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
+
+        brewsList.setAdapter(recipesAdapter);
+
     }
 
 
@@ -54,4 +65,15 @@ public class BrewsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void favoriteButton(View view){
+        RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, favorites);
+        brewsList.setAdapter(recipesAdapter);
+    }
+
+    public void recentButton(View view){
+        RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
+        brewsList.setAdapter(recipesAdapter);
+    }
+
 }
