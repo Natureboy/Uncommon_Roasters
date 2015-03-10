@@ -26,9 +26,11 @@ public class DatabaseBuilder {
         new Recipe("V60", 300, 19, "low", 155),
         new Recipe("V60", 400, 25, "high", 225),
         new Recipe("V60", 400, 25, "medium", 190),
-        new Recipe("V60", 400, 25, "low", 180)
+        new Recipe("V60", 400, 25, "low", 180),
+        new Recipe("Press Pot", 0, 0, "n/a", 600),
     };
 
+    //Brewer, Volume, Density, Event, Start Time
     public static TimerEvents[] events = {
             new TimerEvents("V60", 300, "high", "Bloom 30g", 0),
             new TimerEvents("V60", 300, "high", "Pour to 150g", 30),
@@ -61,6 +63,12 @@ public class DatabaseBuilder {
             new TimerEvents("V60", 200, "low", "Pour to 150g", 50),
             new TimerEvents("V60", 200, "low", "Pour to 200g", 70),
             new TimerEvents("V60", 200, "low", "Draining", 84),
+
+            //new TimerEvents("Press Pot", 0, "n/a", "Pour to Xg of Water", 0),
+            new TimerEvents("Press Pot", 0, "n/a", "Break the Crust", 360),
+            new TimerEvents("Press Pot", 0, "n/a", "Clean the Top", 370),
+            new TimerEvents("Press Pot", 0, "n/a", "Replace Plunger", 410),
+            new TimerEvents("Press Pot", 0, "n/a", "Pour coffee (Remember, Do not Plunge)", 545),
 
     };
 

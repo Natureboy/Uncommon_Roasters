@@ -200,6 +200,11 @@ public class DialActivity extends ActionBarActivity {
         time_select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, weightLevel, densityLevel);
         event_select_query = DatabaseContract.TableTwo.createSelect(brewer, waterLevel, densityLevel);
 
+        if (brewer.equals("Press Pot")){
+            time_select_query = DatabaseContract.TableOne.createSelect(brewer, "0", "0", "n/a");
+            event_select_query = DatabaseContract.TableTwo.createSelect(brewer, "0", "n/a");
+        }
+
         DatabaseHelper dbHelper = new DatabaseHelper(DialActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -229,6 +234,10 @@ public class DialActivity extends ActionBarActivity {
 
         c.close();
         db.close();
+
+        if(brewer.equals("Press Pot")){
+            timerEvents.put(0, "Pour to " + waterLevel + "g of Water");
+        }
 
         Intent i = new Intent(this, CountdownActivity.class);
         i.putExtra("time", Integer.toString(time));
