@@ -69,6 +69,10 @@ public class MainActivity extends ActionBarActivity {
         Intent i = new Intent(this, BrewsActivity.class);
         startActivity(i);
     }
+    public void openFAQ(View view){
+        Intent i = new Intent(this, FAQActivity.class);
+        startActivity(i);
+    }
 
     //Determine screen size
     private static String getSizeInfo(View view) {

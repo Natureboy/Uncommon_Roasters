@@ -44,6 +44,7 @@
             android:text="@string/faq_button"
             android:textColor="#D2CCB2"
             android:drawableTop="@drawable/faq"
+            android:onClick="openFAQ"
             style="?android:attr/borderlessButtonStyle"
 
             />

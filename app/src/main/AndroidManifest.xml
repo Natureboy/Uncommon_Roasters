@@ -38,6 +38,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamcoffee.coffeewizard.MainActivity" />
         </activity>
+        <activity
+            android:name=".FAQActivity"
+            android:label="FAQ"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamcoffee.coffeewizard.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
