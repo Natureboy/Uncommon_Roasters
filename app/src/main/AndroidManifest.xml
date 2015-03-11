@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".CountdownActivity"
-            android:label="CountdownActivity" >
+            android:label="Timer" >
 
             <!-- TODO Link with rest of app; may need to provide a parent activity here later -->
         </activity>

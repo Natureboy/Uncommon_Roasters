@@ -38,7 +38,10 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private final long interval = 1000; //We increment by 1000 milliseconds each tick
     private HashMap<Integer,String> events;
 
-
+    //TODO Run in bsckground
+    //TODO Alerts, notifications
+    //TODO Prevent screen auto-lock
+    //TODO Include support for "Up" button on Action Bar to return to calling activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,8 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         } else {
             cdTimer.cancel();
             hasStarted = false;
-            startButton.setText("Start");
+            startButton.setText("Restart");
+            timerText.setText(millisToString(startTime));
         }
     }
 
