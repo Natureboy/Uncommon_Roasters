@@ -119,12 +119,13 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             }
 
             // Update the instructions field with text from the HashMap, if any
-            if((instrString=events.get((int)((startTime*1000)-millisUntilFinished)/1000)) == "\n") {
+            // Values are stored in HashMap as time elapsed, so time remaining must be converted
+            //  in order to obtain a usable key
+            if((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) == "\n") {
                 // If the element in the HashMap is a string consisting only of a newline character,
                 // interpret it as a signal to clear the instrText field
                 instrText.setText("");
-            } else if ((instrString=events.get((int)((startTime*1000)-millisUntilFinished)/1000))
-                    != null) {
+            } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
                 instrText.setText(instrString);
                 // Add an event to the hashmap to clear the instruction text some time later
                 // Currently set at 15 seconds; check if this is a good interval or even needed
