@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 /* CountdownActivity
 *   This activity handles the timer screen. Currently, the value of the timer is hard-coded
 *   for demonstration purposes, but eventually it will be passed to this activity by other
@@ -28,11 +30,13 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
+    public String instrString;
     int s; // Timer duration in seconds
     private long startTime;
     private long overflowStart; // Default value of 5 seconds for overflow timer
     //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
     private final long interval = 1000; //We increment by 1000 milliseconds each tick
+    private HashMap<Integer,String> events;
 
 
 
@@ -55,6 +59,8 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             s = Integer.parseInt(i.getStringExtra("time"));
         }
 
+        events = (HashMap<Integer,String>) i.getSerializableExtra("events");
+        //TODO Look into whether it would be better to ue a Timer to schedule these events instead
 
         startTime = s * 1000; //Converts seconds to milliseconds, which CountdownTimers use
         overflowStart = 5 * 1000;
@@ -110,6 +116,19 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
 
             if (isBlinking) {
                 timerText.setAlpha(1/(timerText.getAlpha()/0.25f));
+            }
+
+            // Update the instructions field with text from the HashMap, if any
+            if((instrString=events.get((int)((startTime*1000)-millisUntilFinished)/1000)) == "\n") {
+                // If the element in the HashMap is a string consisting only of a newline character,
+                // interpret it as a signal to clear the instrText field
+                instrText.setText("");
+            } else if ((instrString=events.get((int)((startTime*1000)-millisUntilFinished)/1000))
+                    != null) {
+                instrText.setText(instrString);
+                // Add an event to the hashmap to clear the instruction text some time later
+                // Currently set at 15 seconds; check if this is a good interval or even needed
+                events.put(((int) (((startTime*1000)-millisUntilFinished)/1000)+15), "\n");
             }
         }
     }
