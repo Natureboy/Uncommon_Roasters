@@ -27,8 +27,9 @@
         <activity
             android:name=".CountdownActivity"
             android:label="Timer" >
-
-            <!-- TODO Link with rest of app; may need to provide a parent activity here later -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CountdownActivity" />
         </activity>
         <activity
             android:name=".BrewsActivity"

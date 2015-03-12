@@ -40,9 +40,6 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
 
     //TODO Run in background
     //TODO Alerts, notifications
-    //TODO Include support for "Up" button on Action Bar to return to calling activity
-
-    //TODO CONFIRM that XML to prevent screen auto-lock works
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +68,15 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         cdTimer = new CoffeeCountDown(startTime, interval);
         overflowTimer = new CoffeeOverflow(overflowStart, interval);
         timerText.setText(timerText.getText() + millisToString(startTime));
+    }
 
+    // Dynamically set the parent activity so that the up (<-) button in the Action Bar will
+    //  lead to the appropriate previous screen
+    @Override
+    public Intent getSupportParentActivityIntent () {
+        Intent upButtonIntent = new Intent(this, getIntent().getClass());
 
+        return upButtonIntent;
     }
 
     // Method for handling behavior when button is tapped
