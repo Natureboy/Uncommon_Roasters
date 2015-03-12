@@ -33,15 +33,16 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     public String instrString;
     int s; // Timer duration in seconds
     private long startTime;
-    private long overflowStart; // Default value of 5 seconds for overflow timer
+    private long overflowStart; // set to 2.8% of main timer for overflow timer
     //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
     private final long interval = 1000; //We increment by 1000 milliseconds each tick
     private HashMap<Integer,String> events;
 
-    //TODO Run in bsckground
+    //TODO Run in background
     //TODO Alerts, notifications
-    //TODO Prevent screen auto-lock
     //TODO Include support for "Up" button on Action Bar to return to calling activity
+
+    //TODO CONFIRM that XML to prevent screen auto-lock works
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +64,10 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         }
 
         events = (HashMap<Integer,String>) i.getSerializableExtra("events");
-        //TODO Look into whether it would be better to ue a Timer to schedule these events instead
+        //TODO Look into whether it would be better to use a Timer to schedule these events instead
 
         startTime = s * 1000; //Converts seconds to milliseconds, which CountdownTimers use
-        overflowStart = 5 * 1000;
+        overflowStart = (long) Math.ceil((double)s * 0.028) * 1000;
         cdTimer = new CoffeeCountDown(startTime, interval);
         overflowTimer = new CoffeeOverflow(overflowStart, interval);
         timerText.setText(timerText.getText() + millisToString(startTime));
