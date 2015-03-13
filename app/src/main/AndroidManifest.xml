@@ -26,10 +26,11 @@
         </activity>
         <activity
             android:name=".CountdownActivity"
-            android:label="Timer" >
+            android:label="Timer"
+            android:parentActivityName=".CountdownActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CountdownActivity" />
+                android:value="com.teamcoffee.coffeewizard.CountdownActivity" />
         </activity>
         <activity
             android:name=".BrewsActivity"

@@ -26,6 +26,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     // overflowTimer: Timer handling the grace period before coffee is considered overbrewed.
     private CountDownTimer overflowTimer;
     private boolean hasStarted = false;
+    private boolean hasStartedOverflow = false;
     private boolean isBlinking = false;
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
@@ -68,6 +69,8 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         cdTimer = new CoffeeCountDown(startTime, interval);
         overflowTimer = new CoffeeOverflow(overflowStart, interval);
         timerText.setText(timerText.getText() + millisToString(startTime));
+        instrText.setText("Set up your machine with your selected coffee, then press Start. " +
+                "Additional instructions will appear here.");
     }
 
     // Dynamically set the parent activity so that the up (<-) button in the Action Bar will
@@ -94,6 +97,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             hasStarted = false;
             startButton.setText("Restart");
             timerText.setText(millisToString(startTime));
+            instrText.setText("");
+        }
+
+        if (hasStartedOverflow) {
+            overflowTimer.cancel();
         }
     }
 
@@ -111,6 +119,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             instrText.setText("");
             startButton.setText("Done");
             overflowTimer.start();
+            hasStartedOverflow = true;
             // Make sure the "Done!" message doesn't accidentally get dimmed by the blink
             isBlinking = false;
             timerText.setAlpha(1);
@@ -119,10 +128,23 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         @Override
         public void onTick(long millisUntilFinished) {
             timerText.setText(millisToString(millisUntilFinished));
+
             if (millisUntilFinished <= 5000) {
                 timerText.setTextColor(0xFF00CC00);
                 instrText.setText("Brewing Nearly Finished");
                 instrText.setTextColor(0xFF00CC00);
+                if (millisUntilFinished > 4000) {
+                    instrText.setBackgroundColor(0x44D2CCB2);
+                } else {
+                    instrText.setBackgroundColor(0xFF2A2A2A);
+                }
+            } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
+                instrText.setText(instrString);
+                instrText.setTextColor(0xFF2A2A2A);
+                instrText.setBackgroundColor(0xFFD2CCB2);
+            } else {
+                instrText.setTextColor(0xFFD2CCB2);
+                instrText.setBackgroundColor(0xFF2A2A2A);
             }
 
             if (isBlinking) {
@@ -133,9 +155,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             // Values are stored in HashMap as time elapsed, so time remaining must be converted
             //  in order to obtain a usable key
 
-            if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
-                instrText.setText(instrString);
-            }
+
 
             // Following code does not work for clearing instructions. Check if needed.
 //            if((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) == "\n") {
@@ -162,6 +182,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         public void onFinish() {
             instrText.setText("Coffee overbrewed!");
             instrText.setTextColor(0xFFCC0000);
+            hasStartedOverflow = false;
         }
 
         @Override
