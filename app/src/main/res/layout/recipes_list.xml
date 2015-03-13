@@ -3,22 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-    <TextView
-        android:id="@+id/brewer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="brewer"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/density"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="density"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/volume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="volume"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:focusableInTouchMode="false"
+        android:id="@+id/tableRow">
+
+        <TextView
+            android:id="@+id/brewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="brewer"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/density"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="density"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginLeft="50dp" />
+
+        <TextView
+            android:id="@+id/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="volume"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginLeft="60dp" />
+
+        <ToggleButton
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:text="New ToggleButton"
+            android:id="@+id/toggleButton"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:minHeight="0dp"
+            android:maxWidth="0dp"
+            android:layout_weight="0.21"
+            android:layout_marginLeft="50dp" />
+
+    </TableRow>
 </LinearLayout>

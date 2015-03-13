@@ -22,7 +22,7 @@
         <item>Select Coffee Machine</item>
         <item>V60</item>
         <item>Press Pot</item>
-        <item>Test2</item>
+        <item>More Brewers Coming Soon!</item>
     </string-array>
     <string name="title_activity_brews">BrewsActivity</string>
     <string name="recent_brews">Recent Brews</string>
