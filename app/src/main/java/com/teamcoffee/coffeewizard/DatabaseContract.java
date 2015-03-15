@@ -14,7 +14,7 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 13;
+    public static final int DATABASE_VERSION = 17;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
@@ -156,6 +156,35 @@ public class DatabaseContract {
 
 
     }
+
+    public static abstract class TableThree implements BaseColumns{
+        public static final String TABLE_NAME  = "tblFavorites";
+        public static final String COLUMN1_NAME = "machine";
+        public static final String COLUMN2_NAME = "coffeeVolume";
+        public static final String COLUMN3_NAME = "coffeeDensity";
+
+        public static final String CREATE_QUERY = "CREATE TABLE " +
+                TABLE_NAME + " (" +
+                _ID + " INTEGER PRIMARY KEY," +
+                COLUMN1_NAME + TYPE_TEXT + COMMA +
+                COLUMN2_NAME + TYPE_INTEGER + COMMA +
+                COLUMN3_NAME + TYPE_TEXT + " )";
+
+        public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+
+        public static final String COLUMN_LIST = " (" +
+                COLUMN1_NAME + COMMA +
+                COLUMN2_NAME + COMMA +
+                COLUMN3_NAME + ")";
+
+        public static String insertQuery(String brewer, String volume, String density){
+            return "INSERT INTO " + TABLE_NAME + COLUMN_LIST + " VALUES ('" + brewer
+                    + "'" + COMMA + "'" + volume + "'" + COMMA + "'" + density + "')";
+        }
+
+    }
+
 
     /*
     This is how you connect to and use the database.

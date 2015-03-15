@@ -133,6 +133,9 @@ public class DialActivity extends ActionBarActivity {
                 else if(spinner.getSelectedItem().toString().equals("Press Pot")){
                     setScreenElements(false, "15", 400, 200, "200", View.GONE);
                 }
+                else{
+                    setScreenElements(false, "15", 2, 0, "200", View.VISIBLE);
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

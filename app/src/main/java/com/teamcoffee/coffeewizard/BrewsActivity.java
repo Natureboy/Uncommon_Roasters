@@ -22,6 +22,7 @@ public class BrewsActivity extends ActionBarActivity {
     private ListView brewsList;
     private Cursor favorites, recent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String select_query = "SELECT * FROM tblRecipes WHERE favorite = '1'";
+        String select_query = "SELECT * FROM tblFavorites";
         favorites = db.rawQuery(select_query, null);
 
         select_query = "SELECT * FROM tblRecipes WHERE coffeeDensity = 'high'";

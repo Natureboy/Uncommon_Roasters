@@ -22,6 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DatabaseContract.TableOne.CREATE_QUERY);
         db.execSQL(DatabaseContract.TableTwo.CREATE_QUERY);
+        db.execSQL(DatabaseContract.TableThree.CREATE_QUERY);
 
         DatabaseContract.TableOne.makeInserts();
         DatabaseContract.TableTwo.makeInserts();
@@ -42,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DatabaseContract.TableOne.DELETE_QUERY);
         db.execSQL(DatabaseContract.TableTwo.DELETE_QUERY);
+        db.execSQL(DatabaseContract.TableThree.DELETE_QUERY);
         onCreate(db);
 
     }
