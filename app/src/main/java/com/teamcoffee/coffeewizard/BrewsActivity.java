@@ -22,6 +22,7 @@ public class BrewsActivity extends ActionBarActivity {
 
     private ListView brewsList;
     private Cursor favorites, recent;
+    private String select_favorites_query, select_recent_query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +33,15 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String select_query = "SELECT * FROM tblFavorites";
-        favorites = db.rawQuery(select_query, null);
+        select_favorites_query = "SELECT * FROM tblFavorites";
+        select_recent_query = "SELECT * FROM tblRecipes";
 
-        select_query = "SELECT * FROM tblRecipes";
-        recent = db.rawQuery(select_query, null);
+        recent = db.rawQuery(select_recent_query, null);
 
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
 
         brewsList.setAdapter(recipesAdapter);
+        db.close();
     }
 
 
@@ -67,14 +68,22 @@ public class BrewsActivity extends ActionBarActivity {
     }
 
     public void favoriteButton(View view){
+
+        DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        favorites = db.rawQuery(select_favorites_query, null);
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, favorites);
         brewsList.setAdapter(recipesAdapter);
-
+        db.close();
     }
 
     public void recentButton(View view){
+        DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        recent = db.rawQuery(select_recent_query, null);
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
         brewsList.setAdapter(recipesAdapter);
+        db.close();
     }
 
 }

@@ -44,7 +44,9 @@
             android:minHeight="0dp"
             android:maxWidth="0dp"
             android:layout_weight="0.21"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:textOn="Yes!"
+            android:textOff="No!" />
 
     </TableRow>
 </LinearLayout>
