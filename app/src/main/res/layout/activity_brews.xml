@@ -77,7 +77,7 @@
             android:layout_below="@+id/linearLayout"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
-            android:layout_marginLeft="40dp" />
+            android:layout_marginLeft="45dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
             android:layout_toEndOf="@+id/densityText"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
-            android:layout_marginLeft="40dp" />
+            android:layout_marginLeft="50dp" />
 
         <TextView
             android:layout_width="wrap_content"

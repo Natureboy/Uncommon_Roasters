@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/brewer"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="brewer"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -21,19 +21,19 @@
 
         <TextView
             android:id="@+id/density"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="density"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="20dp" />
 
         <TextView
             android:id="@+id/volume"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="volume"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginLeft="60dp" />
+            android:layout_marginLeft="40dp" />
 
         <ToggleButton
             android:layout_width="47dp"
@@ -44,7 +44,7 @@
             android:minHeight="0dp"
             android:maxWidth="0dp"
             android:layout_weight="0.21"
-            android:layout_marginLeft="50dp" />
+            android:layout_marginLeft="10dp" />
 
     </TableRow>
 </LinearLayout>
