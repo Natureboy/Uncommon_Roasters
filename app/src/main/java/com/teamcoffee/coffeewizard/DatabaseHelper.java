@@ -41,9 +41,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DatabaseContract.TableOne.DELETE_QUERY);
-        db.execSQL(DatabaseContract.TableTwo.DELETE_QUERY);
-        db.execSQL(DatabaseContract.TableThree.DELETE_QUERY);
+        db.execSQL(DatabaseContract.TableOne.DROP_QUERY);
+        db.execSQL(DatabaseContract.TableTwo.DROP_QUERY);
+        db.execSQL(DatabaseContract.TableThree.DROP_QUERY);
         onCreate(db);
 
     }

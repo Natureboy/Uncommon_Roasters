@@ -2,6 +2,7 @@ package com.teamcoffee.coffeewizard;
 
 
 import android.provider.BaseColumns;
+import android.util.Pair;
 
 /**
  * Created by Brendan on 2/26/2015.
@@ -14,7 +15,7 @@ import android.provider.BaseColumns;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 17;
+    public static final int DATABASE_VERSION = 20;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
@@ -55,7 +56,7 @@ public class DatabaseContract {
                 COLUMN5_NAME + TYPE_INTEGER + COMMA +
                 COLUMN6_NAME + TYPE_INTEGER + " )";
 
-        public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
         public static String createSelect(String machine, String coffeeVolume, String coffeeWeight, String coffeeDensity){
 
             String SELECT_QUERY = "SELECT " +
@@ -110,7 +111,7 @@ public class DatabaseContract {
                 COLUMN3_NAME + TYPE_TEXT + COMMA +
                 COLUMN4_NAME + TYPE_TEXT + COMMA +
                 COLUMN5_NAME + TYPE_INTEGER + " )";
-        public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
         public static final String COLUMN_LIST = " (" +
                 COLUMN1_NAME + COMMA +
@@ -168,9 +169,10 @@ public class DatabaseContract {
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN1_NAME + TYPE_TEXT + COMMA +
                 COLUMN2_NAME + TYPE_INTEGER + COMMA +
-                COLUMN3_NAME + TYPE_TEXT + " )";
+                COLUMN3_NAME + TYPE_TEXT + COMMA +
+                "UNIQUE( " + COLUMN1_NAME + COMMA + COLUMN2_NAME + COMMA + COLUMN3_NAME + " ))";
 
-        public static final String DELETE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+        public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
 
         public static final String COLUMN_LIST = " (" +
@@ -182,6 +184,27 @@ public class DatabaseContract {
             return "INSERT INTO " + TABLE_NAME + COLUMN_LIST + " VALUES ('" + brewer
                     + "'" + COMMA + "'" + volume + "'" + COMMA + "'" + density + "')";
         }
+
+        public static String selectQuery(String brewer, String volume, String density){
+            String SELECT_QUERY = "SELECT " +
+                    "*" + " FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + density+ "'";
+            return SELECT_QUERY;
+        }
+
+        public static String deleteQuery(String brewer, String volume, String density) {
+            String DELETE_QUERY = "DELETE FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + density+ "'";
+            return DELETE_QUERY;
+
+        }
+
 
     }
 

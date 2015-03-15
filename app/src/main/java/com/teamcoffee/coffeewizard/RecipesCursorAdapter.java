@@ -2,6 +2,7 @@ package com.teamcoffee.coffeewizard;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,28 +33,49 @@ public class RecipesCursorAdapter extends CursorAdapter {
         TextView textVolume = (TextView) view.findViewById(R.id.volume);
         final ToggleButton toggleFavorite = (ToggleButton) view.findViewById(R.id.toggleButton);
 
+
         String brewer = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN1_NAME));
         String density = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN4_NAME));
         String volume = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN2_NAME));
+
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String selectQuery = DatabaseContract.TableThree.selectQuery(brewer, volume, density);
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if(c.moveToNext()){
+            toggleFavorite.setChecked(true);
+        }
+        else {
+            toggleFavorite.setChecked(false);
+        }
 
         textBrewer.setText(brewer);
         textDensity.setText(density);
         textVolume.setText(volume);
 
         final String insertFavoriteQuery = DatabaseContract.TableThree.insertQuery(brewer, volume, density);
+        final String deleteFavoriteQuery = DatabaseContract.TableThree.deleteQuery(brewer, volume, density);
 
         toggleFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseHelper dbHelper = new DatabaseHelper(context);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
                 if(toggleFavorite.isChecked()){
-                    DatabaseHelper dbHelper = new DatabaseHelper(context);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-                    db.execSQL(insertFavoriteQuery);
-                    db.close();
+                    try {
+                        db.execSQL(insertFavoriteQuery);
+                    }catch (SQLiteConstraintException e){
+                        //This ignores a "unique" constraint error, which is in place to prevent
+                        //duplicate database entries.
+                    }
                 }
                 else{
-
+                    db.execSQL(deleteFavoriteQuery);
                 }
+                db.close();
 
             }
         });

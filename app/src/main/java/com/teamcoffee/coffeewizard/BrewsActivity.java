@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -22,7 +23,6 @@ public class BrewsActivity extends ActionBarActivity {
     private ListView brewsList;
     private Cursor favorites, recent;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class BrewsActivity extends ActionBarActivity {
         String select_query = "SELECT * FROM tblFavorites";
         favorites = db.rawQuery(select_query, null);
 
-        select_query = "SELECT * FROM tblRecipes WHERE coffeeDensity = 'high'";
+        select_query = "SELECT * FROM tblRecipes";
         recent = db.rawQuery(select_query, null);
 
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
@@ -69,6 +69,7 @@ public class BrewsActivity extends ActionBarActivity {
     public void favoriteButton(View view){
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, favorites);
         brewsList.setAdapter(recipesAdapter);
+
     }
 
     public void recentButton(View view){
