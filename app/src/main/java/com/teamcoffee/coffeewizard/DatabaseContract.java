@@ -15,7 +15,7 @@ import android.util.Pair;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 20;
+    public static final int DATABASE_VERSION = 22;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
@@ -57,14 +57,14 @@ public class DatabaseContract {
                 COLUMN6_NAME + TYPE_INTEGER + " )";
 
         public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
-        public static String createSelect(String machine, String coffeeVolume, String coffeeWeight, String coffeeDensity){
+        public static String createSelect(String machine, String coffeeVolume, String coffeeDensity){
 
             String SELECT_QUERY = "SELECT " +
                     COLUMN5_NAME + " FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + machine  + "'" + AND +
                     COLUMN2_NAME + EQUALS + "'" + coffeeVolume + "'"+ AND +
-                    COLUMN3_NAME + EQUALS + "'" + coffeeWeight + "'"+ AND +
+                    //COLUMN3_NAME + EQUALS + "'" + coffeeWeight + "'"+ AND +
                     COLUMN4_NAME + EQUALS + "'" + coffeeDensity+ "'";
             return SELECT_QUERY;
 

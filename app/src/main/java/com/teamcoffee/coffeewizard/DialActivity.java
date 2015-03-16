@@ -200,9 +200,7 @@ public class DialActivity extends ActionBarActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         brewer_list_query = "SELECT DISTINCT " + DatabaseContract.TableOne.COLUMN1_NAME + " FROM " + DatabaseContract.TableOne.TABLE_NAME;
-
         Cursor c = db.rawQuery(brewer_list_query, null);
-
         String[] brewerList =  new String[c.getCount()];
 
         int i = 0;
@@ -240,17 +238,13 @@ public class DialActivity extends ActionBarActivity {
         }
 
 
-        time_select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, weightLevel, densityLevel);
+        time_select_query = DatabaseContract.TableOne.createSelect(brewer, waterLevel, densityLevel);
         event_select_query = DatabaseContract.TableTwo.createSelect(brewer, waterLevel, densityLevel);
 
-
-
         if (brewer.equals("Press Pot")){
-            time_select_query = DatabaseContract.TableOne.createSelect(brewer, "0", "0", "n/a");
+            time_select_query = DatabaseContract.TableOne.createSelect(brewer, "0", "n/a");
             event_select_query = DatabaseContract.TableTwo.createSelect(brewer, "0", "n/a");
         }
-
-
 
         c = db.rawQuery(time_select_query, null);
         if(c.moveToFirst()){

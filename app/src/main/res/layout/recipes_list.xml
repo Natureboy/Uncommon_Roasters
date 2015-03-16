@@ -36,17 +36,23 @@
             android:layout_marginLeft="40dp" />
 
         <ToggleButton
-            android:layout_width="47dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:text="New ToggleButton"
             android:id="@+id/toggleButton"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:minHeight="0dp"
             android:maxWidth="0dp"
+            android:background="@drawable/check"
             android:layout_weight="0.21"
-            android:layout_marginLeft="10dp"
-            android:textOn="Yes!"
-            android:textOff="No!" />
+            android:textOff=""
+            android:textOn=""
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Brew!"
+            android:id="@+id/brewButton" />
 
     </TableRow>
 </LinearLayout>

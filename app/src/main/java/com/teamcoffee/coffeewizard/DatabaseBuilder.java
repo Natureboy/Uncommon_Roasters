@@ -20,7 +20,7 @@ public class DatabaseBuilder {
     public static Recipe[] recipes = {
         new Recipe("V60", 200, 12, "high", 140),
         new Recipe("V60", 200, 12, "medium", 120),
-        new Recipe("V60", 200, 12, "low", 120),
+        new Recipe("V60", 200, 12, "low", 110),
         new Recipe("V60", 300, 19, "high", 190),
         new Recipe("V60", 300, 19, "medium", 165),
         new Recipe("V60", 300, 19, "low", 155),
