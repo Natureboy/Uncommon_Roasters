@@ -57,6 +57,9 @@ public class RecipesCursorAdapter extends CursorAdapter {
             toggleFavorite.setChecked(false);
         }
 
+        c.close();
+        db.close();
+
         textBrewer.setText(brewer);
         textDensity.setText(density);
         textVolume.setText(volume);
@@ -81,6 +84,7 @@ public class RecipesCursorAdapter extends CursorAdapter {
                     db.execSQL(deleteFavoriteQuery);
                 }
                 db.close();
+                dbHelper.close();
 
             }
         });
@@ -91,6 +95,7 @@ public class RecipesCursorAdapter extends CursorAdapter {
                 String volume, density, brewer;
                 Cursor c;
                 int time;
+                HashMap<Integer, String> timerEvents = new HashMap<Integer, String>();
 
                 DatabaseHelper dbHelper = new DatabaseHelper(context);
                 SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -107,35 +112,46 @@ public class RecipesCursorAdapter extends CursorAdapter {
                     event_select_query = DatabaseContract.TableTwo.createSelect(brewer, "0", "n/a");
                 }
 
+
                 c = db.rawQuery(time_select_query, null);
-                if(c.moveToFirst()){
-                    time = c.getInt(c.getColumnIndex("brewTime"));
+                try {
+                    if (c.moveToFirst()) {
+                        time = c.getInt(c.getColumnIndex("brewTime"));
+                    } else {
+                        time = -1;
+                    }
                 }
-                else{
-                    time = -1;
+                finally{
+                    c.close();
                 }
+
 
                 c = db.rawQuery(event_select_query, null);
 
-                int startTimeIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN5_NAME);
-                int eventIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN4_NAME);
+                try {
 
-                HashMap<Integer, String> timerEvents = new HashMap<Integer, String>();
+                    int startTimeIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN5_NAME);
+                    int eventIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN4_NAME);
 
-                while(c.moveToNext()){
 
-                    int startTime = c.getInt(startTimeIndex);
-                    String event = c.getString(eventIndex);
 
-                    timerEvents.put(startTime, event);
+                    while (c.moveToNext()) {
 
+                        int startTime = c.getInt(startTimeIndex);
+                        String event = c.getString(eventIndex);
+
+                        timerEvents.put(startTime, event);
+
+                    }
+                }
+                finally {
+                    c.close();
                 }
 
-                c.close();
                 db.close();
 
                 if(brewer.equals("Press Pot")){
-                    timerEvents.put(0, "Pour to " + volume + "g of Water");
+                    timerEvents.put(0, "Pour to desired coffee volume of Water");
                 }
 
                 Intent intent = new Intent(context, CountdownActivity.class);
