@@ -45,7 +45,8 @@
             android:layout_weight="0.21"
             android:textOff=""
             android:textOn=""
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            style="?android:attr/borderlessButtonStyle"/>
 
         <Button
             style="?android:attr/buttonStyleSmall"
