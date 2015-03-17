@@ -1,15 +1,14 @@
 package com.teamcoffee.coffeewizard;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.ToggleButton;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -60,9 +59,17 @@ public class BrewsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_faq) {
+            Intent intent = new Intent(this, FAQActivity.class);
+            startActivity(intent);
             return true;
         }
+        if (id == R.id.action_about_us) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

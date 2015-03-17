@@ -1,12 +1,9 @@
 package com.teamcoffee.coffeewizard;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -226,7 +223,14 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_faq) {
+            Intent intent = new Intent(this, FAQActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_about_us) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
+            startActivity(intent);
             return true;
         }
 

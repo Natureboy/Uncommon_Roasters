@@ -66,7 +66,10 @@ public class FAQActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_about_us) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
+            startActivity(intent);
             return true;
         }
 

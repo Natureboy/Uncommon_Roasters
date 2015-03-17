@@ -3,7 +3,7 @@
 
     <string name="app_name">CoffeeWizard</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_faq">Go to FAQ Page</string>
     <string name="brew_button">Brew</string>
     <string name="website_button">Website</string>
     <string name="dial_in_button">Dial In</string>
@@ -30,6 +30,7 @@
     <string name="brewer">Brewer</string>
     <string name="density">Density</string>
     <string name="volume">Volume</string>
+    <string name="about_us">About Us</string>
 
 
     <string name="about_us_1">\nUncommon Coffee Roasters opened in the spring of 1994 with a goal of providing the best fresh roasted specialty coffee to our customers. We take pride in our product and expect all of our employees to do so as well. We stress education, consistency, and customer service as the three areas of focus for our baristas.\n</string>

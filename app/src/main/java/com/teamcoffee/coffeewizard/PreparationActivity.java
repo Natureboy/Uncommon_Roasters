@@ -1,8 +1,8 @@
 package com.teamcoffee.coffeewizard;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -44,7 +44,14 @@ public class PreparationActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_faq) {
+            Intent intent = new Intent(this, FAQActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_about_us) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
+            startActivity(intent);
             return true;
         }
 
