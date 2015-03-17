@@ -1,6 +1,7 @@
 package com.teamcoffee.coffeewizard;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
