@@ -39,4 +39,5 @@
 <string name="about_us_3"> We source our green coffee globally, traveling to the origin whenever possible. Once our beans arrive to us, we store them in ideal conditions to guarantee the freshest coffee possible. When it comes to roasting we are proud to say that we only roast in small batches. Roasting in small batches allows us to ensure that we roast each and every batch to perfection every time we roast.\n</string>
 
 <string name="about_us_4"> We proudly provide coffee to small cafes and to large corporations. We consider our wholesale customers our partners. We assist our customers in growing their coffee sales.  We can provide equipment, training and consultation. Our goal is to insure that our wholesale customers provide the best product possible and the quality that they could only expect from Uncommon Coffee Roasters.\n</string>
+    <string name="title_activity_preparation">preparation</string>
 </resources>

@@ -94,7 +94,7 @@ public class RecipesCursorAdapter extends CursorAdapter {
             public void onClick(View v) {
                 String volume, density, brewer;
                 Cursor c;
-                int time;
+                int time, weight;
                 HashMap<Integer, String> timerEvents = new HashMap<Integer, String>();
 
                 DatabaseHelper dbHelper = new DatabaseHelper(context);
@@ -116,9 +116,11 @@ public class RecipesCursorAdapter extends CursorAdapter {
                 c = db.rawQuery(time_select_query, null);
                 try {
                     if (c.moveToFirst()) {
-                        time = c.getInt(c.getColumnIndex("brewTime"));
+                        time = c.getInt(c.getColumnIndex(DatabaseContract.TableOne.COLUMN5_NAME));
+                        weight = c.getInt(c.getColumnIndex(DatabaseContract.TableOne.COLUMN3_NAME));
                     } else {
                         time = -1;
+                        weight = -1;
                     }
                 }
                 finally{
@@ -132,8 +134,6 @@ public class RecipesCursorAdapter extends CursorAdapter {
 
                     int startTimeIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN5_NAME);
                     int eventIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN4_NAME);
-
-
 
                     while (c.moveToNext()) {
 
@@ -157,11 +157,9 @@ public class RecipesCursorAdapter extends CursorAdapter {
                 Intent intent = new Intent(context, CountdownActivity.class);
                 intent.putExtra("time", Integer.toString(time));
                 intent.putExtra("events", timerEvents);
+                intent.putExtra("weight", Integer.toString(weight));
 
                 context.startActivity(intent);
-
-
-
 
             }
         });

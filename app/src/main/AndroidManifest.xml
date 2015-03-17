@@ -49,6 +49,22 @@
                 android:value="com.teamcoffee.coffeewizard.MainActivity" />
         </activity>
         <activity
+            android:name=".preparation"
+            android:label="@string/title_activity_preparation"
+            android:parentActivityName=".DialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamcoffee.coffeewizard.DialActivity" />
+        </activity>
+        <activity
+            android:name=".PreparationActivity"
+            android:label="@string/title_activity_preparation"
+            android:parentActivityName=".DialActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.teamcoffee.coffeewizard.DialActivity" />
+        </activity>
+        <activity
             android:name=".AboutUsActivity"
             android:label="About Us"
             android:parentActivityName=".MainActivity" >
