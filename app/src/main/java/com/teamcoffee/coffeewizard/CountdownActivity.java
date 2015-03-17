@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
+    public RelativeLayout flashLayer;
     public String instrString;
     int s; // Timer duration in seconds
     private long startTime;
@@ -50,6 +52,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         startButton.setOnClickListener(this);
         timerText = (TextView) this.findViewById(R.id.timer);
         instrText = (TextView) this.findViewById(R.id.instructions);
+        flashLayer = (RelativeLayout) this.findViewById(R.id.timer_flash);
 
         //Gets the brewTime from the intent, or if there is no brewtime in the intent
         //(running just the CountdownActivity) goes to a default time of 15 seconds.
@@ -140,14 +143,19 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
                 }
             } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
                 instrText.setText(instrString);
-                instrText.setTextColor(0xFF2A2A2A);
-                instrText.setBackgroundColor(0xFFD2CCB2);
+//                instrText.setTextColor(0xFF2A2A2A);
+//                instrText.setBackgroundColor(0xFFD2CCB2);
+                if(instrString=="") {
+                    flashLayer.setAlpha(0.8f);
+                }
             } else {
-                instrText.setTextColor(0xFFD2CCB2);
-                instrText.setBackgroundColor(0xFF2A2A2A);
+//                instrText.setTextColor(0xFFD2CCB2);
+//                instrText.setBackgroundColor(0xFF2A2A2A);
+                flashLayer.setAlpha(0);
             }
 
             if (isBlinking) {
+                //TODO set text to blink when timer nearly done
                 timerText.setAlpha(1/(timerText.getAlpha()/0.25f));
             }
 
