@@ -26,6 +26,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private boolean hasStarted = false;
     private boolean hasStartedOverflow = false;
     private boolean isBlinking = false;
+    private boolean finished = false;
     private Button startButton;
     public TextView timerText;  // Text showing current value of timer in minutes & seconds
     public TextView instrText;  // Text describing additional instructions
@@ -49,7 +50,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         startButton.setOnClickListener(this);
         timerText = (TextView) this.findViewById(R.id.timer);
         instrText = (TextView) this.findViewById(R.id.instructions);
-        flashLayer = (RelativeLayout) this.findViewById(R.id.timer_flash);
+        flashLayer = (RelativeLayout) findViewById(R.id.flash);
 
         //Gets the brewTime from the intent, or if there is no brewtime in the intent
         //(running just the CountdownActivity) goes to a default time of 15 seconds.
@@ -85,7 +86,10 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     // Method for handling behavior when button is tapped
     @Override
     public void onClick(View v) {
-        if (!hasStarted) {
+        if (finished) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        } else if (!hasStarted) {
             timerText.setTextColor(0xFFD2CCB2);
             instrText.setTextColor(0xFFD2CCB2);
             instrText.setText("");
@@ -120,30 +124,37 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             startButton.setText("Done");
             overflowTimer.start();
             hasStartedOverflow = true;
+            finished = true;
             // Make sure the "Done!" message doesn't accidentally get dimmed by the blink
             isBlinking = false;
             timerText.setAlpha(1);
+            flashLayer.setBackgroundColor(Color.WHITE);
+            flashLayer.setAlpha(0);
         }
 
         @Override
         public void onTick(long millisUntilFinished) {
-            timerText.setText(millisToString(millisUntilFinished));
+            timerText.setText(millisToString((int)Math.floor(millisUntilFinished)));
 
             if (millisUntilFinished <= 5000) {
                 timerText.setTextColor(0xFF00CC00);
+//                isBlinking = true;
                 instrText.setText("Brewing Nearly Finished");
                 instrText.setTextColor(0xFF00CC00);
                 if (millisUntilFinished > 4000) {
-                    instrText.setBackgroundColor(0x44D2CCB2);
+//                    instrText.setBackgroundColor(0x44D2CCB2);
+                    flashLayer.setBackgroundColor(0xFF00CC00);
+                    flashLayer.setAlpha(0.9f);
                 } else {
-                    instrText.setBackgroundColor(0xFF2A2A2A);
+//                    instrText.setBackgroundColor(0xFF2A2A2A);
+                    flashLayer.setAlpha(0);
                 }
             } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
                 instrText.setText(instrString);
 //                instrText.setTextColor(0xFF2A2A2A);
 //                instrText.setBackgroundColor(0xFFD2CCB2);
-                if(instrString=="") {
-                    flashLayer.setAlpha(0.8f);
+                if (instrString.length() > 0 && ((s*1000)-millisUntilFinished)/1000 > 0) {
+                    flashLayer.setAlpha(0.9f);
                 }
             } else {
 //                instrText.setTextColor(0xFFD2CCB2);
@@ -185,7 +196,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
 
         @Override
         public void onFinish() {
-            instrText.setText("Coffee overbrewed!");
+            instrText.setText("Coffee may be overbrewed now! Please see FAQ if needed.");
             instrText.setTextColor(0xFFCC0000);
             hasStartedOverflow = false;
         }
