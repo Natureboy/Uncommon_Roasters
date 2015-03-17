@@ -277,7 +277,7 @@ public class DialActivity extends ActionBarActivity {
             timerEvents.put(0, "Pour to " + waterLevel + "g of Water");
         }
 
-        Intent intent = new Intent(this, PreparationActivity.class);
+        Intent intent = new Intent(this, CountdownActivity.class);
         intent.putExtra("time", Integer.toString(time));
         intent.putExtra("events", timerEvents);
         intent.putExtra("weight", weightLevel);
