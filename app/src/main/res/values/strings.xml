@@ -30,4 +30,13 @@
     <string name="brewer">Brewer</string>
     <string name="density">Density</string>
     <string name="volume">Volume</string>
+
+
+    <string name="about_us_1">\nUncommon Coffee Roasters opened in the spring of 1994 with a goal of providing the best fresh roasted specialty coffee to our customers. We take pride in our product and expect all of our employees to do so as well. We stress education, consistency, and customer service as the three areas of focus for our baristas.\n</string>
+
+<string name="about_us_2"> There is something to be said about small. After all, the best things come in small packages. At Uncommon Coffee Roasters we believe in small. We purchase our coffees from small growers in small farms or cooperatives. When possible, we travel to these farms to personally meet the farmers, ensure they are paid fairly and to guarantee the quality our customers would expect. Our coffee is always roasted in small batches to guarantee optimal quality every time we roast. \n</string>
+
+<string name="about_us_3"> We source our green coffee globally, traveling to the origin whenever possible. Once our beans arrive to us, we store them in ideal conditions to guarantee the freshest coffee possible. When it comes to roasting we are proud to say that we only roast in small batches. Roasting in small batches allows us to ensure that we roast each and every batch to perfection every time we roast.\n</string>
+
+<string name="about_us_4"> We proudly provide coffee to small cafes and to large corporations. We consider our wholesale customers our partners. We assist our customers in growing their coffee sales.  We can provide equipment, training and consultation. Our goal is to insure that our wholesale customers provide the best product possible and the quality that they could only expect from Uncommon Coffee Roasters.\n</string>
 </resources>
