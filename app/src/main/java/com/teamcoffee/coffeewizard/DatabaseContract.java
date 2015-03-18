@@ -15,11 +15,12 @@ import android.util.Pair;
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 23;
+    public static final int DATABASE_VERSION = 30;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
     private static final String TYPE_INTEGER = " INTEGER";
+    private static final String TYPE_INTEGER_DEFAULT = " INTEGER DEFAULT 0";
     private static final String COMMA = ", ";
     private static final String EQUALS = " = ";
     private static final String AND = " AND ";
@@ -34,7 +35,7 @@ public class DatabaseContract {
         public static final String COLUMN3_NAME = "coffeeWeight";
         public static final String COLUMN4_NAME = "coffeeDensity";
         public static final String COLUMN5_NAME = "brewTime";
-        public static final String COLUMN6_NAME = "favorite";
+        public static final String COLUMN6_NAME = "recent";
         public static Recipe[] recipes = DatabaseBuilder.recipes;
         static int n = recipes.length;
 
@@ -54,7 +55,7 @@ public class DatabaseContract {
                 COLUMN3_NAME + TYPE_INTEGER + COMMA +
                 COLUMN4_NAME + TYPE_TEXT + COMMA +
                 COLUMN5_NAME + TYPE_INTEGER + COMMA +
-                COLUMN6_NAME + TYPE_INTEGER + " )";
+                COLUMN6_NAME + TYPE_INTEGER_DEFAULT + " )";
 
         public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
         public static String createSelect(String machine, String coffeeVolume, String coffeeDensity){
@@ -90,6 +91,15 @@ public class DatabaseContract {
 
             }
         }
+
+        public static String addRecent(String machine, String volume, String density){
+            return "UPDATE " + TABLE_NAME + " SET " + COLUMN6_NAME + EQUALS + " '1' " +
+                    "WHERE " + COLUMN1_NAME + EQUALS + "'" + machine + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + volume + "'" + AND +
+                    COLUMN4_NAME + EQUALS + "'" + density + "'";
+
+        }
+
     }
 
     public static abstract class TableTwo implements BaseColumns{
@@ -161,6 +171,8 @@ public class DatabaseContract {
         public static final String COLUMN1_NAME = "machine";
         public static final String COLUMN2_NAME = "coffeeVolume";
         public static final String COLUMN3_NAME = "coffeeDensity";
+        public static final String COLUMN4_NAME = "coffeeWeight";
+        public static final String COLUMN5_NAME = "name";
 
         public static final String CREATE_QUERY = "CREATE TABLE " +
                 TABLE_NAME + " (" +
@@ -168,7 +180,9 @@ public class DatabaseContract {
                 COLUMN1_NAME + TYPE_TEXT + COMMA +
                 COLUMN2_NAME + TYPE_INTEGER + COMMA +
                 COLUMN3_NAME + TYPE_TEXT + COMMA +
-                "UNIQUE( " + COLUMN1_NAME + COMMA + COLUMN2_NAME + COMMA + COLUMN3_NAME + " ))";
+                COLUMN4_NAME + TYPE_INTEGER + COMMA +
+                COLUMN5_NAME + TYPE_TEXT + COMMA +
+                "UNIQUE( " + COLUMN1_NAME + COMMA + COLUMN2_NAME + COMMA + COLUMN3_NAME + COMMA + COLUMN4_NAME + " ))";
 
         public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -176,33 +190,91 @@ public class DatabaseContract {
         public static final String COLUMN_LIST = " (" +
                 COLUMN1_NAME + COMMA +
                 COLUMN2_NAME + COMMA +
-                COLUMN3_NAME + ")";
+                COLUMN3_NAME + COMMA +
+                COLUMN4_NAME + COMMA +
+                COLUMN5_NAME + ")";
 
-        public static String insertQuery(String brewer, String volume, String density){
+        public static String insertQuery(String brewer, String volume, String density, String weight, String name){
             return "INSERT INTO " + TABLE_NAME + COLUMN_LIST + " VALUES ('" + brewer
-                    + "'" + COMMA + "'" + volume + "'" + COMMA + "'" + density + "')";
+                    + "'" + COMMA + "'" + volume + "'" + COMMA + "'" + density + "'" + COMMA + "'" + weight + "'" + COMMA + "'" + name + "'" + ")";
         }
 
-        public static String selectQuery(String brewer, String volume, String density){
+        public static String selectQuery(String brewer, String volume, String density, String weight){
             return "SELECT " +
                     "*" + " FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
-                    COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
-                    COLUMN3_NAME + EQUALS + "'" + density+ "'";
+                    COLUMN2_NAME + EQUALS + "'" + volume + "'" + AND +
+                    COLUMN3_NAME + EQUALS + "'" + density + "'" + AND +
+                    COLUMN4_NAME + EQUALS + "'" + weight + "'";
         }
 
-        public static String deleteQuery(String brewer, String volume, String density) {
+        public static String deleteQuery(String brewer, String volume, String density, String weight) {
             return "DELETE FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
-                    COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
-                    COLUMN3_NAME + EQUALS + "'" + density+ "'";
+                    COLUMN2_NAME + EQUALS + "'" + volume  + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + density + "'" + AND +
+                    COLUMN4_NAME + EQUALS + "'" + weight + "'";
 
         }
 
 
     }
+
+    public static abstract class TableFour implements BaseColumns{
+        public static final String TABLE_NAME  = "tblRecent";
+        public static final String COLUMN1_NAME = "machine";
+        public static final String COLUMN2_NAME = "coffeeVolume";
+        public static final String COLUMN3_NAME = "coffeeDensity";
+        public static final String COLUMN4_NAME = "coffeeWeight";
+
+        public static final String CREATE_QUERY = "CREATE TABLE " +
+                TABLE_NAME + " (" +
+                _ID + " INTEGER PRIMARY KEY," +
+                COLUMN1_NAME + TYPE_TEXT + COMMA +
+                COLUMN2_NAME + TYPE_INTEGER + COMMA +
+                COLUMN3_NAME + TYPE_TEXT + COMMA +
+                COLUMN4_NAME + TYPE_INTEGER + COMMA +
+                "UNIQUE( " + COLUMN1_NAME + COMMA + COLUMN2_NAME + COMMA + COLUMN3_NAME + COMMA + COLUMN4_NAME + " ))";
+
+        public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+
+        public static final String COLUMN_LIST = " (" +
+                COLUMN1_NAME + COMMA +
+                COLUMN2_NAME + COMMA +
+                COLUMN3_NAME + COMMA +
+                COLUMN4_NAME + ")";
+
+        public static String insertQuery(String brewer, String volume, String density, String weight){
+            return "INSERT INTO " + TABLE_NAME + COLUMN_LIST + " VALUES ('" + brewer
+                    + "'" + COMMA + "'" + volume + "'" + COMMA + "'" + density + "'" + COMMA + "'" + weight + "'" + ")";
+        }
+
+        public static String selectQuery(String brewer, String volume, String density, String weight){
+            return "SELECT " +
+                    "*" + " FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + volume + "'" + AND +
+                    COLUMN3_NAME + EQUALS + "'" + density + "'" + AND +
+                    COLUMN4_NAME + EQUALS + "'" + weight + "'";
+        }
+
+        public static String deleteQuery(String brewer, String volume, String density, String weight) {
+            return "DELETE FROM " +
+                    TABLE_NAME + " WHERE " +
+                    COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
+                    COLUMN2_NAME + EQUALS + "'" + volume  + "'"+ AND +
+                    COLUMN3_NAME + EQUALS + "'" + density + "'" + AND +
+                    COLUMN4_NAME + EQUALS + "'" + weight + "'";
+
+        }
+
+
+    }
+
 
 
     /*

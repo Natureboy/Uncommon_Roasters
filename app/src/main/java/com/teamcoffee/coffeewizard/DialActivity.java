@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class DialActivity extends ActionBarActivity {
     private TextView waterVolume, coffeeWeight, coffeeDensity, coffeeDensityLabel;
     private Spinner spinner;
     private AlertDialog.Builder builder1;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class DialActivity extends ActionBarActivity {
         coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
         waterVolume.setText(Integer.toString(water.getProgress()));
         coffeeDensityLabel = (TextView) findViewById(R.id.selectDensityText);
+        logo = (ImageView) findViewById(R.id.imageLogoDial);
+        logo.setVisibility(View.GONE);
         coffeeDensity.setText("Medium Density");
         waterVolume.setText("200");
 
@@ -162,6 +166,12 @@ public class DialActivity extends ActionBarActivity {
         coffeeDensity.setVisibility(densityVisibility);
         density.setVisibility(densityVisibility);
         coffeeDensityLabel.setVisibility(densityVisibility);
+        if(densityVisibility == View.VISIBLE){
+            logo.setVisibility(View.GONE);
+        }
+        else{
+            logo.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -201,7 +211,7 @@ public class DialActivity extends ActionBarActivity {
 
 
         DatabaseHelper dbHelper = new DatabaseHelper(DialActivity.this);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         brewer_list_query = "SELECT DISTINCT " + DatabaseContract.TableOne.COLUMN1_NAME + " FROM " + DatabaseContract.TableOne.TABLE_NAME;
         Cursor c = db.rawQuery(brewer_list_query, null);
@@ -251,6 +261,7 @@ public class DialActivity extends ActionBarActivity {
         }
 
         c = db.rawQuery(time_select_query, null);
+
         if(c.moveToFirst()){
             time = c.getInt(c.getColumnIndex("brewTime"));
         }
@@ -273,6 +284,10 @@ public class DialActivity extends ActionBarActivity {
             timerEvents.put(startTime, event);
 
         }
+
+        String recent_query = DatabaseContract.TableFour.insertQuery(brewer, waterLevel, densityLevel, weightLevel);
+        db.execSQL(recent_query);
+
 
         c.close();
         db.close();

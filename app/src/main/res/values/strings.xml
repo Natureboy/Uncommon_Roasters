@@ -31,6 +31,10 @@
     <string name="density">Density</string>
     <string name="volume">Volume</string>
     <string name="about_us">About Us</string>
+    <string name="weight">Weight</string>
+    <string name ="coffee_density_two_line">Coffee\nDensity</string>
+    <string name ="coffee_weight_two_line">Coffee\nWeight</string>
+    <string name ="coffee_volume_two_line">Coffee\nVolume</string>
 
 
     <string name="about_us_1">\nUncommon Coffee Roasters opened in the spring of 1994 with a goal of providing the best fresh roasted specialty coffee to our customers. We take pride in our product and expect all of our employees to do so as well. We stress education, consistency, and customer service as the three areas of focus for our baristas.\n</string>

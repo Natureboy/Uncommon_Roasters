@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="@string/brewer"
             android:id="@+id/brewerText"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_below="@+id/linearLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
@@ -72,27 +72,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/density"
+            android:text="@string/coffee_density_two_line"
             android:id="@+id/densityText"
             android:layout_toEndOf="@+id/brewerText"
             android:layout_toRightOf="@+id/brewerText"
             android:layout_below="@+id/linearLayout"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="15dp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/volume"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/coffee_weight_two_line"
+            android:id="@+id/textView"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coffee_volume_two_line"
             android:id="@+id/volumeText"
             android:layout_below="@+id/linearLayout"
             android:layout_toRightOf="@+id/densityText"
             android:layout_toEndOf="@+id/densityText"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
-            android:layout_marginLeft="37dp"
+            android:layout_marginLeft="20dp"
             android:textStyle="bold" />
 
     </TableRow>

@@ -22,17 +22,17 @@ import java.util.HashMap;
  * Created by Brendan on 3/9/2015.
  * This activity sets up the brew screen.
  */
-public class RecipesCursorAdapter extends CursorAdapter {
+public class RecipesCursorAdapterFavorites extends CursorAdapter {
 
     String name;
 
-    public RecipesCursorAdapter(Context context, Cursor cursor){
+    public RecipesCursorAdapterFavorites(Context context, Cursor cursor){
         super(context, cursor, 0);
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.recipes_list, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.recipes_list_favorites, parent, false);
     }
 
     @Override
@@ -43,36 +43,13 @@ public class RecipesCursorAdapter extends CursorAdapter {
         final ToggleButton toggleFavorite = (ToggleButton) view.findViewById(R.id.toggleButton);
         final Button brewButton = (Button) view.findViewById(R.id.brewButton);
         final TextView textWeight = (TextView) view.findViewById(R.id.weight);
+        final TextView textName = (TextView) view.findViewById(R.id.favoriteName);
 
         final String brewer = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN1_NAME));
         final String density = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN4_NAME));
         final String volume = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN2_NAME));
         final String weight = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN3_NAME));
-
-        final AlertDialog.Builder favoriteNamePrompt = new AlertDialog.Builder(context);
-        favoriteNamePrompt.setTitle("Name This Brew!");
-        favoriteNamePrompt.setMessage("Choose a name for this brew:");
-        final EditText input = new EditText(context);
-        favoriteNamePrompt.setView(input);
-        favoriteNamePrompt.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DatabaseHelper dbHelper = new DatabaseHelper(context);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                name = input.getText().toString();
-                if(name.equals("")){
-                    name = brewer + density + volume + weight;
-                }
-                try {
-                    final String insertFavoriteQuery = DatabaseContract.TableThree.insertQuery(brewer, volume, density, weight, name);
-                    db.execSQL(insertFavoriteQuery);
-                }catch (SQLiteConstraintException e){
-                    //This ignores a "unique" constraint error, which is in place to prevent
-                    //duplicate database entries.
-                }
-            }
-        });
-
+        final String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableThree.COLUMN5_NAME));
 
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -95,22 +72,30 @@ public class RecipesCursorAdapter extends CursorAdapter {
         textDensity.setText(density);
         textVolume.setText(volume);
         textWeight.setText(weight);
+        textName.setText(name);
+
 
         final String deleteFavoriteQuery = DatabaseContract.TableThree.deleteQuery(brewer, volume, density, weight);
 
         toggleFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseHelper dbHelper = new DatabaseHelper(context);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
                 if(toggleFavorite.isChecked()){
-                    favoriteNamePrompt.show();
+                    try {
+                        final String insertFavoriteQuery = DatabaseContract.TableThree.insertQuery(brewer, volume, density, weight, name);
+                        db.execSQL(insertFavoriteQuery);
+                    }catch (SQLiteConstraintException e){
+                        //This ignores a "unique" constraint error, which is in place to prevent
+                        //duplicate database entries.
+                    }
                 }
                 else{
-                    DatabaseHelper dbHelper = new DatabaseHelper(context);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
                     db.execSQL(deleteFavoriteQuery);
-                    db.close();
-                    dbHelper.close();
                 }
+                db.close();
+                dbHelper.close();
 
             }
         });

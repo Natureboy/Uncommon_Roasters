@@ -32,8 +32,8 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        select_favorites_query = "SELECT * FROM tblFavorites";
-        select_recent_query = "SELECT * FROM tblRecipes";
+        select_favorites_query = "SELECT * FROM " + DatabaseContract.TableThree.TABLE_NAME;
+        select_recent_query = "SELECT * FROM " + DatabaseContract.TableFour.TABLE_NAME;
 
         recent = db.rawQuery(select_recent_query, null);
 
@@ -79,7 +79,7 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         favorites = db.rawQuery(select_favorites_query, null);
-        RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, favorites);
+        RecipesCursorAdapterFavorites recipesAdapter = new RecipesCursorAdapterFavorites(this, favorites);
         brewsList.setAdapter(recipesAdapter);
         db.close();
     }

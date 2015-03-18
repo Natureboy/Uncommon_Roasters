@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(DatabaseContract.TableOne.CREATE_QUERY);
         db.execSQL(DatabaseContract.TableTwo.CREATE_QUERY);
         db.execSQL(DatabaseContract.TableThree.CREATE_QUERY);
+        db.execSQL(DatabaseContract.TableFour.CREATE_QUERY);
 
         DatabaseContract.TableOne.makeInserts();
         DatabaseContract.TableTwo.makeInserts();
@@ -44,6 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(DatabaseContract.TableOne.DROP_QUERY);
         db.execSQL(DatabaseContract.TableTwo.DROP_QUERY);
         db.execSQL(DatabaseContract.TableThree.DROP_QUERY);
+        db.execSQL(DatabaseContract.TableFour.DROP_QUERY);
         onCreate(db);
 
     }
