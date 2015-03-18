@@ -70,7 +70,7 @@ public class DialActivity extends ActionBarActivity {
                     }
                 }
                 else if(spinner.getSelectedItem().toString().equals("Press Pot")){
-                    int waterAmount = water.getProgress();
+                    int waterAmount = water.getProgress() + 100;
                     double coffeeAmount = waterAmount * 0.075;
                     waterVolume.setText(Integer.toString(waterAmount));
                     coffeeWeight.setText(String.format("%.2f", coffeeAmount));
@@ -196,7 +196,6 @@ public class DialActivity extends ActionBarActivity {
     public void brewButton(View view) throws SQLException {
         String waterLevel;
         String weightLevel;
-        Recipe result;
         int time;
         String brewer, densityLevel, time_select_query, event_select_query, brewer_list_query;
 
@@ -264,7 +263,7 @@ public class DialActivity extends ActionBarActivity {
         int startTimeIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN5_NAME);
         int eventIndex = c.getColumnIndex(DatabaseContract.TableTwo.COLUMN4_NAME);
 
-        HashMap<Integer, String> timerEvents = new HashMap<Integer, String>();
+        HashMap<Integer, String> timerEvents = new HashMap<>();
 
         while(c.moveToNext()){
 

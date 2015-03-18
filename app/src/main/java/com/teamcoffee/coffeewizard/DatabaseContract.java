@@ -59,14 +59,13 @@ public class DatabaseContract {
         public static final String DROP_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
         public static String createSelect(String machine, String coffeeVolume, String coffeeDensity){
 
-            String SELECT_QUERY = "SELECT " +
-                    COLUMN5_NAME + " FROM " +
+            return "SELECT " +
+                    "*" + " FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + machine  + "'" + AND +
                     COLUMN2_NAME + EQUALS + "'" + coffeeVolume + "'"+ AND +
                     //COLUMN3_NAME + EQUALS + "'" + coffeeWeight + "'"+ AND +
                     COLUMN4_NAME + EQUALS + "'" + coffeeDensity+ "'";
-            return SELECT_QUERY;
 
         }
 
@@ -144,13 +143,12 @@ public class DatabaseContract {
 
         public static String createSelect(String machine, String coffeeVolume, String coffeeDensity){
 
-            String SELECT_QUERY = "SELECT " +
+            return "SELECT " +
                     "*" + " FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + machine  + "'" + AND +
                     COLUMN2_NAME + EQUALS + "'" + coffeeVolume + "'"+ AND +
                     COLUMN3_NAME + EQUALS + "'" + coffeeDensity+ "'";
-            return SELECT_QUERY;
 
         }
 
@@ -186,22 +184,20 @@ public class DatabaseContract {
         }
 
         public static String selectQuery(String brewer, String volume, String density){
-            String SELECT_QUERY = "SELECT " +
+            return "SELECT " +
                     "*" + " FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
                     COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
                     COLUMN3_NAME + EQUALS + "'" + density+ "'";
-            return SELECT_QUERY;
         }
 
         public static String deleteQuery(String brewer, String volume, String density) {
-            String DELETE_QUERY = "DELETE FROM " +
+            return "DELETE FROM " +
                     TABLE_NAME + " WHERE " +
                     COLUMN1_NAME + EQUALS + "'" + brewer  + "'" + AND +
                     COLUMN2_NAME + EQUALS + "'" + volume + "'"+ AND +
                     COLUMN3_NAME + EQUALS + "'" + density+ "'";
-            return DELETE_QUERY;
 
         }
 
