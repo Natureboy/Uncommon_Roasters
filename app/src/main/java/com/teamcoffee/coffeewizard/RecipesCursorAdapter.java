@@ -49,38 +49,13 @@ public class RecipesCursorAdapter extends CursorAdapter {
         final String volume = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN2_NAME));
         final String weight = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.TableOne.COLUMN3_NAME));
 
-        final AlertDialog.Builder favoriteNamePrompt = new AlertDialog.Builder(context);
-        favoriteNamePrompt.setTitle("Name This Brew!");
-        favoriteNamePrompt.setMessage("Choose a name for this brew:");
-        final EditText input = new EditText(context);
-        favoriteNamePrompt.setView(input);
-        favoriteNamePrompt.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DatabaseHelper dbHelper = new DatabaseHelper(context);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                name = input.getText().toString();
-                if(name.equals("")){
-                    name = brewer + density + volume + weight;
-                }
-                try {
-                    final String insertFavoriteQuery = DatabaseContract.TableThree.insertQuery(brewer, volume, density, weight, name);
-                    db.execSQL(insertFavoriteQuery);
-                }catch (SQLiteConstraintException e){
-                    //This ignores a "unique" constraint error, which is in place to prevent
-                    //duplicate database entries.
-                }
-            }
-        });
-
-
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String selectQuery = DatabaseContract.TableThree.selectQuery(brewer, volume, density, weight);
 
+        //Checks if the entry is a favorite or not, then fills in the heart as applicable
         Cursor c = db.rawQuery(selectQuery, null);
-
         if(c.moveToNext()){
             toggleFavorite.setChecked(true);
         }
@@ -102,7 +77,41 @@ public class RecipesCursorAdapter extends CursorAdapter {
             @Override
             public void onClick(View v) {
                 if(toggleFavorite.isChecked()){
+                    final AlertDialog.Builder favoriteNamePrompt = new AlertDialog.Builder(context);
+                    favoriteNamePrompt.setTitle("Name This Brew!");
+                    favoriteNamePrompt.setMessage("Choose a name for this brew:");
+                    final EditText input = new EditText(context);
+                    favoriteNamePrompt.setView(input);
+                    favoriteNamePrompt.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            DatabaseHelper dbHelper = new DatabaseHelper(context);
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+                            name = input.getText().toString();
+                            if (name.equals("")) {
+                                favoriteNamePrompt.setMessage("Please enter a name or push cancel.");
+                            } else {
+                                try {
+                                    final String insertFavoriteQuery = DatabaseContract.TableThree.insertQuery(brewer, volume, density, weight, name);
+                                    db.execSQL(insertFavoriteQuery);
+                                } catch (SQLiteConstraintException e) {
+                                    //This ignores a "unique" constraint error, which is in place to prevent
+                                    //duplicate database entries.
+                                }
+                            }
+                        }
+                    });
+                    favoriteNamePrompt.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+
+
                     favoriteNamePrompt.show();
+
                 }
                 else{
                     DatabaseHelper dbHelper = new DatabaseHelper(context);
@@ -111,7 +120,6 @@ public class RecipesCursorAdapter extends CursorAdapter {
                     db.close();
                     dbHelper.close();
                 }
-
             }
         });
 
