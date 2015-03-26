@@ -1,8 +1,6 @@
 package com.teamcoffee.coffeewizard;
 
-
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,26 +8,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
-public class MainActivity extends ActionBarActivity {
+/**
+ * Created by AleX on 3/25/2015.
+ */
+public class ContactUsActivity  extends ActionBarActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //Used to create a database in order to inspect it outside of the app.
-        //TODO: Remove when the app is ready to deploy
-        DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.close();
-
+        setContentView(R.layout.activity_contact_us);
     }
 
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_contact_us, menu);
         return true;
     }
 
@@ -51,38 +44,47 @@ public class MainActivity extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
-        if (id == R.id.action_contact_us) {
-            Intent intent = new Intent(this, ContactUsActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void openWeb(View view){
-        String url = "https://uncommoncoffeeroasters.com/";
+    public void facebook(View view){
+        String url = "https://www.facebook.com/uncommongroundssaugatuck";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
+    public void twitter(View view){
+        String url = "https://twitter.com/SaugatuckUG";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
+    public void googlePlus(View view){
+        String url = "https://plus.google.com/+UncommonCoffeeRoastersSaugatuck";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
 
-    public void openDial_in(View view){
-        Intent i = new Intent(this, DialActivity.class);
+    public void foursqaure(View view){
+        String url = "https://foursquare.com/v/uncommon-coffee-roasters/4b4bc07ef964a52070a626e3";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
         startActivity(i);
     }
 
-    public void openBrews(View view){
-        Intent i = new Intent(this, BrewsActivity.class);
+    public void instagram(View view){
+        String url = "https://instagram.com/uncommoncoffeeroasters/";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
         startActivity(i);
     }
-    public void openFAQ(View view){
-        Intent i = new Intent(this, FAQActivity.class);
+
+    public void yelp(View view){
+        String url = "http://www.yelp.com/biz/uncommon-coffee-roasters-saugatuck";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
         startActivity(i);
     }
-
-
-
-
 }
