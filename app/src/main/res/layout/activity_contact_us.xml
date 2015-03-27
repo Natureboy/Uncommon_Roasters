@@ -30,14 +30,14 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/facebook"
+        android:src="@drawable/twitter"
         android:id="@+id/twitter"
         android:onClick="twitter"
         style="?android:attr/borderlessButtonStyle"/>
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/facebook"
+        android:src="@drawable/instagram"
         android:id="@+id/insta"
         android:onClick="instagram"
         style="?android:attr/borderlessButtonStyle"/>
@@ -51,7 +51,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/facebook"
+        android:src="@drawable/googleplus"
         android:id="@+id/google"
         android:onClick="googlePlus"
         style="?android:attr/borderlessButtonStyle"/>
@@ -59,14 +59,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/foursq"
-        android:src="@drawable/facebook"
+        android:src="@drawable/foursquare_2"
         android:onClick="foursqaure"
         style="?android:attr/borderlessButtonStyle"/>
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/yelp"
-        android:src="@drawable/facebook"
+        android:src="@drawable/yelp"
         android:onClick="yelp"
         style="?android:attr/borderlessButtonStyle"/>
     </LinearLayout>
