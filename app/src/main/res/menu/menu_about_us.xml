@@ -4,4 +4,6 @@
     tools:context="com.teamcoffee.coffeewizard.about_us">
     <item android:id="@+id/action_faq" android:title="@string/action_faq"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_contact_us" android:title="@string/contact_us"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

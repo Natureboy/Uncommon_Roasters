@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="#2A2A2A">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/find_us"
+        android:layout_gravity="center"
+        android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#D2CCB2"/>
 
@@ -14,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="30dp"
         android:layout_gravity="center"
         >
     <ImageButton
@@ -26,7 +30,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/twitter"
+        android:src="@drawable/facebook"
         android:id="@+id/twitter"
         android:onClick="twitter"
         style="?android:attr/borderlessButtonStyle"/>
@@ -42,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingTop="15dp"
         android:layout_gravity="center">
     <ImageButton
         android:layout_width="wrap_content"
@@ -65,5 +70,26 @@
         android:onClick="yelp"
         style="?android:attr/borderlessButtonStyle"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/call_us"
+        android:autoLink="phone"
+        android:textColor="#D2CCB2"
+        android:id="@+id/textView2" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:id="@+id/imageView2"
+        android:src="@drawable/logo"
+        android:layout_gravity="bottom"
+         />
+
 
 </LinearLayout>

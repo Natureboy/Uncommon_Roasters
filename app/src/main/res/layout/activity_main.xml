@@ -62,8 +62,9 @@
     </TableRow>
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="280dp"
-            android:layout_height="99dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             android:layout_gravity="bottom"
             android:src="@drawable/logo"
             />

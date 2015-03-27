@@ -199,6 +199,11 @@ public class DialActivity extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.action_contact_us) {
+            Intent intent = new Intent(this, ContactUsActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

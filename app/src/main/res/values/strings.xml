@@ -60,66 +60,7 @@
     <string name="title_activity_preparation">preparation</string>
     <string name="contact_us">Contact Us</string>
     <string name="find_us">Find us on your favorite social media!</string>
+    <string name="call_us">If you have any questions, please call us at 1-855-472-8885</string>
 
-    <!--<string name="pour_water_heading">Pouring Water</string>-->
-    <!--<string name="pour_water_1">      </string>-->
-    <!--<string name="pour_water_2">Coffee can be brewed in many different ways, but we chose to utilize a slow pouring method-->
-        <!--because it supplies the most consistent results. Pouring with high velocities will force the coffee to move inside-->
-        <!--the brewer, agitating the coffee grounds, causing some grounds to extract at different rates than others. Secondly,-->
-        <!--the water will drip faster and less consistently when stirred around than it will with a flat and even coffee bed.</string>-->
-    <!--<string name="pour_water_3">Practical Solutions - The best choices for pour-over brewing are gooseneck kettles which-->
-        <!--provide ample control over the water flow. The best results come from filling the kettle only half to three quarters-->
-        <!--full.  For additional consistency, you can insert a flow restrictor into the tip of the kettle. </string>-->
-    <!--<string name="grind_q_heading">Grind Quality</string>-->
-    <!--<string name="grindq_1">Apart from great coffee, the grind quality is possibly the most important component to delicious coffee.-->
-        <!--Unfortunately, this happens to be one of the least accessible factors in coffee brewing. Nice grinders are expensive...-->
-        <!--And even the best grinders needs help in achieving the optimal grind size. Most of the brew recipes and brewers will use-->
-        <!--a similar grind size. Start by matching the grind size to the picture provided. If your coffee tastes sour or brews too-->
-        <!--quickly, adjust the grind FINER. If the the coffee tastes bitter or brews too slowly, grind the coffee COARSER. The-->
-        <!--grind size for the V60 and Press pot will be very similar for our recipes, but the chemex will use a slightly coarser grind.-->
-        <!--The grounds should feel like a medium fine table salt if run between your fingers. The grind size will affect how quickly-->
-        <!--water will flow through the coffee bed. As a rule of thumb, the finer you grind, the more flow restriction (the water will-->
-        <!--flow slower). However, inconsistent grinds can flow slow because the fines and boulders are plugging up the holes that-->
-        <!--would be there if the grounds were more even. </string>-->
-    <!--<string name="grindq_2">Grinders - All grinders will perform differently, even the same models will vary slightly.-->
-        <!--Successful coffee brewing comes from maximizing the uniformity (evenness) of ground coffee particles because the-->
-        <!--particle size determines how quickly the coffee will be extracted.</string>-->
-    <!--<string name="grindq_2a">Burr Grinders -  Burr grinders supply the best grind uniformity, however, flat burrs tend to-->
-        <!--do a better job than conical burrs. In addition to the burrs’ teeth shape, the size of the burrs matter too. We tend-->
-        <!--to favor larger burrs because they chop the coffee a greater number of times before the grounds exit the grinder.-->
-        <!--This means that it is more likely that the grounds will end up being the correct size.</string>-->
-    <!--<string name="grindq_2b">Blade Grinders - Blade grinders work, but they aren’t ideal as you can’t control the -->
-        <!--particle size. Try experimenting with pulsing and shaking the grinder so that all parts of the beans are-->
-        <!--chopped.</string>-->
-    <!--<string name="grindq_3">Fines and Boulders - Fines and boulders are what we call the extreme outliers for particles that are-->
-        <!--too big and small. These components are inevitable, but we can reduce them by changing burrs once worn down or dull. </string>-->
-    <!--<string name="grindq_3a">Tips - We can get rid of our fines and boulders by using a few simple tricks. Ideally, we want a-->
-        <!--grind size of 400 microns, but this is hardly measurable at home without buying a sieve or expensive gear.</string>-->
-    <!--<string name="grindq_3b">One - Grind a little extra coffee and run the grounds through a fine kitchen sifter. This will-->
-        <!--catch the boulders we don’t want. Go ahead and discard them.</string>-->
-    <!--<string name="grindq_3c">Two - Dump grounds onto a paper towel or a damp coffee filter and rub the coffee into the paper.-->
-        <!--The fines should stick the paper towel or filter. Throw away the paper towel when finished. </string>-->
-    <!--<string name="grindq_3d">Your grounds are ready to go and much more consistent than before! </string>-->
-    <!--<string name="waterq_heading">Water Quality</string>-->
-    <!--<string name="waterq_1">Coffee is is about 98-99% water, it only makes sense that we need tasty water to make tasty coffee.-->
-        <!--As a general rule, if the water tastes bad, so will the coffee, but there are components to water that you may not notice-->
-        <!--that are hurting your brew quality. Optimally, we don’t want our water to taste like anything, but that’s not to say we want-->
-        <!--our water distilled. We do NEED minerals in our water for us extract our coffee properly, but in order to protect our equipment-->
-        <!--and maximize taste we want to keep the minerals to a minimum. Water as soft as 80ppm can taste great, as well as coffees up-->
-        <!--to 140ppm. Ideally, we want our minerals to be magnesium and calcium as they are some of the biggest flavor extractors of coffee.-->
-        <!--We want to avoid, salts, chlorine, fluoride, etc. We recommend a Reverse Osmosis system with the option to blend in hard water.-->
-        <!--We understand that this is probably not accessible in the kitchen. If not, we recommend using a normal pitcher filter (like britta)-->
-        <!--, and blending that with anywhere from 30-50% distilled water. Experiment to find where your water tastes best! </string>-->
-    <!--<string name="coffee_dens_heading">Coffee Density</string>-->
-    <!--<string name="coffee_dens_1">In the ‘Dial-In’ option in the Coffee Wizard, we ask you to choose a low, medium, or high density options-->
-        <!--for the coffee. This refers to the bean density of the coffee. Depending on how the coffee was roasted in addition to its green-->
-        <!--qualities, each coffee with have a unique amount of moisture and density of organic matter. We gave you three options that should-->
-        <!--get you in the ballpark of your target brew time. The denser a coffee, the longer it takes for water to penetrate the grounds.-->
-        <!--This means that the highest density coffees will flow slower, and will take longer to extract. Likewise, the lowest density-->
-        <!--coffees will brew much easier and quickly.</string>-->
-    <!--<string name="coffee_dens_2">To find the density of your coffee, you can either take a bite out of a roasted bean, or you can try-->
-        <!--to crush it in your fingers. The lower the density, the easier it will be to break. If if feels like you're eating potato chips,-->
-        <!--it is most likely low density. If if feels like you’re eating a soft marble, it will most likely be high density. As a rule of-->
-        <!--thumb, a ‘light’ roast will mean the coffee is high density, and a ‘Dark’ roast is low density. If your coffee brewed radically-->
-        <!--too fast or slow, try selecting a different density. </string>-->
+
 </resources>
