@@ -60,7 +60,9 @@
     <string name="title_activity_preparation">preparation</string>
     <string name="contact_us">Contact Us</string>
     <string name="find_us">Find us on your favorite social media!</string>
-    <string name="call_us">If you have any questions, please call us at 1-855-472-8885</string>
+    <string name="call_us">If you have any questions, please call us at 1-269-455-5111</string>
+    <string name="open">Open the Drawer</string>
+    <string name="close">Close the Drawer</string>
 
 
 </resources>
