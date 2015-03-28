@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:focusableInTouchMode="false"
-        android:id="@+id/tableRow">
+        android:id="@+id/brewsTitleRow">
 
         <TextView
             android:id="@+id/brewer"

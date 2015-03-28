@@ -3,11 +3,13 @@ package com.teamcoffee.coffeewizard;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 /*
@@ -22,12 +24,18 @@ public class BrewsActivity extends ActionBarActivity {
     private ListView brewsList;
     private Cursor favorites, recent;
     private String select_favorites_query, select_recent_query;
+    private Button favoriteButton, recentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brews);
+
         brewsList = (ListView) findViewById(R.id.brewsList);
+        favoriteButton = (Button) findViewById(R.id.favoriteBrewButton);
+        recentButton = (Button) findViewById(R.id.recentBrewButton);
+        recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
 
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -87,6 +95,9 @@ public class BrewsActivity extends ActionBarActivity {
         RecipesCursorAdapterFavorites recipesAdapter = new RecipesCursorAdapterFavorites(this, favorites);
         brewsList.setAdapter(recipesAdapter);
         db.close();
+        favoriteButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        recentButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
+
     }
 
     public void recentButton(View view){
@@ -96,6 +107,8 @@ public class BrewsActivity extends ActionBarActivity {
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
         brewsList.setAdapter(recipesAdapter);
         db.close();
+        recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
     }
 
 }
