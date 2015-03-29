@@ -3,6 +3,8 @@ package com.teamcoffee.coffeewizard;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
@@ -38,16 +40,13 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     int s; // Timer duration in seconds
     private long startTime;
     private long overflowStart; // set to 2.8% of main timer for overflow timer
-    //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
     private final long interval = 1000; //We increment by 1000 milliseconds each tick
     private HashMap<Integer,String> events;
     private NotificationCompat.Builder mBuilder;
     private NotificationManager notifyMgr;
     private int notifyID = 0;
 
-    //TODO Alerts, notifications
-    //TODO Check LED change on notification
-    //TODO setTicker
+    //TODO Alerts, notifications - return to app, sounds
     //TODO Wake up screen on notify
 
     @Override
@@ -80,10 +79,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         timerText.setText(timerText.getText() + millisToString(startTime));
         instrText.setText("Set up your machine with your selected coffee, then press Start. " +
                 "Additional instructions will appear here.");
-
+        Uri notifySound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mBuilder =
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.googleplus)
+                .setSmallIcon(R.drawable.logo)
+                .setSound(notifySound)
                 .setContentTitle("Coffee Wizard")
                 .setContentText("New Brewing Step");
 
