@@ -11,11 +11,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/coffee_weight"
         android:textColor="#D2CCB2"
         android:id="@+id/coffeeWeightText"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/waterVolumeNumber"
         android:layout_centerHorizontal="true"
         android:layout_alignLeft="@+id/titleText"
@@ -37,7 +37,7 @@
         android:layout_alignLeft="@+id/titleText"
         android:layout_alignRight="@+id/titleText"
         android:gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:text="@string/size_default"
         android:enabled="true" />
 
@@ -50,13 +50,13 @@
         android:clickable="false"
         android:layout_alignRight="@+id/titleText"
         android:layout_alignLeft="@+id/titleText"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:layout_below="@+id/selectDensityText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/coffee_density"
         android:textColor="#D2CCB2"
         android:id="@+id/selectDensityText"
@@ -66,7 +66,7 @@
         android:layout_alignStart="@+id/coffeeWeightValue"
         android:layout_alignRight="@+id/titleText"
         android:layout_below="@+id/coffeeWeightValue"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="10dp" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -81,14 +81,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/water_volume"
         android:textColor="#D2CCB2"
         android:id="@+id/waterVolumeText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
         android:gravity="center"
         android:layout_below="@+id/brewSpinner" />
 
@@ -106,13 +106,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#D2CCB2"
         android:id="@+id/waterVolumeNumber"
         android:hint="Current Water Volume"
         android:layout_below="@+id/waterSeekBar"
         android:layout_alignRight="@+id/titleText"
         android:layout_alignLeft="@+id/titleText"
+        android:layout_marginTop="0dp"
         android:gravity="center" />
 
     <Button
@@ -126,18 +127,18 @@
         android:focusable="false"
         android:onClick="brewButton"
         android:layout_below="@+id/coffeeDensityValue"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#D2CCB2"
         android:text="@string/coffee_density_value"
         android:id="@+id/coffeeDensityValue"
         android:layout_below="@+id/densitySeekBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:gravity="center"
         android:layout_alignLeft="@+id/titleText"
         android:layout_alignRight="@+id/titleText" />
@@ -156,12 +157,13 @@
 
     <ImageView
         android:id="@+id/imageLogoDial"
-        android:layout_width="280dp"
-        android:layout_height="99dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:src="@drawable/logo"
         android:layout_below="@+id/brewButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="10dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
