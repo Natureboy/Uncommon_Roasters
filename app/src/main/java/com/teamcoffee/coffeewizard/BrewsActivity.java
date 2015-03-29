@@ -51,6 +51,14 @@ public class BrewsActivity extends ActionBarActivity {
         db.close();
     }
 
+    // Get parent activity so that up (<-) button returns to calling activity instead of starting
+    //  a new one
+    @Override
+    public Intent getSupportParentActivityIntent () {
+        Intent upButtonIntent = new Intent(this, getIntent().getClass());
+
+        return upButtonIntent;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

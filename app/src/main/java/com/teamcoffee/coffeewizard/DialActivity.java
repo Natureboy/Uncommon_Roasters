@@ -157,6 +157,15 @@ public class DialActivity extends ActionBarActivity {
 
     }
 
+    // Get parent activity so that up (<-) button returns to calling activity instead of starting
+    //  a new one
+    @Override
+    public Intent getSupportParentActivityIntent () {
+        Intent upButtonIntent = new Intent(this, getIntent().getClass());
+
+        return upButtonIntent;
+    }
+
     private void setScreenElements(boolean weightEnabled, String weightValue, int waterMax, int waterProgress, String waterValue,
                                    int densityVisibility){
         coffeeWeight.setEnabled(weightEnabled);
