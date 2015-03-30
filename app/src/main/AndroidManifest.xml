@@ -30,7 +30,8 @@
             android:name=".CountdownActivity"
             android:label="Timer"
             android:parentActivityName=".CountdownActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.teamcoffee.coffeewizard.CountdownActivity" />

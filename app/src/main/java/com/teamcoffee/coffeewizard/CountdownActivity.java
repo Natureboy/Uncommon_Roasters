@@ -1,6 +1,7 @@
 package com.teamcoffee.coffeewizard;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
@@ -88,6 +89,17 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
                 .setContentText("New Brewing Step");
 
         notifyID = 0;
+
+        Intent resultIntent = new Intent(this, CountdownActivity.class);
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
     }
 
 //    @Override
