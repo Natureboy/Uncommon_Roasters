@@ -43,12 +43,12 @@
 
     </LinearLayout>
 
-    <ListView
+    <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#2A2A2A"
         android:background="#D2CCB2"
-        android:id="@+id/brewsList"
+        android:id="@+id/brewsExpandList"
         android:layout_centerHorizontal="true"
         android:scrollbars="vertical"
         android:layout_below="@+id/brewsTitleRow" />
@@ -108,5 +108,15 @@
             android:textStyle="bold" />
 
     </TableRow>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#2A2A2A"
+        android:background="#D2CCB2"
+        android:id="@+id/brewsList"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/brewsTitleRow" />
 
 </RelativeLayout>

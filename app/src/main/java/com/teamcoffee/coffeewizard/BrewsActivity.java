@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 /*
@@ -25,6 +26,8 @@ public class BrewsActivity extends ActionBarActivity {
     private Cursor favorites, recent;
     private String select_favorites_query, select_recent_query;
     private Button favoriteButton, recentButton;
+    private ExpandableListView expandView;
+    private FavoritesExpandableCursorAdapter expandAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,14 @@ public class BrewsActivity extends ActionBarActivity {
 
         recent = db.rawQuery(select_recent_query, null);
 
+        favorites = db.rawQuery(select_favorites_query, null);
+
+        expandView = (ExpandableListView) findViewById(R.id.brewsExpandList);
+
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
+
+
+        expandView.setVisibility(View.INVISIBLE);
 
         brewsList.setAdapter(recipesAdapter);
         db.close();
@@ -55,9 +65,8 @@ public class BrewsActivity extends ActionBarActivity {
     //  a new one
     @Override
     public Intent getSupportParentActivityIntent () {
-        Intent upButtonIntent = new Intent(this, getIntent().getClass());
 
-        return upButtonIntent;
+        return new Intent(this, getIntent().getClass());
     }
 
     @Override
@@ -100,8 +109,16 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         favorites = db.rawQuery(select_favorites_query, null);
-        RecipesCursorAdapterFavorites recipesAdapter = new RecipesCursorAdapterFavorites(this, favorites);
-        brewsList.setAdapter(recipesAdapter);
+        expandAdapter = new FavoritesExpandableCursorAdapter(favorites, this,
+                R.layout.brews_list_group,
+                R.layout.recipes_list,
+                new String[] {"name"},
+                new int[] {R.id.brewNameText},
+                new String[] {"machine", "coffeeDensity", "coffeeWeight", "coffeeVolume"},
+                new int[] {R.id.brewer, R.id.density, R.id.weight, R.id.volume});
+        expandView.setAdapter(expandAdapter);
+        brewsList.setVisibility(View.INVISIBLE);
+        expandView.setVisibility(View.VISIBLE);
         db.close();
         favoriteButton.setBackgroundColor(Color.parseColor("#f1efe7"));
         recentButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
@@ -115,6 +132,8 @@ public class BrewsActivity extends ActionBarActivity {
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
         brewsList.setAdapter(recipesAdapter);
         db.close();
+        brewsList.setVisibility(View.VISIBLE);
+        expandView.setVisibility(View.INVISIBLE);
         recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
         favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
     }

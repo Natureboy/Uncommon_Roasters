@@ -2,7 +2,6 @@ package com.teamcoffee.coffeewizard;
 
 
 import android.provider.BaseColumns;
-import android.util.Pair;
 
 /**
  * Created by Brendan on 2/26/2015.
@@ -218,8 +217,6 @@ public class DatabaseContract {
                     COLUMN4_NAME + EQUALS + "'" + weight + "'";
 
         }
-
-
     }
 
     public static abstract class TableFour implements BaseColumns{
