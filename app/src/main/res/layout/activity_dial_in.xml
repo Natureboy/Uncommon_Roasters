@@ -113,7 +113,8 @@
         android:layout_below="@+id/waterSeekBar"
         android:layout_alignRight="@+id/titleText"
         android:layout_alignLeft="@+id/titleText"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_alignParentEnd="false" />
 
     <Button
         android:layout_width="wrap_content"
@@ -153,15 +154,5 @@
         android:layout_alignRight="@+id/titleText"
         android:gravity="right"
         android:popupBackground="#D2CCB2" />
-
-    <ImageView
-        android:id="@+id/imageLogoDial"
-        android:layout_width="280dp"
-        android:layout_height="99dp"
-        android:layout_gravity="bottom"
-        android:src="@drawable/logo"
-        android:layout_below="@+id/brewButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
 
 </RelativeLayout>

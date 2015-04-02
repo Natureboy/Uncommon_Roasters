@@ -30,7 +30,6 @@ public class DialActivity extends ActionBarActivity {
     private TextView waterVolume, coffeeWeight, coffeeDensity, coffeeDensityLabel;
     private Spinner spinner;
     private AlertDialog.Builder builder1;
-    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +43,6 @@ public class DialActivity extends ActionBarActivity {
         coffeeDensity = (TextView) findViewById(R.id.coffeeDensityValue);
         waterVolume.setText(Integer.toString(water.getProgress()));
         coffeeDensityLabel = (TextView) findViewById(R.id.selectDensityText);
-        logo = (ImageView) findViewById(R.id.imageLogoDial);
-        logo.setVisibility(View.GONE);
         coffeeDensity.setText("Medium Density");
         waterVolume.setText("200");
 
@@ -173,14 +170,14 @@ public class DialActivity extends ActionBarActivity {
         water.setProgress(waterProgress);
         coffeeWeight.setText(weightValue);
         waterVolume.setText(waterValue);
-        coffeeDensity.setVisibility(densityVisibility);
-        density.setVisibility(densityVisibility);
-        coffeeDensityLabel.setVisibility(densityVisibility);
         if(densityVisibility == View.VISIBLE){
-            logo.setVisibility(View.GONE);
+            density.setEnabled(true);
+            coffeeDensity.setText("Medium Density");
         }
         else{
-            logo.setVisibility(View.VISIBLE);
+            density.setEnabled(false);
+            coffeeDensity.setText("Not Applicable");
+            density.setProgress(1);
         }
     }
 
