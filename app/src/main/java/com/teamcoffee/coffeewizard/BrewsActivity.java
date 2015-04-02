@@ -28,6 +28,7 @@ public class BrewsActivity extends ActionBarActivity {
     private Button favoriteButton, recentButton;
     private ExpandableListView expandView;
     private FavoritesExpandableCursorAdapter expandAdapter;
+    private FavoriteViewBinder viewBinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,8 +115,10 @@ public class BrewsActivity extends ActionBarActivity {
                 R.layout.recipes_list,
                 new String[] {"name"},
                 new int[] {R.id.brewNameText},
-                new String[] {"machine", "coffeeDensity", "coffeeWeight", "coffeeVolume"},
-                new int[] {R.id.brewer, R.id.density, R.id.weight, R.id.volume});
+                new String[] {"machine", "coffeeDensity", "coffeeWeight", "coffeeVolume", "_id", "_id"},
+                new int[] {R.id.brewer, R.id.density, R.id.weight, R.id.volume, R.id.toggleButton, R.id.brewButton});
+        viewBinder = new FavoriteViewBinder(this);
+        expandAdapter.setViewBinder(viewBinder);
         expandView.setAdapter(expandAdapter);
         brewsList.setVisibility(View.INVISIBLE);
         expandView.setVisibility(View.VISIBLE);
