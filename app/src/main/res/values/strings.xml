@@ -63,6 +63,49 @@
     <string name="call_us">If you have any questions, please call us at 1-269-455-5111</string>
     <string name="open">Open the Drawer</string>
     <string name="close">Close the Drawer</string>
+    <string name="fh_pour">Pouring Water</string>
+    <string name="ft_pour_top">For the recipes in the Coffee Wizard to be applicable, the user must pour the water
+        as restricted and slowly as possible without letting the water stream drip. This will maximize consistency
+        and let the grind size and coffee density determine our overall brew time. Start by pouring the water from
+        the center out to the edge of the brewer in quick circles as to saturate all grounds evenly.
+        Remember, we want a restricted flow, but quick circles.</string>
+    <string name="fsh_sol">Practical Solutions \n\n</string>
+    <string name="fh_grind_q">Grind Quality</string>
+    <string name="ft_grind">Most of the brew recipes and brewers will use a similar grind
+        size. Start by matching the grind size to the picture provided. If your coffee tastes
+        sour or brews too quickly, adjust the grind FINER. If the the coffee tastes bitter or
+        brews too slowly, grind the coffee COARSER. The grind size for the V60 and Press pot
+        will be very similar for our recipes, but the chemex will use a slightly coarser grind.
+        The grounds should feel like a medium fine table salt if run between your fingers. \n
+    </string>
+    <string name="fsh_grinders">Grinders </string>
+    <string name="ft_grinders">All grinders will perform differently, even the same models
+        will vary slightly. Successful coffee brewing comes from maximizing the uniformity
+        (evenness) of ground coffee particles because the particle size determines how quickly
+        the coffee will be extracted.\n</string>
+    <string name="ft_grind_burr">Burr Grinders - Burr grinders supply the best grind uniformity,
+        however, flat burrs tend to do a better job than conical burrs. In addition to the burrs’
+        teeth shape, the size of the burrs matter too. We tend to favor larger burrs because they
+        chop the coffee a greater number of times before the grounds exit the grinder. This means
+        that it is more likely that the grounds will end up being the correct size.\n</string>
+    <string name="ft_grind_blade">Blade Grinders - Blade grinders work, but they aren’t
+        ideal as you can’t control the particle size. Try experimenting with pulsing and
+        shaking the grinder so that all parts of the beans are chopped. \n</string>
+    <string name="fsh_fab">Fines and Boulders</string>
+    <string name="fh_waterq">Water Quality</string>
+    <string name="fh_coffeed">Coffee Density</string>
+    <string name="title_activity_new_faq">FAQ Page</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>

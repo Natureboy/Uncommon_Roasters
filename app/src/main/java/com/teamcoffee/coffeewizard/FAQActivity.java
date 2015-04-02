@@ -23,9 +23,9 @@ public class FAQActivity extends ActionBarActivity {
 
         // Find our drawer view
         dlDrawer = (FragmentNavigationDrawer) findViewById(R.id.drawer_layout);
-        // Setup drawer view
-        dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), toolbar,
-                R.layout.nav_drawer_item, R.id.flContent);
+//        // Setup drawer view
+//        dlDrawer.setupDrawerConfiguration((ListView) findViewById(R.id.lvDrawer), toolbar,
+//                R.layout.nav_drawer_item, R.id.flContent);
         // Add nav items
         dlDrawer.addNavItem("First", "First Fragment", GrindFragment.class);
 

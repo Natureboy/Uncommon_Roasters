@@ -4,24 +4,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:fitsSystemWindows="true"
             android:orientation="vertical">
 
-            <!-- The ActionBar -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingTop="10dp"
+                android:id="@+id/gq_header"
+                android:text="@string/fh_pour"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ft_pour_top"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingTop="10dp"
+                android:id="@+id/textView"
+                android:text="@string/fh_grind_q"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ft_grind"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textView2"
+                android:text="@string/fsh_grinders"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ft_grinders"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ft_grind_burr"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/ft_grind_blade"/>
+
             <include
                 layout="@layout/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <!-- The main content view -->
-            <FrameLayout
-                android:id="@+id/flContent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </LinearLayout>
+        <!-- The ActionBar -->
+
+
 
         <!-- The navigation drawer -->
         <ListView
@@ -34,4 +80,5 @@
             android:divider="@android:color/darker_gray"
             android:dividerHeight="0dp"
             android:background="@android:color/background_light" />
+
     </com.teamcoffee.coffeewizard.FragmentNavigationDrawer>

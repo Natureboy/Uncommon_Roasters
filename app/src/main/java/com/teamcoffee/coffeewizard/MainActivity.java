@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_faq) {
-            Intent intent = new Intent(this, FAQActivity.class);
+            Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);
             return true;
         }
@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
     public void openFAQ(View view){
-        Intent i = new Intent(this, FAQActivity.class);
+        Intent i = new Intent(this, NewFAQActivity.class);
         startActivity(i);
     }
 

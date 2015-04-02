@@ -44,7 +44,7 @@ public class ContactUsActivity  extends ActionBarActivity{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_faq) {
-            Intent intent = new Intent(this, FAQActivity.class);
+            Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);
             return true;
         }
