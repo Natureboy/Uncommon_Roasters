@@ -3,11 +3,14 @@ package com.teamcoffee.coffeewizard;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 /*
@@ -22,12 +25,20 @@ public class BrewsActivity extends ActionBarActivity {
     private ListView brewsList;
     private Cursor favorites, recent;
     private String select_favorites_query, select_recent_query;
+    private Button favoriteButton, recentButton;
+    private ExpandableListView expandView;
+    private FavoritesExpandableCursorAdapter expandAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brews);
+
         brewsList = (ListView) findViewById(R.id.brewsList);
+        favoriteButton = (Button) findViewById(R.id.favoriteBrewButton);
+        recentButton = (Button) findViewById(R.id.recentBrewButton);
+        recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
 
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -37,12 +48,26 @@ public class BrewsActivity extends ActionBarActivity {
 
         recent = db.rawQuery(select_recent_query, null);
 
+        favorites = db.rawQuery(select_favorites_query, null);
+
+        expandView = (ExpandableListView) findViewById(R.id.brewsExpandList);
+
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
+
+
+        expandView.setVisibility(View.INVISIBLE);
 
         brewsList.setAdapter(recipesAdapter);
         db.close();
     }
 
+    // Get parent activity so that up (<-) button returns to calling activity instead of starting
+    //  a new one
+    @Override
+    public Intent getSupportParentActivityIntent () {
+
+        return new Intent(this, getIntent().getClass());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,9 +109,20 @@ public class BrewsActivity extends ActionBarActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(BrewsActivity.this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         favorites = db.rawQuery(select_favorites_query, null);
-        RecipesCursorAdapterFavorites recipesAdapter = new RecipesCursorAdapterFavorites(this, favorites);
-        brewsList.setAdapter(recipesAdapter);
+        expandAdapter = new FavoritesExpandableCursorAdapter(favorites, this,
+                R.layout.brews_list_group,
+                R.layout.recipes_list,
+                new String[] {"name"},
+                new int[] {R.id.brewNameText},
+                new String[] {"machine", "coffeeDensity", "coffeeWeight", "coffeeVolume"},
+                new int[] {R.id.brewer, R.id.density, R.id.weight, R.id.volume});
+        expandView.setAdapter(expandAdapter);
+        brewsList.setVisibility(View.INVISIBLE);
+        expandView.setVisibility(View.VISIBLE);
         db.close();
+        favoriteButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        recentButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
+
     }
 
     public void recentButton(View view){
@@ -96,6 +132,10 @@ public class BrewsActivity extends ActionBarActivity {
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
         brewsList.setAdapter(recipesAdapter);
         db.close();
+        brewsList.setVisibility(View.VISIBLE);
+        expandView.setVisibility(View.INVISIBLE);
+        recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
+        favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
     }
 
 }

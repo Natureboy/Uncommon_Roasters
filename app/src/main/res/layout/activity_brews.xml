@@ -23,7 +23,9 @@
             android:gravity="center"
             android:padding="4dp"
             android:onClick="recentButton"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+
+        />
 
         <Button
             android:layout_width="wrap_content"
@@ -36,26 +38,27 @@
             android:gravity="center"
             android:padding="4dp"
             android:onClick="favoriteButton"
+            style="?android:attr/borderlessButtonStyle"
             />
 
     </LinearLayout>
 
-    <ListView
+    <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#2A2A2A"
         android:background="#D2CCB2"
-        android:id="@+id/brewsList"
+        android:id="@+id/brewsExpandList"
         android:layout_centerHorizontal="true"
         android:scrollbars="vertical"
-        android:layout_below="@+id/tableRow" />
+        android:layout_below="@+id/brewsTitleRow" />
 
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
         android:background="#D2CCB2"
-        android:id="@+id/tableRow">
+        android:id="@+id/brewsTitleRow">
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,5 +108,15 @@
             android:textStyle="bold" />
 
     </TableRow>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#2A2A2A"
+        android:background="#D2CCB2"
+        android:id="@+id/brewsList"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/brewsTitleRow" />
 
 </RelativeLayout>

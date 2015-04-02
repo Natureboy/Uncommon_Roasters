@@ -19,6 +19,15 @@ public class ContactUsActivity  extends ActionBarActivity{
         setContentView(R.layout.activity_contact_us);
     }
 
+    // Dynamically set the parent activity so that the up (<-) button in the Action Bar will
+    //  lead to the appropriate previous screen
+    @Override
+    public Intent getSupportParentActivityIntent () {
+        Intent upButtonIntent = new Intent(this, getIntent().getClass());
+
+        return upButtonIntent;
+    }
+
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

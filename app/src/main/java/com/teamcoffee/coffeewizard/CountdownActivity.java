@@ -1,9 +1,14 @@
 package com.teamcoffee.coffeewizard;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,12 +41,14 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     int s; // Timer duration in seconds
     private long startTime;
     private long overflowStart; // set to 2.8% of main timer for overflow timer
-    //TODO: Check with client of proper value of overflow timer (i.e., margin of error on brew time)
     private final long interval = 1000; //We increment by 1000 milliseconds each tick
     private HashMap<Integer,String> events;
+    private NotificationCompat.Builder mBuilder;
+    private NotificationManager notifyMgr;
+    private int notifyID = 0;
 
-    //TODO Run in background
-    //TODO Alerts, notifications
+    //TODO Alerts, notifications - return to app, sounds
+    //TODO Wake up screen on notify
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +80,48 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         timerText.setText(timerText.getText() + millisToString(startTime));
         instrText.setText("Set up your machine with your selected coffee, then press Start. " +
                 "Additional instructions will appear here.");
+        Uri notifySound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        mBuilder =
+                new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.logo)
+                .setSound(notifySound)
+                .setContentTitle("Coffee Wizard")
+                .setContentText("New Brewing Step");
+
+        notifyID = 0;
+
+        Intent resultIntent = new Intent(this, CountdownActivity.class);
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        cdTimer.cancel();
+//        overflowTimer.cancel();
+//    }
+
+
+    @Override
+    public void onBackPressed() {
+        cdTimer.cancel();
+        overflowTimer.cancel();
+        try {
+            notifyMgr.cancelAll();
+        } catch (NullPointerException e){
+
+        }
+        super.onBackPressed();
+    }
+
+
 
     // Dynamically set the parent activity so that the up (<-) button in the Action Bar will
     //  lead to the appropriate previous screen
@@ -88,6 +136,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (finished) {
+            try {
+                notifyMgr.cancelAll();
+            } catch (NullPointerException e){
+
+            }
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
         } else if (!hasStarted) {
@@ -103,6 +156,11 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             startButton.setText("Restart");
             timerText.setText(millisToString(startTime));
             instrText.setText("");
+            try {
+                notifyMgr.cancelAll();
+            } catch (NullPointerException e){
+
+            }
         }
 
         if (hasStartedOverflow) {
@@ -131,6 +189,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             timerText.setAlpha(1);
             flashLayer.setBackgroundColor(Color.WHITE);
             flashLayer.setAlpha(0);
+            notifyMgr.cancelAll();
         }
 
         @Override
@@ -143,19 +202,40 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
                 instrText.setText("Brewing Nearly Finished");
                 instrText.setTextColor(0xFF00CC00);
                 if (millisUntilFinished > 4000) {
+                    // ~5 second mark
 //                    instrText.setBackgroundColor(0x44D2CCB2);
                     flashLayer.setBackgroundColor(0xFF00CC00);
                     flashLayer.setAlpha(0.9f);
+                    mBuilder.setContentTitle("Coffee Wizard")
+                            .setContentText("Brewing almost finished!")
+                            .setTicker("Brewing almost finished!")
+                            .setColor(0x8800CC00)
+                            .setLights(0xFF00CC00, 500, 500);
+                    notifyID++;
+                    notifyMgr.notify(notifyID, mBuilder.build());
+                    notifyMgr.cancel(notifyID - 1);
                 } else {
 //                    instrText.setBackgroundColor(0xFF2A2A2A);
                     flashLayer.setAlpha(0);
                 }
             } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
+                // If instruction field is updated
                 instrText.setText(instrString);
 //                instrText.setTextColor(0xFF2A2A2A);
 //                instrText.setBackgroundColor(0xFFD2CCB2);
                 if (instrString.length() > 0 && ((s*1000)-millisUntilFinished)/1000 > 0) {
                     flashLayer.setAlpha(0.9f);
+
+                    // Issue a notification
+                    notifyID++;
+                    notifyMgr =
+                            (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    mBuilder.setContentText(instrString);
+                    mBuilder.setTicker(instrString);
+                    notifyMgr.notify(notifyID, mBuilder.build());
+                    if (notifyID > 1) {
+                        notifyMgr.cancel(notifyID - 1);
+                    }
                 }
             } else {
 //                instrText.setTextColor(0xFFD2CCB2);
@@ -249,6 +329,15 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             Intent intent = new Intent(this, ContactUsActivity.class);
             startActivity(intent);
             return true;
+        }
+        if (id == android.R.id.home){
+            cdTimer.cancel();
+            overflowTimer.cancel();
+            try {
+                notifyMgr.cancelAll();
+            } catch (NullPointerException e){
+
+            }
         }
 
         return super.onOptionsItemSelected(item);

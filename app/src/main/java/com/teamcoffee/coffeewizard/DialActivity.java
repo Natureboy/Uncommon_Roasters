@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -156,6 +157,15 @@ public class DialActivity extends ActionBarActivity {
 
     }
 
+    // Get parent activity so that up (<-) button returns to calling activity instead of starting
+    //  a new one
+    @Override
+    public Intent getSupportParentActivityIntent () {
+        Intent upButtonIntent = new Intent(this, getIntent().getClass());
+
+        return upButtonIntent;
+    }
+
     private void setScreenElements(boolean weightEnabled, String weightValue, int waterMax, int waterProgress, String waterValue,
                                    int densityVisibility){
         coffeeWeight.setEnabled(weightEnabled);
@@ -290,8 +300,14 @@ public class DialActivity extends ActionBarActivity {
 
         }
 
-        String recent_query = DatabaseContract.TableFour.insertQuery(brewer, waterLevel, densityLevel, weightLevel);
-        db.execSQL(recent_query);
+
+        try {
+            String recent_query = DatabaseContract.TableFour.insertQuery(brewer, waterLevel, densityLevel, weightLevel);
+            db.execSQL(recent_query);
+        }catch (SQLiteConstraintException e){
+            //This ignores a "unique" constraint error, which is in place to prevent
+            //duplicate database entries.
+        }
 
 
         c.close();
