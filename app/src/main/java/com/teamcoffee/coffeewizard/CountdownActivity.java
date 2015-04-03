@@ -77,9 +77,10 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         overflowStart = (long) Math.ceil((double)s * 0.028) * 1000;
         cdTimer = new CoffeeCountDown(startTime, interval);
         overflowTimer = new CoffeeOverflow(overflowStart, interval);
-        timerText.setText(timerText.getText() + millisToString(startTime));
-        instrText.setText("Set up your machine with your selected coffee, then press Start. " +
-                "Additional instructions will appear here.");
+        timerText.setText(millisToString(startTime));
+//        instrText.setText("Set up your machine with your selected coffee, then press Start. " +
+//                "Additional instructions will appear here.");
+        instrText.setText("Additional instructions will appear here during brewing.");
         Uri notifySound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mBuilder =
                 new NotificationCompat.Builder(this)
