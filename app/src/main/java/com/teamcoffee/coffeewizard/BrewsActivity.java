@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.TableRow;
+import android.widget.ToggleButton;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -29,6 +31,7 @@ public class BrewsActivity extends ActionBarActivity {
     private ExpandableListView expandView;
     private FavoritesExpandableCursorAdapter expandAdapter;
     private FavoriteViewBinder viewBinder;
+    private TableRow brewTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,8 @@ public class BrewsActivity extends ActionBarActivity {
         favorites = db.rawQuery(select_favorites_query, null);
 
         expandView = (ExpandableListView) findViewById(R.id.brewsExpandList);
+
+        brewTitles = (TableRow) findViewById(R.id.brewsTitleRow);
 
         RecipesCursorAdapter recipesAdapter = new RecipesCursorAdapter(this, recent);
 
@@ -112,7 +117,7 @@ public class BrewsActivity extends ActionBarActivity {
         favorites = db.rawQuery(select_favorites_query, null);
         expandAdapter = new FavoritesExpandableCursorAdapter(favorites, this,
                 R.layout.brews_list_group,
-                R.layout.recipes_list,
+                R.layout.recipes_list_favorites,
                 new String[] {"name"},
                 new int[] {R.id.brewNameText},
                 new String[] {"machine", "coffeeDensity", "coffeeWeight", "coffeeVolume", "_id", "_id"},
@@ -122,6 +127,7 @@ public class BrewsActivity extends ActionBarActivity {
         expandView.setAdapter(expandAdapter);
         brewsList.setVisibility(View.INVISIBLE);
         expandView.setVisibility(View.VISIBLE);
+        brewTitles.setVisibility(View.INVISIBLE);
         db.close();
         favoriteButton.setBackgroundColor(Color.parseColor("#f1efe7"));
         recentButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
@@ -136,7 +142,9 @@ public class BrewsActivity extends ActionBarActivity {
         brewsList.setAdapter(recipesAdapter);
         db.close();
         brewsList.setVisibility(View.VISIBLE);
+
         expandView.setVisibility(View.INVISIBLE);
+        brewTitles.setVisibility(View.VISIBLE);
         recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));
         favoriteButton.setBackgroundColor(Color.parseColor("#7e7a6a"));
     }

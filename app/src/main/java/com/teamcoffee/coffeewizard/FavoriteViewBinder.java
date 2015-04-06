@@ -28,7 +28,11 @@ public class FavoriteViewBinder implements SimpleCursorTreeAdapter.ViewBinder{
         if (view.getId() == R.id.toggleButton) {
             ToggleButton toggleButton = (ToggleButton) view;
             toggleButton.setChecked(true);
-        } else if (view.getId() == R.id.brewButton) {
+            toggleButton.setTextOff("");
+            toggleButton.setTextOff("");
+            return true;
+        }
+        else if (view.getId() == R.id.brewButton) {
             Button brewButton = (Button) view;
             brewButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +110,9 @@ public class FavoriteViewBinder implements SimpleCursorTreeAdapter.ViewBinder{
                     localContext.startActivity(intent);
                 }
             });
+            return true;
         }
         return false;
     }
+
 }
