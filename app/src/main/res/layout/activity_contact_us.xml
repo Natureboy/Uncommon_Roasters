@@ -75,12 +75,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="50dp"
+        android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/call_us"
         android:autoLink="phone"
         android:textColor="#D2CCB2"
         android:id="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_us"
+        android:id="@+id/button5"
+        android:background="#D2CCB2"
+        android:textColor="#2a2a2a"
+        android:layout_gravity="center_horizontal" />
 
     <ImageView
         android:layout_width="match_parent"
