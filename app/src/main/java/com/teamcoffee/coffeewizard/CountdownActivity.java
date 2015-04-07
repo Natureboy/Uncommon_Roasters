@@ -84,7 +84,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         Uri notifySound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mBuilder =
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.ic_not)
                 .setSound(notifySound)
                 .setContentTitle("Coffee Wizard")
                 .setContentText("New Brewing Step");
