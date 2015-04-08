@@ -5,6 +5,7 @@
     android:background="#2A2A2A"
     android:rowCount="3"
     android:columnCount="1"
+    android:layout_gravity="center_vertical"
     >
     <TableRow
     android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         <Button
             android:id="@+id/button1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/beans"
             android:text="@string/brew_button"
