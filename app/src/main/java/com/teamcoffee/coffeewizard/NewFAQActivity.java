@@ -59,18 +59,32 @@ public class NewFAQActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
+        ScrollView sv = (ScrollView)findViewById(R.id.faq_scroll_view);
+        TextView tv;
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
+                tv =(TextView)findViewById(R.id.pour_header);
+                sv.scrollTo(0,tv.getBaseline());
+                System.out.println("clicked pour");
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
+                tv =(TextView)findViewById(R.id.gq_hdr);
+                sv.scrollTo(0,tv.getTop());
+                System.out.println("clicked grind");
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                tv =(TextView)findViewById(R.id.wq_hdr);
+                sv.scrollTo(0,tv.getTop());
+                System.out.println("clicked water");
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                tv =(TextView)findViewById(R.id.cd_hdr);
+                sv.scrollTo(0,tv.getTop());
+                System.out.println("clicked coffee d");
                 break;
         }
     }
