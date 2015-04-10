@@ -40,6 +40,7 @@ public class RecipesCursorAdapter extends CursorAdapter {
         final TextView textBrewer = (TextView) view.findViewById(R.id.brewer);
         final TextView textDensity = (TextView) view.findViewById(R.id.density);
         final TextView textVolume = (TextView) view.findViewById(R.id.volume);
+
         final ToggleButton toggleFavorite = (ToggleButton) view.findViewById(R.id.toggleButton);
         final Button brewButton = (Button) view.findViewById(R.id.brewButton);
         final TextView textWeight = (TextView) view.findViewById(R.id.weight);
@@ -104,6 +105,7 @@ public class RecipesCursorAdapter extends CursorAdapter {
                     favoriteNamePrompt.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            toggleFavorite.setChecked(false);
                             dialog.cancel();
                         }
                     });

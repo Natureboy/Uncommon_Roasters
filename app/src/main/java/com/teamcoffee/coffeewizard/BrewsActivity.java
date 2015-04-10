@@ -142,7 +142,6 @@ public class BrewsActivity extends ActionBarActivity {
         brewsList.setAdapter(recipesAdapter);
         db.close();
         brewsList.setVisibility(View.VISIBLE);
-
         expandView.setVisibility(View.INVISIBLE);
         brewTitles.setVisibility(View.VISIBLE);
         recentButton.setBackgroundColor(Color.parseColor("#f1efe7"));

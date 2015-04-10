@@ -176,7 +176,7 @@ public class DialActivity extends ActionBarActivity {
         }
         else{
             density.setEnabled(false);
-            coffeeDensity.setText("Not Applicable");
+            coffeeDensity.setText("N/A");
             density.setProgress(1);
         }
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CoffeeWizard</string>
+    <string name="app_name">Coffee Wizard</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_faq">Go to FAQ Page</string>
     <string name="brew_button">Brew</string>
@@ -24,7 +24,7 @@
         <item>Press Pot</item>
         <item>More Brewers Coming Soon!</item>
     </string-array>
-    <string name="title_activity_brews">BrewsActivity</string>
+    <string name="title_activity_brews">Brews</string>
     <string name="recent_brews">Recent Brews</string>
     <string name="favorite_brews">Favorite Brews</string>
     <string name="brewer">Brewer</string>

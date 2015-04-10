@@ -60,7 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
         android:background="#D2CCB2"
-        android:id="@+id/brewsTitleRow">
+        android:id="@+id/brewsTitleRow"
+        android:weightSum="100">
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +73,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
             android:background="#D2CCB2"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_weight="25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -85,7 +87,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
             android:layout_marginLeft="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_weight="25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,7 +97,8 @@
             android:text="@string/coffee_weight_two_line"
             android:id="@+id/textView"
             android:textStyle="bold"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:layout_weight="25" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -107,7 +111,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="#D2CCB2"
             android:layout_marginLeft="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_weight="25" />
 
     </TableRow>
 
