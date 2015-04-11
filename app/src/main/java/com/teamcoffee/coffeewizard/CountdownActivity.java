@@ -103,12 +103,6 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         mBuilder.setContentIntent(resultPendingIntent);
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        cdTimer.cancel();
-//        overflowTimer.cancel();
-//    }
-
 
     @Override
     public void onBackPressed() {
@@ -144,6 +138,7 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             }
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
+            finish();
         } else if (!hasStarted) {
             timerText.setTextColor(0xFFD2CCB2);
             instrText.setTextColor(0xFFD2CCB2);
