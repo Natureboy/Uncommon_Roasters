@@ -13,16 +13,17 @@ import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //Used to create a database in order to inspect it outside of the app.
         //TODO: Remove when the app is ready to deploy
         DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.close();
+
 
     }
 
@@ -67,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+
     }
 
     public void openDial_in(View view){
