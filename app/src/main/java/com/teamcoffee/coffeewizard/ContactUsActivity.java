@@ -23,9 +23,8 @@ public class ContactUsActivity  extends ActionBarActivity{
     //  lead to the appropriate previous screen
     @Override
     public Intent getSupportParentActivityIntent () {
-        Intent upButtonIntent = new Intent(this, getIntent().getClass());
 
-        return upButtonIntent;
+        return new Intent(this, getIntent().getClass());
     }
 
         @Override
@@ -43,6 +42,11 @@ public class ContactUsActivity  extends ActionBarActivity{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.action_faq) {
             Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);

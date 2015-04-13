@@ -107,7 +107,7 @@
     <string name="ft_tip3">- Your grounds are ready to go and much more consistent
         than before! \n</string>
     <string name="fh_waterq">Water Quality</string>
-    <string name="ft_waterq">Coffee is is about 98-99% water, it only makes sense that we need
+    <string name="ft_waterq">Coffee is about 98-99% water, it only makes sense that we need
         tasty water to make tasty coffee. As a general rule, if the water tastes bad, so will
         the coffee, but there are components to water that you may not notice that are hurting
         your brew quality. Optimally, we don’t want our water to taste like anything, but that’s
@@ -151,6 +151,7 @@
     <string name="action_settings">Settings</string>
     <string name="faq_page">FAQ Page</string>
     <string name="rate_us">Rate Us on the Play Store!</string>
+    <string name="return_home">Back to Home Page</string>
 
 
 

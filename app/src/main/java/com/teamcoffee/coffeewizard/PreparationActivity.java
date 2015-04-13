@@ -44,8 +44,13 @@ public class PreparationActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.action_faq) {
-            Intent intent = new Intent(this, FAQActivity.class);
+            Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);
             return true;
         }

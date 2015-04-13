@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TableRow;
-import android.widget.ToggleButton;
 
 /*
 * Created by Brendan on 3/1/2015.
@@ -90,6 +89,11 @@ public class BrewsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.action_faq) {
             Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);

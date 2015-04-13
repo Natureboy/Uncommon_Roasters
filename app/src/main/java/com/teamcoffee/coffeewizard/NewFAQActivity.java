@@ -2,21 +2,17 @@ package com.teamcoffee.coffeewizard;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -41,7 +37,7 @@ public class NewFAQActivity extends ActionBarActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        mTitle = "FAQ Page";
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -58,33 +54,30 @@ public class NewFAQActivity extends ActionBarActivity
                 .commit();
     }
 
+
     public void onSectionAttached(int number) {
         ScrollView sv = (ScrollView)findViewById(R.id.faq_scroll_view);
         TextView tv;
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+//                mTitle = getString(R.string.title_section1);
                 tv =(TextView)findViewById(R.id.pour_header);
                 sv.scrollTo(0,tv.getBaseline());
-                System.out.println("clicked pour");
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+//                mTitle = getString(R.string.title_section2);
                 tv =(TextView)findViewById(R.id.gq_hdr);
                 sv.scrollTo(0,tv.getTop());
-                System.out.println("clicked grind");
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+//                mTitle = getString(R.string.title_section3);
                 tv =(TextView)findViewById(R.id.wq_hdr);
                 sv.scrollTo(0,tv.getTop());
-                System.out.println("clicked water");
                 break;
             case 4:
-                mTitle = getString(R.string.title_section4);
+//                mTitle = getString(R.string.title_section4);
                 tv =(TextView)findViewById(R.id.cd_hdr);
                 sv.scrollTo(0,tv.getTop());
-                System.out.println("clicked coffee d");
                 break;
         }
     }
@@ -117,7 +110,11 @@ public class NewFAQActivity extends ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
+        if (id == R.id.action_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
         if (id == R.id.action_about_us) {
             Intent intent = new Intent(this, AboutUsActivity.class);
             startActivity(intent);
@@ -137,6 +134,7 @@ public class NewFAQActivity extends ActionBarActivity
     public Intent getSupportParentActivityIntent () {
 
         return new Intent(this, getIntent().getClass());
+
     }
 
 

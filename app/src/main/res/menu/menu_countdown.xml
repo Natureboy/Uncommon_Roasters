@@ -1,6 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".CountdownActivity">
+    <item android:id="@+id/action_home" android:title="@string/return_home"
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_faq" android:title="@string/action_faq"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_about_us" android:title="@string/about_us"

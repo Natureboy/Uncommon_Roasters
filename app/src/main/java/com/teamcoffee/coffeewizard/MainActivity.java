@@ -41,6 +41,7 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_faq) {
             Intent intent = new Intent(this, NewFAQActivity.class);
             startActivity(intent);

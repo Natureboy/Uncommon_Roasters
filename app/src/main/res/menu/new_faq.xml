@@ -2,9 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.teamcoffee.coffeewizard.NewFAQActivity">
-    <!--<item android:id="@+id/action_example" android:title="@string/action_example"-->
-        <!--app:showAsAction="withText|ifRoom" />-->
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+    <item android:id="@+id/action_home" android:title="@string/return_home"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_about_us" android:title="@string/about_us"
         android:orderInCategory="100" app:showAsAction="never" />
