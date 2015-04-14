@@ -47,9 +47,6 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
     private NotificationManager notifyMgr;
     private int notifyID = 0;
 
-    //TODO Alerts, notifications - return to app, sounds
-    //TODO Wake up screen on notify
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +68,6 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
         }
 
         events = (HashMap<Integer,String>) i.getSerializableExtra("events");
-        //TODO Look into whether it would be better to use a Timer to schedule these events instead
 
         startTime = s * 1000; //Converts seconds to milliseconds, which CountdownTimers use
         overflowStart = (long) Math.ceil((double)s * 0.028) * 1000;
@@ -240,27 +236,9 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             }
 
             if (isBlinking) {
-                //TODO set text to blink when timer nearly done
+                //TODO set text to blink when timer nearly done?
                 timerText.setAlpha(1/(timerText.getAlpha()/0.25f));
             }
-
-            // Update the instructions field with text from the HashMap, if any
-            // Values are stored in HashMap as time elapsed, so time remaining must be converted
-            //  in order to obtain a usable key
-
-
-
-            // Following code does not work for clearing instructions. Check if needed.
-//            if((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) == "\n") {
-//                // If the element in the HashMap is a string consisting only of a newline character,
-//                // interpret it as a signal to clear the instrText field
-//                instrText.setText("");
-//            } else if ((instrString=events.get((int)((s*1000)-millisUntilFinished)/1000)) != null) {
-//                instrText.setText(instrString);
-//                // Add an event to the hashmap to clear the instruction text some time later
-//                // Currently set at 15 seconds; check if this is a good interval or even needed
-//                events.put(((int) (((startTime*1000)-millisUntilFinished)/1000)+15), "\n");
-//            }
         }
     }
 
