@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'signature'
+            keyPassword 'roasting1994'
+            storeFile file('C:/Users/AleX/Documents/Capstone/CoffeeWizard/key.jks')
+            storePassword 'roasting1994'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.teamcoffee.coffeewizard"
         minSdkVersion 15
@@ -15,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
