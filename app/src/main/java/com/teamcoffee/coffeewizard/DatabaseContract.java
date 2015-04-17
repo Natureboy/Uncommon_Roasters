@@ -6,15 +6,12 @@ import android.provider.BaseColumns;
 /**
  * Created by Brendan on 2/26/2015.
  * Contains the information to build a CREATE query.
- * TODO: Add search queries? Helper methods to run insert/search queries?
- * TODO: NORMALIZATION TABLE1 AND TABLE2
- * TODO: Relations between tables
  *
  */
 public class DatabaseContract {
 
     //Only change this when the schema is being changed, this will delete any user added data
-    public static final int DATABASE_VERSION = 34;
+    public static final int DATABASE_VERSION = 35;
 
     public static final String DATABASE_NAME = "coffeeWizard.db";
     private static final String TYPE_TEXT = " TEXT";
