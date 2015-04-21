@@ -64,20 +64,41 @@
     <string name="open">Open the Drawer</string>
     <string name="close">Close the Drawer</string>
     <string name="fh_pour">Pouring Water</string>
-    <string name="ft_pour_top">For the recipes in the Coffee Wizard to be applicable, the user must pour the water
+    <string name="ft_pour_top">The flow rate of the water used to brew coffee is one of many crucial
+        variables in pour-over brewing that must be controlled in order to brew a consistent cup.
+        For the recipes in the Coffee Wizard to be applicable, the user must pour the water
         as restricted and slowly as possible without letting the water stream drip. This will maximize consistency
         and let the grind size and coffee density determine our overall brew time. Start by pouring the water from
         the center out to the edge of the brewer in quick circles as to saturate all grounds evenly.
         Remember, we want a restricted flow, but quick circles.</string>
-    <string name="fsh_sol">Practical Solutions \n\n</string>
+    <string name="ft_pour_mid">Coffee can be brewed in many different ways, but we chose to utilize
+        a slow pouring method because it supplies the most consistent results. Pouring with high
+        velocities will force the coffee to move inside the brewer, agitating the coffee grounds,
+        causing some grounds to extract at different speeds than others. Secondly, the water will
+        drip faster and less consistently when stirred around than it will with a flat and even
+        coffee bed.</string>
+    <string name="fsh_sol">\nPractical Solutions \n</string>
+    <string name="ft_pour_sol">The best choices for pour-over brewing are gooseneck kettles which
+        provide ample control over the water flow. The best results come from filling the kettle
+        only half to three quarters full.  For additional consistency, you can insert a flow
+        restrictor into the tip of the kettle. </string>
     <string name="fh_grind_q">Grind Quality</string>
+    <string name="ft_grind_top">Apart from great coffee, the grind quality is possibly the most
+        important component to delicious coffee. Unfortunately, this happens to be one of the least
+        accessible factors in coffee brewing. Nice grinders are expensive...And even the best
+        grinders needs help in achieving the optimal grind size. </string>
     <string name="ft_grind">Most of the brew recipes and brewers will use a similar grind
         size. Start by matching the grind size to the picture provided. If your coffee tastes
-        sour or brews too quickly, adjust the grind FINER. If the the coffee tastes bitter or
+        sour or brews too quickly, adjust the grind FINER. If  the coffee tastes bitter or
         brews too slowly, grind the coffee COARSER. The grind size for the V60 and Press pot
         will be very similar for our recipes, but the chemex will use a slightly coarser grind.
         The grounds should feel like a medium fine table salt if run between your fingers. \n
     </string>
+    <string name="ft_grind_bot">The grind size will affect how quickly water will flow through
+        the coffee bed. As a rule of thumb, the finer you grind, the more flow restriction
+        (the water will flow slower). However, inconsistent grinds can flow slowly because
+        the fines and boulders are plugging up the holes that would be voids if the grounds
+        were more even. </string>
     <string name="fsh_grinders">Grinders </string>
     <string name="ft_grinders">All grinders will perform differently, even the same models
         will vary slightly. Successful coffee brewing comes from maximizing the uniformity
@@ -121,21 +142,21 @@
         recommend using a normal pitcher filter (like britta), and blending that with anywhere
         from 30-50% distilled water. Experiment to find where your water tastes best! \n</string>
     <string name="fh_coffeed">Coffee Density</string>
-    <string name="ft_coffeed_top">To find the density of your coffee, you can either take a
-        bite out of a roasted bean, or you can try to crush it in your fingers. The lower the
-        density, the easier it will be to break. If if feels like you are eating potato chips,
-        it is most likely low density. If if feels like you are eating a soft marble, it will
-        most likely be high density. As a rule of thumb, a light roast will mean the coffee
-        is high density, and a Dark roast is low density. If your coffee brewed radically
-        too fast or slow, try selecting a different density.\n</string>
-    <string name="ft_coffeed_text">In the ‘Dial-In’ option in the Coffee Wizard, we ask you to
+    <string name="ft_coffeed_1">In the ‘Dial-In’ option in the Coffee Wizard, we ask you to
         choose a low, medium, or high density options for the coffee. This refers to the bean
-        density of the coffee. Depending on how the coffee was roasted in addition to its green
-        qualities, each coffee with have a unique amount of moisture and density of organic
-        matter. We gave you three options that should get you in the ballpark of your target
-        brew time. The denser a coffee, the longer it takes for water to penetrate the grounds.
-        This means that the highest density coffees will flow slower, and will take longer to
-        extract. Likewise, the lowest density coffees will brew much easier and quickly.\n</string>
+        density of the coffee. Depending on how the coffee was roasted in addition to its raw
+        qualities, each coffee will have a unique amount of moisture and organic matter density.
+        We gave you three options that should get you in the ballpark of your target brew time.
+        The denser the coffee, the longer it takes for water to penetrate the grounds. This means
+        that the highest density coffees will flow slower, and will take longer to extract.
+        Likewise, the lowest density coffees will brew much quicker and more efficiently.\n</string>
+    <string name="ft_coffeed_2">To find the density of your coffee, you can either take a bite
+        out of a roasted bean, or you can try to crush it in your fingers. The lower the density,
+        the easier it will be to break. If it feels like you are eating potato chips, it is most
+        likely low density. If it feels like you’re eating a hard candy, it will most likely be
+        high density. As a rule of thumb, a ‘light’ roast will mean the coffee is high density,
+        and a ‘Dark’ roast is low density. If your coffee brews radically too fast or slow, try
+        selecting a different density. </string>
     <string name="title_activity_new_faq">FAQ Page</string>
 
     <string name="title_section1">Pouring Water</string>
@@ -150,8 +171,11 @@
 
     <string name="action_settings">Settings</string>
     <string name="faq_page">FAQ Page</string>
-    <string name="rate_us">Rate Us on the Play Store!</string>
+    <string name="rate_us">Share Coffee Wizard!</string>
     <string name="return_home">Back to Home Page</string>
+
+    <string name="about_dev">This app was developed by Brendan Koning, Alex Suriano and Mike Veenstra,
+    three students of the GVSU Computer Science program as part of their capstone project</string>
 
 
 

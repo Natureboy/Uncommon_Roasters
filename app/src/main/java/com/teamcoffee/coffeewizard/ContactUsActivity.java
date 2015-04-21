@@ -9,9 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 /**
- * Created by AleX on 3/25/2015.
+ * Created by Alex Suriano on 3/25/2015.
  */
-public class ContactUsActivity  extends ActionBarActivity{
+public class ContactUsActivity  extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,12 @@ public class ContactUsActivity  extends ActionBarActivity{
     // Dynamically set the parent activity so that the up (<-) button in the Action Bar will
     //  lead to the appropriate previous screen
     @Override
-    public Intent getSupportParentActivityIntent () {
+    public Intent getSupportParentActivityIntent() {
 
         return new Intent(this, getIntent().getClass());
     }
 
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_contact_us, menu);
@@ -61,43 +61,58 @@ public class ContactUsActivity  extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void facebook(View view){
+    public void facebook(View view) {
         String url = "https://www.facebook.com/uncommongroundssaugatuck";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
-    public void twitter(View view){
+
+    public void twitter(View view) {
         String url = "https://twitter.com/SaugatuckUG";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
-    public void googlePlus(View view){
+
+    public void googlePlus(View view) {
         String url = "https://plus.google.com/+UncommonCoffeeRoastersSaugatuck";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
 
-    public void foursqaure(View view){
+    public void foursqaure(View view) {
         String url = "https://foursquare.com/v/uncommon-coffee-roasters/4b4bc07ef964a52070a626e3";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
 
-    public void instagram(View view){
+    public void instagram(View view) {
         String url = "https://instagram.com/uncommoncoffeeroasters/";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
     }
 
-    public void yelp(View view){
+    public void yelp(View view) {
         String url = "http://www.yelp.com/biz/uncommon-coffee-roasters-saugatuck";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    public void playStore(View view) {
+        try {
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, "Coffee Wizard");
+            String sAux = "Check out Coffee Wizard in the Play Store\n\n";
+            sAux = sAux + "https://play.google.com/store/apps/details?id=com.teamcoffee.coffeewizard";
+            i.putExtra(Intent.EXTRA_TEXT, sAux);
+            startActivity(Intent.createChooser(i, "Share"));
+        } catch (Exception e) { //e.toString();
+        }
     }
 }
