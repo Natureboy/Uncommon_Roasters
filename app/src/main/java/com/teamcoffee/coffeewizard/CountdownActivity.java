@@ -236,7 +236,9 @@ public class CountdownActivity extends ActionBarActivity implements View.OnClick
             }
 
             if (isBlinking) {
-                //TODO set text to blink when timer nearly done?
+                // Helper function for possible future use; currently unused.
+                // Will set the text to blink, alternating between an alpha value
+                //  of 1 and 1/4 every time it is called.
                 timerText.setAlpha(1/(timerText.getAlpha()/0.25f));
             }
         }
