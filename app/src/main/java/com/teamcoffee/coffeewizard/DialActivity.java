@@ -76,6 +76,20 @@ public class DialActivity extends ActionBarActivity {
                     waterVolume.setText(Integer.toString(waterAmount));
                     coffeeWeight.setText(String.format("%.2f", coffeeAmount));
                 }
+                else if(spinner.getSelectedItem().toString().equals("Chemex")){
+//                    if(progressChanged == 0){
+//                        waterVolume.setText("200");
+//                        coffeeWeight.setText("12");
+//                    }
+//                    else if(progressChanged == 1){
+//                        waterVolume.setText("300");
+//                        coffeeWeight.setText("19");
+//                    }
+//                    else if(progressChanged == 2){
+                        waterVolume.setText("500");
+                        coffeeWeight.setText("32");
+                    //}
+                }
                 else {
                     if (progressChanged == 0) {
                         waterVolume.setText("200");
@@ -131,6 +145,9 @@ public class DialActivity extends ActionBarActivity {
                 }
                 else if(spinner.getSelectedItem().toString().equals("Press Pot")){
                     setScreenElements(false, "15", 400, 200, "200", View.GONE);
+                }
+                else if(spinner.getSelectedItem().toString().equals("Chemex")){
+                    setScreenElements(false, "32", 400, 500, "500", View.VISIBLE);
                 }
                 else{
                     setScreenElements(false, "15", 2, 0, "200", View.VISIBLE);

@@ -1,27 +1,13 @@
 <?xml version="1.0"  encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.teamcoffee.coffeewizard"
-    android:versionCode="2"
-    android:versionName="Version 1.01">
+    package="com.teamcoffee.coffeewizard">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <compatible-screens>
-        <!-- all small size screens -->
-        <screen android:screenSize="small" android:screenDensity="ldpi" />
-        <screen android:screenSize="small" android:screenDensity="mdpi" />
-        <screen android:screenSize="small" android:screenDensity="hdpi" />
-        <screen android:screenSize="small" android:screenDensity="xhdpi" />
-        <!-- all normal size screens -->
-        <screen android:screenSize="normal" android:screenDensity="ldpi" />
-        <screen android:screenSize="normal" android:screenDensity="mdpi" />
-        <screen android:screenSize="normal" android:screenDensity="hdpi" />
-        <screen android:screenSize="normal" android:screenDensity="xhdpi" />
-
-        <screen android:screenSize="large" android:screenDensity="ldpi" />
-        <screen android:screenSize="large" android:screenDensity="mdpi" />
-        <screen android:screenSize="large" android:screenDensity="hdpi" />
-        <screen android:screenSize="large" android:screenDensity="xhdpi" />
-    </compatible-screens>
+    <!--<supports-screens android:smallScreens="true"-->
+        <!--android:normalScreens="true"-->
+        <!--android:largeScreens="true"-->
+        <!--android:xlargeScreens="false"-->
+    <!--/>-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

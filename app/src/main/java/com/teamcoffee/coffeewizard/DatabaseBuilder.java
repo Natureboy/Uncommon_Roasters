@@ -28,6 +28,9 @@ public class DatabaseBuilder {
         new Recipe("V60", 400, 25, "medium", 190),
         new Recipe("V60", 400, 25, "low", 180),
         new Recipe("Press Pot", 0, 0, "n/a", 600),
+        new Recipe("Chemex", 500, 32, "high", 260),
+        new Recipe("Chemex", 500, 32, "medium", 240),
+        new Recipe("Chemex", 500, 32, "low", 220),
     };
 
     //Brewer, Volume, Density, Event, Start Time
@@ -82,13 +85,6 @@ public class DatabaseBuilder {
             new TimerEvents("V60", 200, "low", "Pour to 200g", 70),
             new TimerEvents("V60", 200, "low", "Draining", 84),
 
-            //new TimerEvents("Press Pot", 0, "n/a", "Pour to Xg of Water", 0),
-            new TimerEvents("Press Pot", 0, "n/a", "", 30),
-            new TimerEvents("Press Pot", 0, "n/a", "Break the Crust", 240),
-            new TimerEvents("Press Pot", 0, "n/a", "Clean the Top", 250),
-            new TimerEvents("Press Pot", 0, "n/a", "Replace Plunger", 290),
-            new TimerEvents("Press Pot", 0, "n/a", "", 300),
-            new TimerEvents("Press Pot", 0, "n/a", "Pour coffee (Remember, Do not Plunge)", 585),
 
             new TimerEvents("V60", 400, "high", "Bloom 40g", 0),
             new TimerEvents("V60", 400, "high", "", 12),
@@ -114,6 +110,36 @@ public class DatabaseBuilder {
             new TimerEvents("V60", 400, "low", "", 110),
             new TimerEvents("V60", 400, "low", "Pour to 400g", 120),
             new TimerEvents("V60", 400, "low", "Draining", 145),
+
+            //new TimerEvents("Press Pot", 0, "n/a", "Pour to Xg of Water", 0),
+            new TimerEvents("Press Pot", 0, "n/a", "", 30),
+            new TimerEvents("Press Pot", 0, "n/a", "Break the Crust", 240),
+            new TimerEvents("Press Pot", 0, "n/a", "Clean the Top", 250),
+            new TimerEvents("Press Pot", 0, "n/a", "Replace Plunger", 290),
+            new TimerEvents("Press Pot", 0, "n/a", "", 300),
+            new TimerEvents("Press Pot", 0, "n/a", "Pour coffee (Remember, Do not Plunge)", 585),
+
+            // new TimerEvents ("Chemex", volume, "density", "Instruction", startTime),
+            //high density Chemex
+            new TimerEvents("Chemex", 500, "high", "Bloom 50g", 0),
+            new TimerEvents("Chemex", 500, "high", "Pour to 250g",30),
+            new TimerEvents("Chemex", 500, "high", "Pour to 380g", 85),
+            new TimerEvents("Chemex", 500, "high", "Pour to 500g", 135),
+            new TimerEvents("Chemex", 500, "high", "Draining", 155),
+
+            //med density Chemex
+            new TimerEvents("Chemex", 500, "medium", "Bloom 50g", 0),
+            new TimerEvents("Chemex", 500, "medium", "Pour to 250g",30),
+            new TimerEvents("Chemex", 500, "medium", "Pour to 380g", 85),
+            new TimerEvents("Chemex", 500, "medium", "Pour to 500g", 135),
+            new TimerEvents("Chemex", 500, "medium", "Draining", 155),
+
+            //low density Chemex
+            new TimerEvents("Chemex", 500, "low", "Bloom 50g", 0),
+            new TimerEvents("Chemex", 500, "low", "Pour to 250g",30),
+            new TimerEvents("Chemex", 500, "low", "Pour to 380g", 85),
+            new TimerEvents("Chemex", 500, "low", "Pour to 500g", 135),
+            new TimerEvents("Chemex", 500, "low", "Draining", 150),
 
 
 
