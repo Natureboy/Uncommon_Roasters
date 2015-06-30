@@ -2,6 +2,7 @@ package com.teamcoffee.coffeewizard;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -148,6 +150,12 @@ public class DialActivity extends ActionBarActivity {
                 }
                 else if(spinner.getSelectedItem().toString().equals("Chemex")){
                     setScreenElements(false, "32", 400, 500, "500", View.VISIBLE);
+                    Context context = getApplicationContext();
+                    CharSequence text = "500 is the only volume at this time. More coming soon!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
                 else{
                     setScreenElements(false, "15", 2, 0, "200", View.VISIBLE);
